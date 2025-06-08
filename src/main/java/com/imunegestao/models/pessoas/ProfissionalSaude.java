@@ -1,4 +1,4 @@
-package com.imunegestao.models;
+package com.imunegestao.models.pessoas;
 
 public class ProfissionalSaude {
     private int id;
