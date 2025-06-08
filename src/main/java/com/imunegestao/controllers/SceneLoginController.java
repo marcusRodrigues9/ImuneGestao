@@ -45,11 +45,11 @@ public class SceneLoginController {
             alert.setContentText("Login realizado com sucesso!");
             alert.showAndWait();
 
-            Parent telaOptions = FXMLLoader.load(getClass().getResource("/com/imunegestao/views/Scene_Visualizar_Cidadao.fxml"));
-            Scene sceneOptions = new Scene(telaOptions);
+            Parent telaCidadaos = FXMLLoader.load(getClass().getResource("/com/imunegestao/views/Scene_Visualizar_Cidadao.fxml"));
+            Scene CenaCidadaos = new Scene(telaCidadaos);
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(sceneOptions);
+            stage.setScene(CenaCidadaos);
             stage.setTitle("Cidadaos");
             stage.show();
         }

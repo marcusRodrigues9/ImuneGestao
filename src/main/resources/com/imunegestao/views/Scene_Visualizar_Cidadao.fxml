@@ -73,7 +73,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </MenuButton>
-            <Button layoutX="1229.0" layoutY="27.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="98.0" style="-fx-background-color: #ffc4d4;" text="SAIR">
+            <Button fx:id="botao_sair" layoutX="1229.0" layoutY="27.0" mnemonicParsing="false" onAction="#sair" prefHeight="36.0" prefWidth="98.0" style="-fx-background-color: #ffc4d4;" text="SAIR">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
