@@ -2,9 +2,16 @@ package com.imunegestao.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class SceneLoginController {
     @FXML
@@ -22,7 +29,7 @@ public class SceneLoginController {
         return null; // sem erros de login
     }
     @FXML
-    void realizar_login(ActionEvent event) {
+    void realizar_login(ActionEvent event) throws IOException {
         String usuario = input_usuario.getText();
         String senha = input_senha.getText();
         String erro = validarLogin(usuario, senha);
@@ -31,8 +38,20 @@ public class SceneLoginController {
             Alert alertaErro = new Alert(Alert.AlertType.ERROR);
             alertaErro.setHeaderText(erro);
             alertaErro.show();
+            return;
         }else{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText("Login realizado com sucesso!");
+            alert.showAndWait();
 
+            Parent telaOptions = FXMLLoader.load(getClass().getResource("/com/imunegestao/views/Scene_Visualizar_Cidadao.fxml"));
+            Scene sceneOptions = new Scene(telaOptions);
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(sceneOptions);
+            stage.setTitle("Cidadaos");
+            stage.show();
         }
     }
 }
