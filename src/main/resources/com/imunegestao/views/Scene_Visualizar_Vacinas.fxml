@@ -14,13 +14,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imunegestao.controllers.SceneCidadaoController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imunegestao.controllers.SceneVacinaController">
    <top>
       <AnchorPane prefHeight="107.0" prefWidth="1360.0" BorderPane.alignment="CENTER">
          <children>
             <MenuButton layoutX="331.0" layoutY="12.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="176.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" text="CIDADAOS" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="12.0">
                <items>
-                  <MenuItem fx:id="botao_menu_visualizar" mnemonicParsing="false" onAction="#alterar_tela_visualizacao" text="Visualizar cidadaos" />
+                  <MenuItem fx:id="botao_menu_visualizar" mnemonicParsing="false" onAction="#alterar_tela_visualizacao_cidadao" text="Visualizar cidadaos" />
                   <MenuItem mnemonicParsing="false" text="Cadastrar cidadaos" />
                   <MenuItem mnemonicParsing="false" text="Cartao de vacina" />
                </items>

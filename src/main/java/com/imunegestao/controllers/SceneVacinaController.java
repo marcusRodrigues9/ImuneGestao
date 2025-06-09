@@ -2,11 +2,18 @@ package com.imunegestao.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class SceneVacinaController {
 
@@ -41,14 +48,20 @@ public class SceneVacinaController {
     }
 
     @FXML
-    void alterar_tela_visualizacao(ActionEvent event) {
+    void alterar_tela_visualizacao_vacina(ActionEvent event) {
         formulario_vacina.setVisible(false);
         tela_vacina.setVisible(true);
     }
 
     @FXML
-    void alterar_tela_visualizacao_vacina(ActionEvent event) {
+    void alterar_tela_visualizacao_cidadao(ActionEvent event) throws IOException {
+        Parent telaCidadaos = FXMLLoader.load(getClass().getResource("/com/imunegestao/views/Scene_Visualizar_Cidadao.fxml"));
+        Scene CenaCidadaos = new Scene(telaCidadaos);
 
+        Stage stage = (Stage) ((MenuItem) event.getSource()).getParentPopup().getOwnerWindow();
+        stage.setScene(CenaCidadaos);
+        stage.setTitle("Cidadaos");
+        stage.show();
     }
 
     @FXML
