@@ -1,5 +1,6 @@
 package com.imunegestao.controllers;
 
+import com.imunegestao.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -66,6 +67,7 @@ public class SceneVacinaController {
 
     @FXML
     void sair(ActionEvent event) {
-
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(Main.getCenaLogin());
     }
 }

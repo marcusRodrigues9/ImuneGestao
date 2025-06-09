@@ -12,7 +12,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         janela = stage;
-        Parent telaLogin = FXMLLoader.load(getClass().getResource("/com/imunegestao/views/Scene_Visualizar_Vacinas.fxml"));
+        Parent telaLogin = FXMLLoader.load(getClass().getResource("/com/imunegestao/views/Scene_Login.fxml"));
         cenaLogin = new Scene(telaLogin);
       //sceneLogin.getStylesheets().add(getClass().getResource("/gestaoImune/style.css").toExternalForm());
         janela.setScene(cenaLogin);

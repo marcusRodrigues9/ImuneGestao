@@ -44,8 +44,8 @@
             </Label>
             <MenuButton layoutX="537.0" layoutY="12.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="176.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" text="VACINAS" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="12.0">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Visualizar cidadaos" />
-                  <MenuItem mnemonicParsing="false" text="Cadastrar cidadaos" />
+                  <MenuItem fx:id="botao_menu_visualizar" mnemonicParsing="false" onAction="#alterar_tela_visualizacao_vacina" text="Visualizar vacinas" />
+                  <MenuItem mnemonicParsing="false" text="Cadastrar vacinas" />
                </items>
                <padding>
                   <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />

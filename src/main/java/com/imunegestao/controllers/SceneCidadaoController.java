@@ -49,6 +49,17 @@ public class SceneCidadaoController {
         tela_cidadao.setVisible(true);
     }
     @FXML
+    void alterar_tela_visualizacao_vacina(ActionEvent event) throws IOException {
+
+        Parent telaVacinas = FXMLLoader.load(getClass().getResource("/com/imunegestao/views/Scene_Visualizar_Vacinas.fxml"));
+        Scene cenaVacinas = new Scene(telaVacinas);
+
+        Stage stage = (Stage) ((MenuItem) event.getSource()).getParentPopup().getOwnerWindow();
+        stage.setScene(cenaVacinas);
+        stage.setTitle("Cidadaos");
+        stage.show();
+    }
+    @FXML
     public void sair(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(Main.getCenaLogin());
