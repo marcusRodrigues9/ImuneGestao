@@ -31,7 +31,7 @@ public class SceneVacinaController {
     private Button botao_sair;
 
     @FXML
-    private TextField buscar_cidadao;
+    private TextField buscar_vacina;
 
     @FXML
     private AnchorPane formulario_vacina;
