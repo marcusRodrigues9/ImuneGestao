@@ -20,10 +20,9 @@ public class SceneCidadaoController extends BaseController {
     @FXML
     private Button botao_sair;
     @FXML
-    private MenuItem botao_menu_cadastrar;
-
+    private MenuItem botao_menu_cadastrar_cidadao;
     @FXML
-    private MenuItem botao_menu_visualizar;
+    private MenuItem botao_menu_visualizar_cidadao;
 
     @FXML
     private TextField buscar_cidadao;
@@ -47,15 +46,18 @@ public class SceneCidadaoController extends BaseController {
         mostrarTela(tela_cidadao, formulario_cidadao);
     }
     @FXML
-    void alterar_tela_visualizacao_vacina(ActionEvent event) throws IOException {
+    void alterar_tela_vacina(ActionEvent event) throws IOException {
+        trocarCena(event, "/com/imunegestao/views/Scene_Visualizar_Vacinas.fxml", "Vacinas");
+    }
 
-        Parent telaVacinas = FXMLLoader.load(getClass().getResource("/com/imunegestao/views/Scene_Visualizar_Vacinas.fxml"));
-        Scene cenaVacinas = new Scene(telaVacinas);
+    @FXML
+    void alterar_tela_agendamento(ActionEvent event) throws IOException {
+        trocarCena(event, "/com/imunegestao/views/Scene_Agendamento.fxml", "Agendamento");
+    }
 
-        Stage stage = (Stage) ((MenuItem) event.getSource()).getParentPopup().getOwnerWindow();
-        stage.setScene(cenaVacinas);
-        stage.setTitle("Cidadaos");
-        stage.show();
+    @FXML
+    void alterar_tela_cidadao(ActionEvent event) throws IOException {
+        trocarCena(event, "/com/imunegestao/views/Scene_Visualizar_Cidadao.fxml", "Cidadãos");
     }
     @FXML
     public void sair(ActionEvent event) {
