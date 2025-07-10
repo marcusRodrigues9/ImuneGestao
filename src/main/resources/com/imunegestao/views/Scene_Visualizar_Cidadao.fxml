@@ -20,8 +20,8 @@
          <children>
             <MenuButton layoutX="331.0" layoutY="12.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="176.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" text="CIDADAOS" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="12.0">
               <items>
-                <MenuItem fx:id="botao_menu_visualizar" mnemonicParsing="false" onAction="#alterar_tela_visualizacao" text="Visualizar cidadaos" />
-                <MenuItem fx:id="botao_menu_cadastrar" mnemonicParsing="false" onAction="#alterar_tela_cadastro" text="Cadastrar cidadaos" />
+                <MenuItem fx:id="botao_menu_visualizar" mnemonicParsing="false" onAction="#mostrar_tabela_cidadao" text="Visualizar cidadaos" />
+                <MenuItem fx:id="botao_menu_cadastrar" mnemonicParsing="false" onAction="#mostrar_formulario_cidadao" text="Cadastrar cidadaos" />
                   <MenuItem mnemonicParsing="false" text="Cartao de vacina" />
               </items>
                <padding>

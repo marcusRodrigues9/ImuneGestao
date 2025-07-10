@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class SceneVacinaController {
+public class SceneVacinaController extends BaseController {
 
     @FXML
     private MenuItem botao_menu_cadastrar_vacina;
@@ -43,13 +43,13 @@ public class SceneVacinaController {
     private AnchorPane tela_vacina;
 
     @FXML
-    void alterar_tela_cadastro_vacina(ActionEvent event) {
+    void mostrar_formulario_vacina(ActionEvent event) {
         formulario_vacina.setVisible(true);
         tela_vacina.setVisible(false);
     }
 
     @FXML
-    void alterar_tela_visualizacao_vacina(ActionEvent event) {
+    void mostrar_tabela_vacina(ActionEvent event) {
         formulario_vacina.setVisible(false);
         tela_vacina.setVisible(true);
     }

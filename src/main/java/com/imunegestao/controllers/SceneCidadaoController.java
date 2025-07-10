@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class SceneCidadaoController {
+public class SceneCidadaoController extends BaseController {
     @FXML
     private Button botao_sair;
     @FXML
@@ -38,15 +38,13 @@ public class SceneCidadaoController {
     private AnchorPane tela_cidadao;
 
     @FXML
-    void alterar_tela_cadastro(ActionEvent event) {
-        formulario_cidadao.setVisible(true);
-        tela_cidadao.setVisible(false);
+    void mostrar_formulario_cidadao(ActionEvent event) {
+        mostrarTela(formulario_cidadao, tela_cidadao);
     }
 
     @FXML
-    void alterar_tela_visualizacao(ActionEvent event) {
-        formulario_cidadao.setVisible(false);
-        tela_cidadao.setVisible(true);
+    void mostrar_tabela_cidadao(ActionEvent event) {
+        mostrarTela(tela_cidadao, formulario_cidadao);
     }
     @FXML
     void alterar_tela_visualizacao_vacina(ActionEvent event) throws IOException {
