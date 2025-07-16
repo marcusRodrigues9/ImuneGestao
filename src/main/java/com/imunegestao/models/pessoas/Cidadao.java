@@ -8,5 +8,5 @@ public class Cidadao {
     private String sexo;
     private String endereco;
     private String bairro;
-    
+
 }
