@@ -9,5 +9,4 @@ public class Cidadao {
     private String endereco;
     private String bairro;
 
-
 }
