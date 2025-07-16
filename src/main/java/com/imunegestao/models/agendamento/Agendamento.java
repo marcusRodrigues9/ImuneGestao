@@ -1,7 +1,6 @@
 package com.imunegestao.models.agendamento;
 
 import com.imunegestao.models.enums.Situacao;
-import com.imunegestao.models.pessoas.Cidadao;
 
 import java.time.LocalDateTime;
 
