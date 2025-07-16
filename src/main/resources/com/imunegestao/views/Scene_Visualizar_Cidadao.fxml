@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imunegestao.controllers.SceneCidadaoController">
+   <top>
+      <AnchorPane prefHeight="107.0" prefWidth="1360.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuButton layoutX="331.0" layoutY="12.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="176.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" text="CIDADAOS" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="12.0">
+              <items>
+                <MenuItem fx:id="botao_menu_visualizar_cidadao" mnemonicParsing="false" onAction="#mostrar_tabela_cidadao" text="Visualizar cidadaos" />
+                <MenuItem fx:id="botao_menu_cadastrar_cidadao" mnemonicParsing="false" onAction="#mostrar_formulario_cidadao" text="Cadastrar cidadaos" />
+                  <MenuItem fx:id="botao_menu_cartao_vacina" mnemonicParsing="false" text="Cartao de vacina" />
+              </items>
+               <padding>
+                  <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
+               </padding>
+               <font>
+                  <Font name="Arial Bold" size="19.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </MenuButton>
+            <Label layoutX="17.0" layoutY="17.0" style="-fx-background-color: #ffc4d4; -fx-background-radius: 15;" text="Imune Gestão" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="41.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+               </padding>
+            </Label>
+            <MenuButton layoutX="537.0" layoutY="12.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="176.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" text="VACINAS" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="12.0">
+               <items>
+                  <MenuItem fx:id="botao_menu_visualizar_vacina" mnemonicParsing="false" onAction="#alterar_tela_vacina" text="Visualizar vacinas" />
+                  <MenuItem mnemonicParsing="false" text="Cadastrar vacinas" />
+               </items>
+               <padding>
+                  <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
+               </padding>
+               <font>
+                  <Font name="Arial Bold" size="19.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </MenuButton>
+            <MenuButton layoutX="741.0" layoutY="14.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="244.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" text="AGENDAMENTOS" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="12.0">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#alterar_tela_agendamento" text="Visualizar cidadaos" />
+                  <MenuItem mnemonicParsing="false" text="Cadastrar cidadaos" />
+               </items>
+               <padding>
+                  <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
+               </padding>
+               <font>
+                  <Font name="Arial Bold" size="19.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </MenuButton>
+            <Button fx:id="botao_sair" layoutX="1229.0" layoutY="27.0" mnemonicParsing="false" onAction="#sair" prefHeight="36.0" prefWidth="98.0" style="-fx-background-color: #ffc4d4;" text="SAIR">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane fx:id="formulario_cidadao" layoutX="443.0" layoutY="46.0" prefHeight="504.0" prefWidth="507.0" style="-fx-border-radius: 15;" visible="false" AnchorPane.bottomAnchor="111.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="46.0">
+               <children>
+                  <VBox layoutX="520.0" layoutY="127.0" prefHeight="325.0" prefWidth="339.0" spacing="20.0" AnchorPane.leftAnchor="435.0" AnchorPane.rightAnchor="435.0">
+                     <children>
+                        <TextField prefHeight="33.0" promptText="Nome completo" />
+                        <TextField prefHeight="33.0" promptText="cpf" />
+                        <TextField prefHeight="33.0" promptText="endereço" />
+                        <TextField prefHeight="33.0" promptText="bairro" />
+                        <TextField prefHeight="33.0" promptText="idade" />
+                        <TextField prefHeight="33.0" promptText="sexo" />
+                     </children>
+                     <padding>
+                        <Insets left="33.0" right="33.0" />
+                     </padding>
+                  </VBox>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="75.0" prefHeight="27.0" prefWidth="435.0" text="Prencha os dados do cidadao" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <font>
+                        <Font name="Arial Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="591.0" layoutY="458.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="180.0" text="Cadastrar" AnchorPane.leftAnchor="555.0" AnchorPane.rightAnchor="555.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="tela_cidadao" layoutY="-3.0" prefHeight="665.0" prefWidth="1359.0">
+               <children>
+                  <Label layoutX="26.0" layoutY="137.0" text="Pesquisar Cidadao: ">
+                     <font>
+                        <Font name="Arial Bold" size="34.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="tabela_cidadaos" layoutX="25.0" layoutY="230.0" prefHeight="365.0" prefWidth="1232.0" style="-fx-background-color: white; -fx-border-color: gray;" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="165.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="Id" />
+                      <TableColumn prefWidth="75.0" text="Nome" />
+                        <TableColumn prefWidth="75.0" text="Cpf" />
+                        <TableColumn prefWidth="75.0" text="Idade" />
+                        <TableColumn prefWidth="75.0" text="Sexo" />
+                        <TableColumn prefWidth="75.0" text="Endereço" />
+                        <TableColumn prefWidth="75.0" text="Bairro" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="buscar_cidadao" layoutX="362.0" layoutY="142.0" prefHeight="33.0" prefWidth="265.0" promptText="Digite o id ou cpf" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
