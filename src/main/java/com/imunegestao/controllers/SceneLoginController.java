@@ -54,4 +54,20 @@ public class SceneLoginController {
             stage.show();
         }
     }
+    @FXML
+    public void initialize() {
+
+        // Botão Enter Faz a mesma função do TAB
+        input_usuario.setOnKeyPressed(event -> {
+            if (event.getCode().toString().equals("ENTER")) {
+                input_senha.requestFocus();
+            }
+        });
+
+        input_senha.setOnKeyPressed(event -> {
+            if (event.getCode().toString().equals("ENTER")) {
+                botao_entrar.requestFocus();
+            }
+        });
+    }
 }

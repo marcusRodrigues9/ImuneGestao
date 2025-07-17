@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -14,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imunegestao.controllers.SceneVacinaController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imunegestao.controllers.SceneAgendamentoController">
    <top>
       <AnchorPane prefHeight="107.0" prefWidth="1360.0" BorderPane.alignment="CENTER">
          <children>
@@ -44,8 +45,8 @@
             </Label>
             <MenuButton layoutX="537.0" layoutY="12.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="176.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" text="VACINAS" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="12.0">
                <items>
-                  <MenuItem fx:id="botao_menu_visualizar_vacina" mnemonicParsing="false" onAction="#mostrar_tabela_vacina" text="Visualizar vacinas" />
-                  <MenuItem fx:id="botao_menu_cadastrar_vacina" mnemonicParsing="false" onAction="#mostrar_formulario_vacina" text="cadastrar vacinas" />
+                  <MenuItem mnemonicParsing="false" onAction="#alterar_tela_vacina" text="Visualizar vacinas" />
+                  <MenuItem mnemonicParsing="false" text="cadastrar vacinas" />
                </items>
                <padding>
                   <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
@@ -59,8 +60,8 @@
             </MenuButton>
             <MenuButton layoutX="741.0" layoutY="14.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="244.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" text="AGENDAMENTOS" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="12.0">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#alterar_tela_agendamento" text="Visualizar cidadaos" />
-                  <MenuItem mnemonicParsing="false" text="Cadastrar cidadaos" />
+                  <MenuItem fx:id="botao_menu_visualizar_agendamento" mnemonicParsing="false" onAction="#mostrar_tabela_agendamento" text="Visualizar Agendamentos" />
+                  <MenuItem fx:id="botao_menu_cadastrar_agendamento" mnemonicParsing="false" onAction="#mostrar_formulario_agendamento" text="Realizar Agendamento" />
                </items>
                <padding>
                   <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
@@ -83,46 +84,42 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane fx:id="formulario_vacina" layoutX="443.0" layoutY="46.0" prefHeight="504.0" prefWidth="507.0" style="-fx-border-radius: 15;" visible="false" AnchorPane.bottomAnchor="111.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="46.0">
+            <AnchorPane fx:id="formulario_agendamento" layoutX="443.0" layoutY="46.0" prefHeight="504.0" prefWidth="507.0" style="-fx-border-radius: 15;" AnchorPane.bottomAnchor="111.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="46.0">
                <children>
-                  <VBox layoutX="520.0" layoutY="127.0" prefHeight="289.0" prefWidth="490.0" spacing="20.0" AnchorPane.leftAnchor="435.0" AnchorPane.rightAnchor="435.0">
+                  <VBox layoutX="520.0" layoutY="127.0" prefHeight="160.0" prefWidth="490.0" spacing="20.0" AnchorPane.leftAnchor="435.0" AnchorPane.rightAnchor="435.0">
                      <children>
-                        <TextField prefHeight="33.0" promptText="nome" />
-                        <TextField prefHeight="33.0" promptText="fabricante" />
-                        <TextField prefHeight="33.0" promptText="quantidade de doses disponiveis" />
-                        <TextField prefHeight="33.0" promptText="doses recomendadas" />
-                        <TextField prefHeight="33.0" promptText="data de validade" />
+                        <TextField prefHeight="33.0" promptText="nome completo" />
+                        <DatePicker prefHeight="31.0" prefWidth="424.0" />
+                        <TextField prefHeight="33.0" promptText="status do agendamento" />
                      </children>
                      <padding>
                         <Insets left="33.0" right="33.0" />
                      </padding>
                   </VBox>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="75.0" prefHeight="27.0" prefWidth="435.0" text="Preencha as informações da vacina" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="75.0" prefHeight="27.0" prefWidth="435.0" text="Preencha as informações do agendamento" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <font>
                         <Font name="Arial Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Button layoutX="555.0" layoutY="410.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="180.0" text="Cadastrar" AnchorPane.leftAnchor="555.0" AnchorPane.rightAnchor="555.0" />
+                  <Button fx:id="realizar_cadastro_agendamento" layoutX="555.0" layoutY="292.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="250.0" text="Agendar" AnchorPane.leftAnchor="555.0" AnchorPane.rightAnchor="555.0" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="tela_vacina" layoutY="-3.0" prefHeight="665.0" prefWidth="1359.0">
+            <AnchorPane fx:id="tela_agendamento" layoutY="-3.0" prefHeight="665.0" prefWidth="1359.0" visible="false">
                <children>
-                  <Label layoutX="26.0" layoutY="137.0" text="Pesquisar Vacina: ">
+                  <Label layoutX="26.0" layoutY="137.0" text="Pesquisar Agendamento: ">
                      <font>
                         <Font name="Arial Bold" size="34.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="tabela_vacinas" layoutX="25.0" layoutY="230.0" prefHeight="365.0" prefWidth="1232.0" style="-fx-background-color: white; -fx-border-color: gray;" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="165.0">
+                  <TableView fx:id="tabela_agendamento" layoutX="25.0" layoutY="230.0" prefHeight="365.0" prefWidth="1232.0" style="-fx-background-color: white; -fx-border-color: gray;" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="165.0">
                      <columns>
                         <TableColumn prefWidth="75.0" text="Id" />
-                        <TableColumn prefWidth="75.0" text="Nome" />
-                        <TableColumn prefWidth="75.0" text="Fabricante" />
-                        <TableColumn prefWidth="117.0" text="Doses Disponiveis" />
-                        <TableColumn prefWidth="127.0" text="Doses recomendadas" />
-                        <TableColumn prefWidth="107.0" text="Data de validade" />
+                        <TableColumn prefWidth="149.0" text="Nome" />
+                        <TableColumn prefWidth="160.0" text="data" />
+                        <TableColumn prefWidth="160.0" text="Status do agendamento" />
                      </columns>
                   </TableView>
-                  <TextField fx:id="buscar_vacina" layoutX="336.0" layoutY="140.0" prefHeight="33.0" prefWidth="265.0" promptText="Digite o id ou nome da vacina" />
+                  <TextField fx:id="buscar_agendamento" layoutX="454.0" layoutY="140.0" prefHeight="33.0" prefWidth="345.0" promptText="Digite o id ou nome da vacina" text="Digite o id do cidadao ou nome completo do cidadao" />
                </children>
             </AnchorPane>
          </children>

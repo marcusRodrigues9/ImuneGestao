@@ -59,7 +59,7 @@
             </MenuButton>
             <MenuButton layoutX="741.0" layoutY="14.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="244.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" text="AGENDAMENTOS" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="12.0">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Visualizar cidadaos" />
+                  <MenuItem mnemonicParsing="false" onAction="#alterar_tela_agendamento" text="Visualizar cidadaos" />
                   <MenuItem mnemonicParsing="false" text="Cadastrar cidadaos" />
                </items>
                <padding>
