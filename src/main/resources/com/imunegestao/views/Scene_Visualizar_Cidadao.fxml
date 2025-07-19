@@ -103,7 +103,7 @@
                         <Font name="Arial Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Button fx:id="botao_cadastrar_cidadao" layoutX="591.0" layoutY="458.0" mnemonicParsing="false" onAction="#cadastrar_cidadao" prefHeight="25.0" prefWidth="180.0" text="Cadastrar" AnchorPane.leftAnchor="555.0" AnchorPane.rightAnchor="555.0" />
+                  <Button fx:id="botao_cadastrar_cidadao" layoutX="591.0" layoutY="458.0" mnemonicParsing="false" onAction="#salvarCidadao" prefHeight="25.0" prefWidth="180.0" text="Cadastrar" AnchorPane.leftAnchor="555.0" AnchorPane.rightAnchor="555.0" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="tela_cidadao" layoutY="-3.0" prefHeight="665.0" prefWidth="1359.0" visible="false">

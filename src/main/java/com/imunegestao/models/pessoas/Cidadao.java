@@ -7,16 +7,14 @@ public class Cidadao {
     private int idade;
     private String sexo;
     private String endereco;
-    private String bairro;
 
-    public Cidadao(int id, String nome, String cpf, int idade, String sexo, String endereco, String bairro) {
-        this.id = id;
+
+    public Cidadao(String nome, String cpf, int idade, String sexo, String endereco) {
         this.nome = nome;
         this.cpf = cpf;
         this.idade = idade;
         this.sexo = sexo;
         this.endereco = endereco;
-        this.bairro = bairro;
     }
 
     public int getId() {return id;}
@@ -41,7 +39,4 @@ public class Cidadao {
 
     public void setEndereco(String endereco) {this.endereco = endereco;}
 
-    public String getBairro() {return bairro;}
-
-    public void setBairro(String bairro) {this.bairro = bairro;}
 }
