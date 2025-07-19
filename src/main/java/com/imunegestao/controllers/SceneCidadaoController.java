@@ -18,6 +18,23 @@ import java.io.IOException;
 
 public class SceneCidadaoController extends BaseController {
     @FXML
+    private TextField campo_bairro;
+    @FXML
+    private TextField campo_cpf;
+    @FXML
+    private TextField campo_endereco;
+    @FXML
+    private TextField campo_idade;
+    @FXML
+    private TextField campo_nome;
+    @FXML
+    private TextField campo_sexo;
+    @FXML
+    void cadastrar_cidadao(ActionEvent event) {
+
+    }
+
+    @FXML
     private Button botao_sair;
     @FXML
     private MenuItem botao_menu_cadastrar_cidadao;
@@ -60,4 +77,5 @@ public class SceneCidadaoController extends BaseController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(Main.getCenaLogin());
     }
+
 }
