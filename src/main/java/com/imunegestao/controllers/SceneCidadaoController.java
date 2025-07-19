@@ -17,8 +17,20 @@ import java.io.IOException;
 
 public class SceneCidadaoController extends BaseController {
     private RepositorioCidadao repositorioCidadao = new RepositorioCidadao();
+    //==============================================
     @FXML
-    private TextField campo_bairro;
+    private TableColumn<?, ?> coluna_cpf_cidadao;
+    @FXML
+    private TableColumn<?, ?> coluna_endereco_cidadao;
+    @FXML
+    private TableColumn<?, ?> coluna_id_cidadao;
+    @FXML
+    private TableColumn<?, ?> coluna_idade_cidadao;
+    @FXML
+    private TableColumn<?, ?> coluna_nome_cidadao;
+    @FXML
+    private TableColumn<?, ?> coluna_sexo_cidadao;
+    //==============================================
     @FXML
     private TextField campo_cpf;
     @FXML
@@ -29,7 +41,7 @@ public class SceneCidadaoController extends BaseController {
     private TextField campo_nome;
     @FXML
     private TextField campo_sexo;
-
+    //==============================================
     @FXML
     private Button botao_sair;
     @FXML

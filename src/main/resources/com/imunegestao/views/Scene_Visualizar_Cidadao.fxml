@@ -83,14 +83,13 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane fx:id="formulario_cidadao" layoutX="443.0" layoutY="46.0" prefHeight="504.0" prefWidth="507.0" style="-fx-border-radius: 15;" AnchorPane.bottomAnchor="111.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="46.0">
+            <AnchorPane fx:id="formulario_cidadao" layoutX="443.0" layoutY="46.0" prefHeight="504.0" prefWidth="507.0" style="-fx-border-radius: 15;" visible="false" AnchorPane.bottomAnchor="111.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="46.0">
                <children>
                   <VBox layoutX="520.0" layoutY="127.0" prefHeight="325.0" prefWidth="339.0" spacing="20.0" AnchorPane.leftAnchor="435.0" AnchorPane.rightAnchor="435.0">
                      <children>
                         <TextField fx:id="campo_nome" prefHeight="33.0" promptText="Nome completo" />
                         <TextField fx:id="campo_cpf" prefHeight="33.0" promptText="cpf" />
                         <TextField fx:id="campo_endereco" prefHeight="33.0" promptText="endereço" />
-                        <TextField fx:id="campo_bairro" prefHeight="33.0" promptText="bairro" />
                         <TextField fx:id="campo_idade" prefHeight="33.0" promptText="idade" />
                         <TextField fx:id="campo_sexo" prefHeight="33.0" promptText="sexo" />
                      </children>
@@ -103,10 +102,10 @@
                         <Font name="Arial Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Button fx:id="botao_cadastrar_cidadao" layoutX="591.0" layoutY="458.0" mnemonicParsing="false" onAction="#salvarCidadao" prefHeight="25.0" prefWidth="180.0" text="Cadastrar" AnchorPane.leftAnchor="555.0" AnchorPane.rightAnchor="555.0" />
+                  <Button fx:id="botao_cadastrar_cidadao" layoutX="591.0" layoutY="408.0" mnemonicParsing="false" onAction="#salvarCidadao" prefHeight="31.0" prefWidth="250.0" text="Cadastrar" AnchorPane.leftAnchor="555.0" AnchorPane.rightAnchor="555.0" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="tela_cidadao" layoutY="-3.0" prefHeight="665.0" prefWidth="1359.0" visible="false">
+            <AnchorPane fx:id="tela_cidadao" layoutY="-3.0" prefHeight="665.0" prefWidth="1359.0">
                <children>
                   <Label layoutX="26.0" layoutY="137.0" text="Pesquisar Cidadao: ">
                      <font>
@@ -115,13 +114,12 @@
                   </Label>
                   <TableView fx:id="tabela_cidadaos" layoutX="25.0" layoutY="230.0" prefHeight="365.0" prefWidth="1232.0" style="-fx-background-color: white; -fx-border-color: gray;" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="165.0">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="Id" />
-                      <TableColumn prefWidth="75.0" text="Nome" />
-                        <TableColumn prefWidth="75.0" text="Cpf" />
-                        <TableColumn prefWidth="75.0" text="Idade" />
-                        <TableColumn prefWidth="75.0" text="Sexo" />
-                        <TableColumn prefWidth="75.0" text="Endereço" />
-                        <TableColumn prefWidth="75.0" text="Bairro" />
+                      <TableColumn fx:id="coluna_id_cidadao" prefWidth="75.0" text="Id" />
+                      <TableColumn fx:id="coluna_nome_cidadao" prefWidth="75.0" text="Nome" />
+                        <TableColumn fx:id="coluna_cpf_cidadao" prefWidth="75.0" text="Cpf" />
+                        <TableColumn fx:id="coluna_idade_cidadao" prefWidth="75.0" text="Idade" />
+                        <TableColumn fx:id="coluna_sexo_cidadao" prefWidth="75.0" text="Sexo" />
+                        <TableColumn fx:id="coluna_endereco_cidadao" prefWidth="75.0" text="Endereço" />
                     </columns>
                   </TableView>
                   <TextField fx:id="buscar_cidadao" layoutX="362.0" layoutY="142.0" prefHeight="33.0" prefWidth="265.0" promptText="Digite o id ou cpf" />
