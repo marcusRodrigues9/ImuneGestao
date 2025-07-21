@@ -37,6 +37,8 @@ public class SceneCidadaoController extends BaseController {
     private TableColumn<Cidadao, String> coluna_nome_cidadao;
     @FXML
     private TableColumn<Cidadao, String> coluna_sexo_cidadao;
+    private TableColumn<Cidadao, Void> coluna_acao_cidadao;
+
     //==============================================
     @FXML
     private TextField campo_cpf;
@@ -73,6 +75,7 @@ public class SceneCidadaoController extends BaseController {
         coluna_sexo_cidadao.setCellValueFactory(new PropertyValueFactory<>("sexo"));
         coluna_endereco_cidadao.setCellValueFactory(new PropertyValueFactory<>("endereco"));
         tabela_cidadaos.setItems(listaCidadaos);
+
     }
     //===================================================
     @FXML

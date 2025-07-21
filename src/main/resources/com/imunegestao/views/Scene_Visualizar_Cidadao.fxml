@@ -112,17 +112,18 @@
                         <Font name="Arial Bold" size="34.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="tabela_cidadaos" layoutX="25.0" layoutY="230.0" prefHeight="365.0" prefWidth="1232.0" style="-fx-background-color: white; -fx-border-color: gray;" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="165.0">
+                  <TableView fx:id="tabela_cidadaos" layoutX="25.0" layoutY="230.0" prefHeight="365.0" prefWidth="837.0" style="-fx-background-color: white; -fx-border-color: gray;" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="497.0">
                     <columns>
                       <TableColumn fx:id="coluna_id_cidadao" prefWidth="75.0" text="Id" />
-                      <TableColumn fx:id="coluna_nome_cidadao" prefWidth="75.0" text="Nome" />
-                        <TableColumn fx:id="coluna_cpf_cidadao" prefWidth="75.0" text="Cpf" />
-                        <TableColumn fx:id="coluna_idade_cidadao" prefWidth="75.0" text="Idade" />
-                        <TableColumn fx:id="coluna_sexo_cidadao" prefWidth="75.0" text="Sexo" />
-                        <TableColumn fx:id="coluna_endereco_cidadao" prefWidth="75.0" text="Endereço" />
+                      <TableColumn fx:id="coluna_nome_cidadao" prefWidth="200.0" text="Nome" />
+                        <TableColumn fx:id="coluna_endereco_cidadao" prefWidth="200.0" text="Endereço" />
+                        <TableColumn fx:id="coluna_cpf_cidadao" prefWidth="91.0" text="Cpf" />
+                        <TableColumn fx:id="coluna_idade_cidadao" prefWidth="68.0" text="Idade" />
+                        <TableColumn fx:id="coluna_sexo_cidadao" prefWidth="101.0" text="Sexo" />
+                        <TableColumn fx:id="coluna_acao_cidadao" prefWidth="101.0" />
                     </columns>
                   </TableView>
-                  <TextField fx:id="buscar_cidadao" layoutX="362.0" layoutY="142.0" prefHeight="33.0" prefWidth="265.0" promptText="Digite o id ou cpf" />
+                  <TextField fx:id="buscar_cidadao" layoutX="362.0" layoutY="142.0" prefHeight="33.0" prefWidth="265.0" promptText="Digite o CPF" />
                </children>
             </AnchorPane>
          </children>
