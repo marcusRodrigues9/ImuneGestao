@@ -1,15 +1,15 @@
 package com.imunegestao.models.pessoas;
 
 public class Cidadao {
-    private Integer id;
+    private int id;
     private String nome;
     private String cpf;
-    private Integer idade;
+    private int idade;
     private String sexo;
     private String endereco;
 
 
-    public Cidadao(String nome, String cpf, Integer idade, String sexo, String endereco) {
+    public Cidadao(String nome, String cpf, int idade, String sexo, String endereco) {
         this.nome = nome;
         this.cpf = cpf;
         this.idade = idade;

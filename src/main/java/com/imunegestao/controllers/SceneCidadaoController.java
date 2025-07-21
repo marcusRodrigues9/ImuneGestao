@@ -3,6 +3,7 @@ package com.imunegestao.controllers;
 import com.imunegestao.Main;
 import com.imunegestao.models.pessoas.Cidadao;
 import com.imunegestao.repository.RepositorioCidadao;
+import com.imunegestao.utils.ValidacoesCidadao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -54,19 +55,15 @@ public class SceneCidadaoController extends BaseController {
     private MenuItem botao_menu_cadastrar_cidadao;
     @FXML
     private MenuItem botao_menu_visualizar_cidadao;
-
     @FXML
     private TextField buscar_cidadao;
-
     @FXML
     private AnchorPane formulario_cidadao;
     @FXML
     private AnchorPane tela_cidadao;
+    //===============================================
 
-    @FXML
-    void mostrar_formulario_cidadao(ActionEvent event) {
-        mostrarTela(formulario_cidadao, tela_cidadao);
-    }
+
     public void iniciarTabela() {
         System.out.println("Inicializando tabela. Lista de cidadãos: " + listaCidadaos.size());
         coluna_id_cidadao.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -77,33 +74,43 @@ public class SceneCidadaoController extends BaseController {
         coluna_endereco_cidadao.setCellValueFactory(new PropertyValueFactory<>("endereco"));
         tabela_cidadaos.setItems(listaCidadaos);
     }
+    //===================================================
     @FXML
     void mostrar_tabela_cidadao(ActionEvent event) {
         iniciarTabela();
         mostrarTela(tela_cidadao, formulario_cidadao);
     }
     @FXML
+    void mostrar_formulario_cidadao(ActionEvent event) {
+        mostrarTela(formulario_cidadao, tela_cidadao);
+    }
+    @FXML
     void alterar_tela_vacina(ActionEvent event) throws IOException {
         trocarCena(event, "/com/imunegestao/views/Scene_Visualizar_Vacinas.fxml", "Vacinas");
     }
-
 
     @FXML
     void alterar_tela_agendamento(ActionEvent event) throws IOException {
         trocarCena(event, "/com/imunegestao/views/Scene_Visualizar_Agendamentos.fxml", "Agendamento");
     }
-
+    //===================================================
     @FXML
     public void sair(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(Main.getCenaLogin());
     }
-
+    //===================================================
     @FXML
-
     private void mostrarAlertaInformacao(String mensagem) {
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle("Informações do Cidadão");
+        alerta.setHeaderText(null);
+        alerta.setContentText(mensagem);
+        alerta.showAndWait();
+    }
+    private void mostrarAlertaErro(String mensagem) {
+        Alert alerta = new Alert(Alert.AlertType.ERROR);
+        alerta.setTitle("Erro de Validação");
         alerta.setHeaderText(null);
         alerta.setContentText(mensagem);
         alerta.showAndWait();
@@ -113,8 +120,16 @@ public class SceneCidadaoController extends BaseController {
         String nome = campo_nome.getText();
         String cpf = campo_cpf.getText();
         String endereco = campo_endereco.getText();
-        int idade = Integer.parseInt(campo_idade.getText());
+        String idadeStr = campo_idade.getText();
         String sexo = campo_sexo.getText();
+
+        String erro = ValidacoesCidadao.validar(nome, cpf, idadeStr, sexo, endereco);
+        if (erro != null) {
+            mostrarAlertaErro(erro);
+            return;
+        }
+
+        int idade = Integer.parseInt(idadeStr);
         Cidadao cidadao = new Cidadao(nome, cpf, idade, sexo, endereco);
         repositorioCidadao.adicionarCidadao(cidadao);
         listaCidadaos.add(cidadao); // adiciona à tabela!
@@ -125,5 +140,13 @@ public class SceneCidadaoController extends BaseController {
                 + "Idade: " + cidadao.getIdade() + "\n"
                 + "Sexo: " + cidadao.getSexo() + "\n"
                 + "Endereço: " + cidadao.getEndereco());
+        limparCampos();
+    }
+    private void limparCampos() {
+        campo_nome.clear();
+        campo_cpf.clear();
+        campo_endereco.clear();
+        campo_idade.clear();
+        campo_sexo.clear();
     }
 }
