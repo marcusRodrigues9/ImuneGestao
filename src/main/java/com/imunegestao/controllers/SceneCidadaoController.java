@@ -20,7 +20,15 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class SceneCidadaoController extends BaseController {
-    private RepositorioCidadao repositorioCidadao = new RepositorioCidadao();
+
+    @FXML
+    public void initialize() {
+        listaCidadaos.clear(); // limpa lista atual
+        listaCidadaos.addAll(repositorioCidadao.listarCidadaos().values()); // recarrega os dados do singleton
+        iniciarTabela();
+    }
+
+    private RepositorioCidadao repositorioCidadao = RepositorioCidadao.getInstancia();
     private ObservableList<Cidadao> listaCidadaos = FXCollections.observableArrayList();
     //==============================================
     @FXML
