@@ -7,6 +7,8 @@ module com.imunegestao.imunegestao {
 
     opens com.imunegestao to javafx.fxml;
     opens com.imunegestao.controllers to javafx.fxml;
+    opens com.imunegestao.models.pessoas to javafx.base;
+
 
     exports com.imunegestao;
 }
