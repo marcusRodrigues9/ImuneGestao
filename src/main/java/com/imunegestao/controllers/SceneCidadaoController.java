@@ -3,6 +3,7 @@ package com.imunegestao.controllers;
 import com.imunegestao.Main;
 import com.imunegestao.models.pessoas.Cidadao;
 import com.imunegestao.repository.RepositorioCidadao;
+import com.imunegestao.utils.ValidacaoException;
 import com.imunegestao.utils.ValidacoesCidadao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -83,7 +84,6 @@ public class SceneCidadaoController extends BaseController {
         coluna_sexo_cidadao.setCellValueFactory(new PropertyValueFactory<>("sexo"));
         coluna_endereco_cidadao.setCellValueFactory(new PropertyValueFactory<>("endereco"));
         tabela_cidadaos.setItems(listaCidadaos);
-
     }
     //===================================================
     @FXML
@@ -127,31 +127,34 @@ public class SceneCidadaoController extends BaseController {
         alerta.showAndWait();
     }
 
-    public void salvarCidadao(){
+    public void salvarCidadao() {
         String nome = campo_nome.getText();
         String cpf = campo_cpf.getText();
         String endereco = campo_endereco.getText();
         String idadeStr = campo_idade.getText();
         String sexo = campo_sexo.getText();
 
-        String erro = ValidacoesCidadao.validar(nome, cpf, idadeStr, sexo, endereco);
-        if (erro != null) {
-            mostrarAlertaErro(erro);
-            return;
-        }
+        try {
+            ValidacoesCidadao.validar(nome, cpf, idadeStr, sexo, endereco);
+            int idade = Integer.parseInt(idadeStr); // já validado
 
-        int idade = Integer.parseInt(idadeStr);
-        Cidadao cidadao = new Cidadao(nome, cpf, idade, sexo, endereco);
-        repositorioCidadao.adicionarCidadao(cidadao);
-        listaCidadaos.add(cidadao); // adiciona à tabela!
-        mostrarAlertaInformacao("Cidadão cadastrado com sucesso!\n\n"
-                + "ID: " + cidadao.getId() + "\n"
-                + "Nome: " + cidadao.getNome() + "\n"
-                + "CPF: " + cidadao.getCpf() + "\n"
-                + "Idade: " + cidadao.getIdade() + "\n"
-                + "Sexo: " + cidadao.getSexo() + "\n"
-                + "Endereço: " + cidadao.getEndereco());
-        limparCampos();
+            Cidadao cidadao = new Cidadao(nome, cpf, idade, sexo, endereco);
+            repositorioCidadao.adicionarCidadao(cidadao);
+            listaCidadaos.add(cidadao); // atualiza a tabela
+
+            mostrarAlertaInformacao("Cidadão cadastrado com sucesso!\n\n"
+                    + "ID: " + cidadao.getId() + "\n"
+                    + "Nome: " + cidadao.getNome() + "\n"
+                    + "CPF: " + cidadao.getCpf() + "\n"
+                    + "Idade: " + cidadao.getIdade() + "\n"
+                    + "Sexo: " + cidadao.getSexo() + "\n"
+                    + "Endereço: " + cidadao.getEndereco());
+
+            limparCampos();
+
+        } catch (ValidacaoException e) {
+            mostrarAlertaErro(e.getMessage());
+        }
     }
     private void limparCampos() {
         campo_nome.clear();
