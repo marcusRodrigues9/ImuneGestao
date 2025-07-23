@@ -6,13 +6,17 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imunegestao.controllers.SceneCidadaoController">
    <top>
@@ -83,7 +87,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane fx:id="formulario_cidadao" layoutX="443.0" layoutY="46.0" prefHeight="504.0" prefWidth="507.0" style="-fx-border-radius: 15;" visible="false" AnchorPane.bottomAnchor="111.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="46.0">
+            <AnchorPane fx:id="formulario_cidadao" layoutX="443.0" layoutY="46.0" prefHeight="504.0" prefWidth="507.0" style="-fx-border-radius: 15;" AnchorPane.bottomAnchor="111.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="46.0">
                <children>
                   <VBox layoutX="520.0" layoutY="127.0" prefHeight="325.0" prefWidth="339.0" spacing="20.0" AnchorPane.leftAnchor="435.0" AnchorPane.rightAnchor="435.0">
                      <children>
@@ -91,7 +95,20 @@
                         <TextField fx:id="campo_cpf" prefHeight="33.0" promptText="cpf" />
                         <TextField fx:id="campo_endereco" prefHeight="33.0" promptText="endereço" />
                         <TextField fx:id="campo_idade" prefHeight="33.0" promptText="idade" />
-                        <TextField fx:id="campo_sexo" prefHeight="33.0" promptText="sexo" />
+                        <Pane prefHeight="40.0" prefWidth="424.0">
+                           <children>
+                              <RadioButton fx:id="masculino" layoutX="46.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="100.0" text="Masculino">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="sexo_cidadao" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="feminino" layoutX="133.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="100.0" text="Feminino" toggleGroup="$sexo_cidadao" />
+                              <Text layoutX="3.0" layoutY="13.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sexo" />
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Pane>
                      </children>
                      <padding>
                         <Insets left="33.0" right="33.0" />
@@ -102,10 +119,10 @@
                         <Font name="Arial Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Button fx:id="botao_cadastrar_cidadao" layoutX="591.0" layoutY="408.0" mnemonicParsing="false" onAction="#salvarCidadao" prefHeight="31.0" prefWidth="250.0" text="Cadastrar" AnchorPane.leftAnchor="555.0" AnchorPane.rightAnchor="555.0" />
+                  <Button fx:id="botao_cadastrar_cidadao" layoutX="470.0" layoutY="408.0" mnemonicParsing="false" onAction="#salvarCidadao" prefHeight="31.0" prefWidth="424.0" text="Cadastrar" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="tela_cidadao" layoutY="-3.0" prefHeight="665.0" prefWidth="1359.0">
+            <AnchorPane fx:id="tela_cidadao" layoutY="-3.0" prefHeight="665.0" prefWidth="1359.0" visible="false">
                <children>
                   <Label layoutX="26.0" layoutY="137.0" text="Pesquisar Cidadao: ">
                      <font>

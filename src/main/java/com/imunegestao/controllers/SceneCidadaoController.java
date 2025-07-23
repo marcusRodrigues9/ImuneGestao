@@ -58,7 +58,12 @@ public class SceneCidadaoController extends BaseController {
     @FXML
     private TextField campo_nome;
     @FXML
-    private TextField campo_sexo;
+    private RadioButton masculino;
+    @FXML
+    private RadioButton feminino;
+
+    @FXML
+    private ToggleGroup sexo_cidadao;
     //==============================================
     @FXML
     private Button botao_sair;
@@ -132,7 +137,12 @@ public class SceneCidadaoController extends BaseController {
         String cpf = campo_cpf.getText();
         String endereco = campo_endereco.getText();
         String idadeStr = campo_idade.getText();
-        String sexo = campo_sexo.getText();
+        String sexo = null;
+        if(masculino.isSelected()){
+            sexo = "Masculino";
+        }else if(feminino.isSelected()){
+            sexo = "Feminino";
+        }
 
         try {
             ValidacoesCidadao.validar(nome, cpf, idadeStr, sexo, endereco);
@@ -161,6 +171,6 @@ public class SceneCidadaoController extends BaseController {
         campo_cpf.clear();
         campo_endereco.clear();
         campo_idade.clear();
-        campo_sexo.clear();
+        sexo_cidadao.selectToggle(null); // desmarca ambos
     }
 }
