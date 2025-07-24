@@ -78,6 +78,7 @@ public class SceneCidadaoController extends BaseController {
 
     @FXML
     public void initialize() {
+        iniciarTabela();
         // Adiciona cidadãos iniciais (somente na primeira execução)
         if (repositorioCidadao.listarCidadaos().isEmpty()) {
             Cidadao c1 = new Cidadao("Maria Silva", "12345678901", 30, "Feminino", "Rua das Flores, 123");
@@ -87,8 +88,7 @@ public class SceneCidadaoController extends BaseController {
         }
         listaCidadaos.clear(); // limpa lista atual
         listaCidadaos.addAll(repositorioCidadao.listarCidadaos().values()); // recarrega os dados do singleton
-        iniciarTabela();
-        buscar_cidadao.textProperty().addListener((obs, oldText, newText) -> buscarCidadao());
+        buscar_cidadao.textProperty().addListener((obs, oldText, newText) -> buscarCidadao()); //buscar cidadao na tabela
     }
 
     public void iniciarTabela() {
@@ -99,9 +99,11 @@ public class SceneCidadaoController extends BaseController {
         coluna_idade_cidadao.setCellValueFactory(new PropertyValueFactory<>("idade"));
         coluna_sexo_cidadao.setCellValueFactory(new PropertyValueFactory<>("sexo"));
         coluna_endereco_cidadao.setCellValueFactory(new PropertyValueFactory<>("endereco"));
-        adicionarColunaAcoes();
+        adicionarColunaAcoes(); // metodo que adiciona uma nova coluna de ações com funcionalidade de excluir/editar/ visualizar cartao de vacina
         tabela_cidadaos.setItems(listaCidadaos);
     }
+
+    //metodo para salvar o cidadao na tabela
     public void salvarCidadao() {
         String nome = campo_nome.getText();
         String cpf = campo_cpf.getText();
@@ -155,6 +157,8 @@ public class SceneCidadaoController extends BaseController {
             mostrarAlertaErro(e.getMessage());
         }
     }
+
+    //metodo que adiciona a coluna de ações para excluir, editar, visualizar o cartao de vacina de cada cidadao de forma exclusiva
     private void adicionarColunaAcoes() {
         coluna_acao_cidadao.setCellFactory(param -> new TableCell<>() {
             private final Button botaoEditar = new Button("Editar");
@@ -176,6 +180,7 @@ public class SceneCidadaoController extends BaseController {
                 });
             }
 
+            // acrescenta os botões para cada linha da tabela
             @Override
             protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
@@ -189,6 +194,7 @@ public class SceneCidadaoController extends BaseController {
         });
     }
 
+    // metodo para editar os dados do cidadao
     private void preencherFormularioParaEdicao(Cidadao cidadao) {
         campo_nome.setText(cidadao.getNome());
         campo_cpf.setText(cidadao.getCpf());
@@ -200,7 +206,6 @@ public class SceneCidadaoController extends BaseController {
             sexo_cidadao.selectToggle(feminino);
         }
 
-        // Exemplo simples: remove e regrava ao clicar novamente em "Salvar"
         cidadaoEmEdicao = cidadao;
         mostrar_formulario_cidadao(null); // troca para a tela de formulário, se necessário
     }
@@ -251,6 +256,7 @@ public class SceneCidadaoController extends BaseController {
         alerta.showAndWait();
     }
 
+    //metodo para buscar cidadao pelo CPF, é necessario digitar o cpf completo
     @FXML
     private void buscarCidadao() {
         String cpfBusca = buscar_cidadao.getText().trim();
@@ -264,6 +270,7 @@ public class SceneCidadaoController extends BaseController {
         tabela_cidadaos.refresh();
     }
 
+    //metodo para limpar os campos após preencher o formulario
     private void limparCampos() {
         campo_nome.clear();
         campo_cpf.clear();

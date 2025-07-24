@@ -14,6 +14,8 @@ public class RepositorioCidadao {
     // Construtor privado para impedir que criem novas instâncias
     private RepositorioCidadao() {}
 
+
+
     // Método para acessar a única instância
     public static RepositorioCidadao getInstancia() {
         if (instancia == null) {
@@ -22,6 +24,7 @@ public class RepositorioCidadao {
         return instancia;
     }
 
+    //metodo para que sempre que algum cidadao for excluido, o proximo cidadao criado pegue o id de menor valor
     private int encontrarMenorIdDisponivel() {
         int id = 1;
         while (cidadaos.containsKey(id)) {
