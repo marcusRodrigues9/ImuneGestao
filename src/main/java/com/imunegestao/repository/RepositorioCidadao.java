@@ -22,17 +22,22 @@ public class RepositorioCidadao {
         return instancia;
     }
 
+    private int encontrarMenorIdDisponivel() {
+        int id = 1;
+        while (cidadaos.containsKey(id)) {
+            id++;
+        }
+        return id;
+    }
     public void adicionarCidadao(Cidadao cidadao) {
-        cidadao.setId(proximoId); // define o ID automaticamente
-        cidadaos.put(proximoId, cidadao);
-        proximoId++;
+        int novoId = encontrarMenorIdDisponivel();
+        cidadao.setId(novoId);
+        cidadaos.put(novoId, cidadao);
     }
 
     public Map<Integer, Cidadao> listarCidadaos() {
         return cidadaos;
     }
 
-    public Cidadao buscarPorId(int id) {
-        return cidadaos.get(id);
-    }
+
 }

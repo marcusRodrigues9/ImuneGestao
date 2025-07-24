@@ -12,8 +12,8 @@ public class ValidacoesCidadao {
         if (cpf == null || cpf.trim().isEmpty())
             throw new ValidacaoException("CPF é obrigatório.");
 
-        if (!cpf.matches("\\d{11}"))
-            throw new ValidacaoException("CPF deve conter exatamente 11 dígitos numéricos.");
+      //  if (!cpf.matches("\\d{11}"))
+      //      throw new ValidacaoException("CPF deve conter exatamente 11 dígitos numéricos.");
 
         if (idadeStr == null || idadeStr.trim().isEmpty())
             throw new ValidacaoException("Idade é obrigatória.");

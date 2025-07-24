@@ -1,5 +1,6 @@
 package com.imunegestao;
 
+import com.imunegestao.models.pessoas.Cidadao;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,7 +18,6 @@ public class Main extends Application {
         //sceneLogin.getStylesheets().add(getClass().getResource("/gestaoImune/style.css").toExternalForm());
         janela.setScene(cenaLogin);
         janela.show();
-
     }
 
     public static void main(String[] args) {

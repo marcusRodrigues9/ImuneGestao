@@ -87,7 +87,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane fx:id="formulario_cidadao" layoutX="443.0" layoutY="46.0" prefHeight="504.0" prefWidth="507.0" style="-fx-border-radius: 15;" AnchorPane.bottomAnchor="111.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="46.0">
+            <AnchorPane fx:id="formulario_cidadao" layoutX="443.0" layoutY="46.0" prefHeight="504.0" prefWidth="507.0" style="-fx-border-radius: 15;" visible="false" AnchorPane.bottomAnchor="111.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="46.0">
                <children>
                   <VBox layoutX="520.0" layoutY="127.0" prefHeight="325.0" prefWidth="339.0" spacing="20.0" AnchorPane.leftAnchor="435.0" AnchorPane.rightAnchor="435.0">
                      <children>
@@ -122,14 +122,14 @@
                   <Button fx:id="botao_cadastrar_cidadao" layoutX="470.0" layoutY="408.0" mnemonicParsing="false" onAction="#salvarCidadao" prefHeight="31.0" prefWidth="424.0" text="Cadastrar" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="tela_cidadao" layoutY="-3.0" prefHeight="665.0" prefWidth="1359.0" visible="false">
+            <AnchorPane fx:id="tela_cidadao" layoutY="-3.0" prefHeight="665.0" prefWidth="1359.0">
                <children>
                   <Label layoutX="26.0" layoutY="137.0" text="Pesquisar Cidadao: ">
                      <font>
                         <Font name="Arial Bold" size="34.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="tabela_cidadaos" layoutX="25.0" layoutY="230.0" prefHeight="365.0" prefWidth="837.0" style="-fx-background-color: white; -fx-border-color: gray;" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="497.0">
+                  <TableView fx:id="tabela_cidadaos" layoutX="25.0" layoutY="230.0" prefHeight="365.0" prefWidth="976.0" style="-fx-background-color: white; -fx-border-color: gray;" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="358.0">
                     <columns>
                       <TableColumn fx:id="coluna_id_cidadao" prefWidth="75.0" text="Id" />
                       <TableColumn fx:id="coluna_nome_cidadao" prefWidth="200.0" text="Nome" />
@@ -137,10 +137,10 @@
                         <TableColumn fx:id="coluna_cpf_cidadao" prefWidth="91.0" text="Cpf" />
                         <TableColumn fx:id="coluna_idade_cidadao" prefWidth="68.0" text="Idade" />
                         <TableColumn fx:id="coluna_sexo_cidadao" prefWidth="101.0" text="Sexo" />
-                        <TableColumn fx:id="coluna_acao_cidadao" prefWidth="101.0" />
+                        <TableColumn fx:id="coluna_acao_cidadao" prefWidth="239.0" />
                     </columns>
                   </TableView>
-                  <TextField fx:id="buscar_cidadao" layoutX="362.0" layoutY="142.0" prefHeight="33.0" prefWidth="265.0" promptText="Digite o CPF" />
+                  <TextField fx:id="buscar_cidadao" layoutX="362.0" layoutY="142.0" prefHeight="33.0" prefWidth="265.0" promptText="Digite o CPF" text="Digite o cpf completo" />
                </children>
             </AnchorPane>
          </children>
