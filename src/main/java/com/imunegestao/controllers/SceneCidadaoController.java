@@ -9,10 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -23,84 +20,55 @@ import java.io.IOException;
 
 public class SceneCidadaoController extends BaseController {
 
-    private RepositorioCidadao repositorioCidadao = RepositorioCidadao.getInstancia();
-    private ObservableList<Cidadao> listaCidadaos = FXCollections.observableArrayList();
-    //==============================================
-    @FXML
-    private TableView<Cidadao>tabela_cidadaos;
-    @FXML
-    private TableColumn<Cidadao, String> coluna_cpf_cidadao;
-    @FXML
-    private TableColumn<Cidadao, String> coluna_endereco_cidadao;
-    @FXML
-    private TableColumn<Cidadao, Integer> coluna_id_cidadao;
-    @FXML
-    private TableColumn<Cidadao, Integer> coluna_idade_cidadao;
-    @FXML
-    private TableColumn<Cidadao, String> coluna_nome_cidadao;
-    @FXML
-    private TableColumn<Cidadao, String> coluna_telefone_cidadao;
-    @FXML
-    private TableColumn<Cidadao, String> coluna_email_cidadao;
-    @FXML
-    private TableColumn<Cidadao, String> coluna_sexo_cidadao;
-    @FXML
-    private TableColumn<Cidadao, Void> coluna_acao_cidadao;
-
-    //==============================================
-    @FXML
-    private TextField campo_cpf;
-    @FXML
-    private TextField campo_endereco;
-    @FXML
-    private TextField campo_idade;
-    @FXML
-    private TextField campo_nome;
-    @FXML
-    private TextField campo_email;
-    @FXML
-    private TextField campo_telefone;
-    @FXML
-    private RadioButton masculino;
-    @FXML
-    private RadioButton feminino;
-
-    @FXML
-    private ToggleGroup sexo_cidadao;
+    // =================== INSTÂNCIAS ===================
+    private final RepositorioCidadao repositorioCidadao = RepositorioCidadao.getInstancia();
+    private final ObservableList<Cidadao> listaCidadaos = FXCollections.observableArrayList();
     private Cidadao cidadaoEmEdicao = null;
-    //==============================================
-    @FXML
-    private Button botao_sair;
-    @FXML
-    private MenuItem botao_menu_cadastrar_cidadao;
-    @FXML
-    private MenuItem botao_menu_visualizar_cidadao;
-    @FXML
-    private TextField buscar_cidadao;
-    @FXML
-    private AnchorPane formulario_cidadao;
-    @FXML
-    private AnchorPane tela_cidadao;
-    //===============================================
 
+    // =================== COMPONENTES FXML ===================
+    // --- Tabela ---
+    @FXML private TableView<Cidadao> tabela_cidadaos;
+    @FXML private TableColumn<Cidadao, Integer> coluna_id_cidadao;
+    @FXML private TableColumn<Cidadao, String> coluna_nome_cidadao;
+    @FXML private TableColumn<Cidadao, String> coluna_cpf_cidadao;
+    @FXML private TableColumn<Cidadao, Integer> coluna_idade_cidadao;
+    @FXML private TableColumn<Cidadao, String> coluna_sexo_cidadao;
+    @FXML private TableColumn<Cidadao, String> coluna_endereco_cidadao;
+    @FXML private TableColumn<Cidadao, String> coluna_email_cidadao;
+    @FXML private TableColumn<Cidadao, String> coluna_telefone_cidadao;
+    @FXML private TableColumn<Cidadao, Void> coluna_acao_cidadao;
+
+    // --- Campos Formulário ---
+    @FXML private TextField campo_nome, campo_cpf, campo_endereco, campo_idade, campo_email, campo_telefone;
+    @FXML private RadioButton masculino, feminino;
+    @FXML private ToggleGroup sexo_cidadao;
+
+    // --- Navegação ---
+    @FXML private TextField buscar_cidadao;
+    @FXML private AnchorPane formulario_cidadao, tela_cidadao;
+    @FXML private MenuItem botao_menu_cadastrar_cidadao, botao_menu_visualizar_cidadao;
+
+    // =================== INICIALIZAÇÃO ===================
 
     @FXML
     public void initialize() {
-        iniciarTabela();
-        // Adiciona cidadãos iniciais (somente na primeira execução)
+        carregarCidadaosIniciais();
+        configurarTabela();
+        configurarBuscaCidadao();
+    }
+
+    private void carregarCidadaosIniciais() {
         if (repositorioCidadao.listarCidadaos().isEmpty()) {
             Cidadao c1 = new Cidadao("Maria Silva", "12345678901", 30, "Feminino", "Rua das Flores, 123", "35997337238", "marcus0vv@gmail.com");
             Cidadao c2 = new Cidadao("João Souza", "98765432100", 45, "Masculino", "Av. Brasil, 456", "35997337238", "marcus2vv@gmail.com");
             repositorioCidadao.adicionarCidadao(c1);
             repositorioCidadao.adicionarCidadao(c2);
         }
-        listaCidadaos.clear(); // limpa lista atual
-        listaCidadaos.addAll(repositorioCidadao.listarCidadaos().values()); // recarrega os dados do singleton
-        buscar_cidadao.textProperty().addListener((obs, oldText, newText) -> buscarCidadao()); //buscar cidadao na tabela
+
+        listaCidadaos.setAll(repositorioCidadao.listarCidadaos().values());
     }
 
-    public void iniciarTabela() {
-        System.out.println("Inicializando tabela. Lista de cidadãos: " + listaCidadaos.size());
+    private void configurarTabela() {
         coluna_id_cidadao.setCellValueFactory(new PropertyValueFactory<>("id"));
         coluna_nome_cidadao.setCellValueFactory(new PropertyValueFactory<>("nome"));
         coluna_cpf_cidadao.setCellValueFactory(new PropertyValueFactory<>("cpf"));
@@ -109,108 +77,105 @@ public class SceneCidadaoController extends BaseController {
         coluna_endereco_cidadao.setCellValueFactory(new PropertyValueFactory<>("endereco"));
         coluna_email_cidadao.setCellValueFactory(new PropertyValueFactory<>("email"));
         coluna_telefone_cidadao.setCellValueFactory(new PropertyValueFactory<>("numeroTelefone"));
-        adicionarColunaAcoes(); // metodo que adiciona uma nova coluna de ações com funcionalidade de excluir/editar/ visualizar cartao de vacina
+
+        adicionarColunaAcoes();
         tabela_cidadaos.setItems(listaCidadaos);
     }
 
-    //metodo para salvar o cidadao na tabela
-    public void salvarCidadao() {
+    private void configurarBuscaCidadao() {
+        buscar_cidadao.textProperty().addListener((obs, oldText, newText) -> buscarCidadao());
+    }
+
+    // =================== AÇÕES DOS BOTÕES ===================
+
+    @FXML
+    private void salvarCidadao() {
         String nome = campo_nome.getText();
         String cpf = campo_cpf.getText();
         String endereco = campo_endereco.getText();
         String idadeStr = campo_idade.getText();
-        String sexo = null;
         String email = campo_email.getText();
-        String numeroTelefone = campo_telefone.getText();
-
-        if (masculino.isSelected()) {
-            sexo = "Masculino";
-        } else if (feminino.isSelected()) {
-            sexo = "Feminino";
-        }
+        String telefone = campo_telefone.getText();
+        String sexo = masculino.isSelected() ? "Masculino" : feminino.isSelected() ? "Feminino" : null;
 
         try {
-            ValidacoesCidadao.validar(nome, cpf, idadeStr, sexo, endereco, email, numeroTelefone);
+            ValidacoesCidadao.validar(nome, cpf, idadeStr, sexo, endereco, email, telefone);
             int idade = Integer.parseInt(idadeStr);
 
             if (cidadaoEmEdicao == null) {
-                // Cadastro novo
-                Cidadao novo = new Cidadao(nome, cpf, idade, sexo, endereco, email, numeroTelefone);
+                Cidadao novo = new Cidadao(nome, cpf, idade, sexo, endereco, email, telefone);
                 repositorioCidadao.adicionarCidadao(novo);
                 listaCidadaos.add(novo);
-
-                mostrarAlertaInformacao("Cidadão cadastrado com sucesso!\n\n"
-                        + "ID: " + novo.getId() + "\n"
-                        + "Nome: " + novo.getNome() + "\n"
-                        + "CPF: " + novo.getCpf() + "\n"
-                        + "Idade: " + novo.getIdade() + "\n"
-                        + "Sexo: " + novo.getSexo() + "\n"
-                        + "Endereço: " + novo.getEndereco() + "\n"
-                        + "E-mail: " + novo.getEmail() + "\n"
-                        + "Telefone: " + novo.getNumeroTelefone());
+                mostrarAlertaInformacao("Cidadão cadastrado com sucesso!\n\n" + formatarDados(novo));
             } else {
-                // Edição
                 cidadaoEmEdicao.setNome(nome);
                 cidadaoEmEdicao.setCpf(cpf);
                 cidadaoEmEdicao.setIdade(idade);
                 cidadaoEmEdicao.setSexo(sexo);
                 cidadaoEmEdicao.setEndereco(endereco);
                 cidadaoEmEdicao.setEmail(email);
-                cidadaoEmEdicao.setNumeroTelefone(numeroTelefone);
+                cidadaoEmEdicao.setNumeroTelefone(telefone);
 
                 listaCidadaos.setAll(repositorioCidadao.listarCidadaos().values());
                 tabela_cidadaos.refresh();
                 mostrarAlertaInformacao("Cidadão atualizado com sucesso!");
-                cidadaoEmEdicao = null; // limpa modo edição
+                cidadaoEmEdicao = null;
             }
 
             limparCampos();
-            tabela_cidadaos.getSortOrder().clear();
-            tabela_cidadaos.getSortOrder().add(coluna_id_cidadao);
-            coluna_id_cidadao.setSortType(TableColumn.SortType.ASCENDING);
-            tabela_cidadaos.sort();
+            ordenarTabelaPorId();
+
         } catch (ValidacaoException e) {
             mostrarAlertaErro(e.getMessage());
         }
     }
 
-    //metodo que adiciona a coluna de ações para excluir, editar, visualizar o cartao de vacina de cada cidadao de forma exclusiva
+    private void excluirCidadao(Cidadao cidadao) {
+        repositorioCidadao.listarCidadaos().remove(cidadao.getId());
+        listaCidadaos.remove(cidadao);
+        mostrarAlertaInformacao("Cidadão excluído com sucesso.");
+    }
+
+    // =================== SUPORTE À TABELA ===================
+
     private void adicionarColunaAcoes() {
         coluna_acao_cidadao.setCellFactory(param -> new TableCell<>() {
-            private final Button botaoEditar = new Button("Editar");
-            private final Button botaoExcluir = new Button("Excluir");
-            private final Button botaoVisualizarCartao = new Button("Visualizar Cartão");
+            private final Button editar = new Button("Editar");
+            private final Button excluir = new Button("Excluir");
+            private final Button visualizar = new Button("Visualizar Cartão");
 
             {
-                botaoEditar.setStyle("-fx-background-color: #E4E1E2; -fx-text-fill: black;");
-                botaoExcluir.setStyle("-fx-background-color: #E4E1E2; -fx-text-fill: black;");
-                botaoVisualizarCartao.setStyle("-fx-background-color: #E4E1E2; -fx-text-fill: black;");
-                botaoEditar.setOnAction(event -> {
-                    Cidadao cidadao = getTableView().getItems().get(getIndex());
-                    preencherFormularioParaEdicao(cidadao);
-                });
+                String estiloPadrao = "-fx-background-color: #E4E1E2; -fx-text-fill: black; -fx-cursor: hand;";
 
-                botaoExcluir.setOnAction(event -> {
-                    Cidadao cidadao = getTableView().getItems().get(getIndex());
-                    excluirCidadao(cidadao);
-                });
+                editar.setStyle(estiloPadrao);
+                excluir.setStyle(estiloPadrao);
+                visualizar.setStyle(estiloPadrao);
+
+                // Efeito hover: Editar (azul)
+                editar.setOnMouseEntered(e -> editar.setStyle("-fx-background-color: #4da6ff; -fx-text-fill: white; -fx-cursor: hand;"));
+                editar.setOnMouseExited(e -> editar.setStyle(estiloPadrao));
+
+                // Efeito hover: Excluir (vermelho)
+                excluir.setOnMouseEntered(e -> excluir.setStyle("-fx-background-color: #ff4d4d; -fx-text-fill: white; -fx-cursor: hand;"));
+                excluir.setOnMouseExited(e -> excluir.setStyle(estiloPadrao));
+
+                // Efeito hover: Visualizar (rosa do projeto)
+                visualizar.setOnMouseEntered(e -> visualizar.setStyle("-fx-background-color: #e89baf; -fx-text-fill: white; -fx-cursor: hand;"));
+                visualizar.setOnMouseExited(e -> visualizar.setStyle(estiloPadrao));
+
+                editar.setOnAction(e -> preencherFormularioParaEdicao(getTableView().getItems().get(getIndex())));
+                excluir.setOnAction(e -> excluirCidadao(getTableView().getItems().get(getIndex())));
+                // visualizar.setOnAction(e -> ...); // adicionar funcionalidade se necessário
             }
 
-            // acrescenta os botões para cada linha da tabela
             @Override
             protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
-                if (empty) {
-                    setGraphic(null);
-                } else {
-                    HBox container = new HBox(10, botaoEditar, botaoExcluir, botaoVisualizarCartao);
-                    setGraphic(container);
-                }
+                setGraphic(empty ? null : new HBox(10, editar, excluir, visualizar));
             }
         });
     }
 
-    // metodo para editar os dados do cidadao
     private void preencherFormularioParaEdicao(Cidadao cidadao) {
         campo_nome.setText(cidadao.getNome());
         campo_cpf.setText(cidadao.getCpf());
@@ -218,79 +183,76 @@ public class SceneCidadaoController extends BaseController {
         campo_email.setText(cidadao.getEmail());
         campo_telefone.setText(cidadao.getNumeroTelefone());
         campo_idade.setText(String.valueOf(cidadao.getIdade()));
-        if (cidadao.getSexo().equalsIgnoreCase("Masculino")) {
-            sexo_cidadao.selectToggle(masculino);
-        } else {
-            sexo_cidadao.selectToggle(feminino);
-        }
-
+        sexo_cidadao.selectToggle(cidadao.getSexo().equalsIgnoreCase("Masculino") ? masculino : feminino);
         cidadaoEmEdicao = cidadao;
         mostrarTela(formulario_cidadao, tela_cidadao);
     }
-    private void excluirCidadao(Cidadao cidadao) {
-        repositorioCidadao.listarCidadaos().remove(cidadao.getId());
-        listaCidadaos.remove(cidadao);
-        mostrarAlertaInformacao("Cidadão excluído com sucesso.");
+
+    private void ordenarTabelaPorId() {
+        tabela_cidadaos.getSortOrder().clear();
+        coluna_id_cidadao.setSortType(TableColumn.SortType.ASCENDING);
+        tabela_cidadaos.getSortOrder().add(coluna_id_cidadao);
+        tabela_cidadaos.sort();
     }
-    //===================================================
+
+    private String formatarDados(Cidadao c) {
+        return "ID: " + c.getId() +
+                "\nNome: " + c.getNome() +
+                "\nCPF: " + c.getCpf() +
+                "\nIdade: " + c.getIdade() +
+                "\nSexo: " + c.getSexo() +
+                "\nEndereço: " + c.getEndereco() +
+                "\nE-mail: " + c.getEmail() +
+                "\nTelefone: " + c.getNumeroTelefone();
+    }
+
+    // =================== NAVEGAÇÃO ENTRE TELAS ===================
+
     @FXML
-    void mostrar_tabela_cidadao(ActionEvent event) {
+    private void mostrar_tabela_cidadao(ActionEvent event) {
         iniciarTabela();
         mostrarTela(tela_cidadao, formulario_cidadao);
     }
+
     @FXML
-    void mostrar_formulario_cidadao(ActionEvent event) {
+    private void mostrar_formulario_cidadao(ActionEvent event) {
         cidadaoEmEdicao = null;
         limparCampos();
         mostrarTela(formulario_cidadao, tela_cidadao);
     }
+
     @FXML
-    void alterar_tela_vacina(ActionEvent event) throws IOException {
+    private void alterar_tela_vacina(ActionEvent event) throws IOException {
         trocarCena(event, "/com/imunegestao/views/Scene_Visualizar_Vacinas.fxml", "Vacinas");
     }
 
     @FXML
-    void alterar_tela_agendamento(ActionEvent event) throws IOException {
+    private void alterar_tela_agendamento(ActionEvent event) throws IOException {
         trocarCena(event, "/com/imunegestao/views/Scene_Visualizar_Agendamentos.fxml", "Agendamento");
     }
-    //===================================================
+
     @FXML
-    public void sair(ActionEvent event) {
+    private void sair(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(Main.getCenaLogin());
     }
-    //===================================================
-    @FXML
-    private void mostrarAlertaInformacao(String mensagem) {
-        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-        alerta.setTitle("Informações do Cidadão");
-        alerta.setHeaderText(null);
-        alerta.setContentText(mensagem);
-        alerta.showAndWait();
-    }
-    private void mostrarAlertaErro(String mensagem) {
-        Alert alerta = new Alert(Alert.AlertType.ERROR);
-        alerta.setTitle("Erro de Validação");
-        alerta.setHeaderText(null);
-        alerta.setContentText(mensagem);
-        alerta.showAndWait();
-    }
 
-    //metodo para buscar cidadao pelo CPF, é necessario digitar o cpf completo
-    @FXML
+    // =================== FUNCIONALIDADES AUXILIARES ===================
+
     private void buscarCidadao() {
-        String cpfBusca = buscar_cidadao.getText().trim();
-
-        if (cpfBusca.isEmpty()) {
-            // Volta a mostrar todos
+        String cpf = buscar_cidadao.getText().trim();
+        if (cpf.isEmpty()) {
             listaCidadaos.setAll(repositorioCidadao.listarCidadaos().values());
         } else {
-            listaCidadaos.setAll(repositorioCidadao.listarCidadaos().values().stream().filter(c -> c.getCpf().equals(cpfBusca)).toList());
+            listaCidadaos.setAll(
+                    repositorioCidadao.listarCidadaos().values().stream()
+                            .filter(c -> c.getCpf().equals(cpf))
+                            .toList()
+            );
         }
         tabela_cidadaos.refresh();
     }
 
-    //metodo para limpar os campos após preencher o formulario
     private void limparCampos() {
         campo_nome.clear();
         campo_cpf.clear();
@@ -298,6 +260,11 @@ public class SceneCidadaoController extends BaseController {
         campo_idade.clear();
         campo_telefone.clear();
         campo_email.clear();
-        sexo_cidadao.selectToggle(null); // desmarca ambos
+        sexo_cidadao.selectToggle(null);
+    }
+
+    private void iniciarTabela() {
+        listaCidadaos.setAll(repositorioCidadao.listarCidadaos().values());
+        tabela_cidadaos.refresh();
     }
 }
