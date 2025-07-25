@@ -39,6 +39,10 @@ public class SceneCidadaoController extends BaseController {
     @FXML
     private TableColumn<Cidadao, String> coluna_nome_cidadao;
     @FXML
+    private TableColumn<Cidadao, String> coluna_telefone_cidadao;
+    @FXML
+    private TableColumn<Cidadao, String> coluna_email_cidadao;
+    @FXML
     private TableColumn<Cidadao, String> coluna_sexo_cidadao;
     @FXML
     private TableColumn<Cidadao, Void> coluna_acao_cidadao;
@@ -52,6 +56,10 @@ public class SceneCidadaoController extends BaseController {
     private TextField campo_idade;
     @FXML
     private TextField campo_nome;
+    @FXML
+    private TextField campo_email;
+    @FXML
+    private TextField campo_telefone;
     @FXML
     private RadioButton masculino;
     @FXML
@@ -81,8 +89,8 @@ public class SceneCidadaoController extends BaseController {
         iniciarTabela();
         // Adiciona cidadãos iniciais (somente na primeira execução)
         if (repositorioCidadao.listarCidadaos().isEmpty()) {
-            Cidadao c1 = new Cidadao("Maria Silva", "12345678901", 30, "Feminino", "Rua das Flores, 123");
-            Cidadao c2 = new Cidadao("João Souza", "98765432100", 45, "Masculino", "Av. Brasil, 456");
+            Cidadao c1 = new Cidadao("Maria Silva", "12345678901", 30, "Feminino", "Rua das Flores, 123", "35997337238", "marcus0vv@gmail.com");
+            Cidadao c2 = new Cidadao("João Souza", "98765432100", 45, "Masculino", "Av. Brasil, 456", "35997337238", "marcus2vv@gmail.com");
             repositorioCidadao.adicionarCidadao(c1);
             repositorioCidadao.adicionarCidadao(c2);
         }
@@ -99,6 +107,8 @@ public class SceneCidadaoController extends BaseController {
         coluna_idade_cidadao.setCellValueFactory(new PropertyValueFactory<>("idade"));
         coluna_sexo_cidadao.setCellValueFactory(new PropertyValueFactory<>("sexo"));
         coluna_endereco_cidadao.setCellValueFactory(new PropertyValueFactory<>("endereco"));
+        coluna_email_cidadao.setCellValueFactory(new PropertyValueFactory<>("email"));
+        coluna_telefone_cidadao.setCellValueFactory(new PropertyValueFactory<>("numeroTelefone"));
         adicionarColunaAcoes(); // metodo que adiciona uma nova coluna de ações com funcionalidade de excluir/editar/ visualizar cartao de vacina
         tabela_cidadaos.setItems(listaCidadaos);
     }
@@ -110,6 +120,8 @@ public class SceneCidadaoController extends BaseController {
         String endereco = campo_endereco.getText();
         String idadeStr = campo_idade.getText();
         String sexo = null;
+        String email = campo_email.getText();
+        String numeroTelefone = campo_telefone.getText();
 
         if (masculino.isSelected()) {
             sexo = "Masculino";
@@ -118,12 +130,12 @@ public class SceneCidadaoController extends BaseController {
         }
 
         try {
-            ValidacoesCidadao.validar(nome, cpf, idadeStr, sexo, endereco);
+            ValidacoesCidadao.validar(nome, cpf, idadeStr, sexo, endereco, email, numeroTelefone);
             int idade = Integer.parseInt(idadeStr);
 
             if (cidadaoEmEdicao == null) {
                 // Cadastro novo
-                Cidadao novo = new Cidadao(nome, cpf, idade, sexo, endereco);
+                Cidadao novo = new Cidadao(nome, cpf, idade, sexo, endereco, email, numeroTelefone);
                 repositorioCidadao.adicionarCidadao(novo);
                 listaCidadaos.add(novo);
 
@@ -133,7 +145,9 @@ public class SceneCidadaoController extends BaseController {
                         + "CPF: " + novo.getCpf() + "\n"
                         + "Idade: " + novo.getIdade() + "\n"
                         + "Sexo: " + novo.getSexo() + "\n"
-                        + "Endereço: " + novo.getEndereco());
+                        + "Endereço: " + novo.getEndereco() + "\n"
+                        + "E-mail: " + novo.getEmail() + "\n"
+                        + "Telefone: " + novo.getNumeroTelefone());
             } else {
                 // Edição
                 cidadaoEmEdicao.setNome(nome);
@@ -141,6 +155,8 @@ public class SceneCidadaoController extends BaseController {
                 cidadaoEmEdicao.setIdade(idade);
                 cidadaoEmEdicao.setSexo(sexo);
                 cidadaoEmEdicao.setEndereco(endereco);
+                cidadaoEmEdicao.setEmail(email);
+                cidadaoEmEdicao.setNumeroTelefone(numeroTelefone);
 
                 listaCidadaos.setAll(repositorioCidadao.listarCidadaos().values());
                 tabela_cidadaos.refresh();
@@ -199,6 +215,8 @@ public class SceneCidadaoController extends BaseController {
         campo_nome.setText(cidadao.getNome());
         campo_cpf.setText(cidadao.getCpf());
         campo_endereco.setText(cidadao.getEndereco());
+        campo_email.setText(cidadao.getEmail());
+        campo_telefone.setText(cidadao.getNumeroTelefone());
         campo_idade.setText(String.valueOf(cidadao.getIdade()));
         if (cidadao.getSexo().equalsIgnoreCase("Masculino")) {
             sexo_cidadao.selectToggle(masculino);
@@ -207,7 +225,7 @@ public class SceneCidadaoController extends BaseController {
         }
 
         cidadaoEmEdicao = cidadao;
-        mostrar_formulario_cidadao(null); // troca para a tela de formulário, se necessário
+        mostrarTela(formulario_cidadao, tela_cidadao);
     }
     private void excluirCidadao(Cidadao cidadao) {
         repositorioCidadao.listarCidadaos().remove(cidadao.getId());
@@ -222,6 +240,8 @@ public class SceneCidadaoController extends BaseController {
     }
     @FXML
     void mostrar_formulario_cidadao(ActionEvent event) {
+        cidadaoEmEdicao = null;
+        limparCampos();
         mostrarTela(formulario_cidadao, tela_cidadao);
     }
     @FXML
@@ -276,7 +296,8 @@ public class SceneCidadaoController extends BaseController {
         campo_cpf.clear();
         campo_endereco.clear();
         campo_idade.clear();
+        campo_telefone.clear();
+        campo_email.clear();
         sexo_cidadao.selectToggle(null); // desmarca ambos
     }
-
 }
