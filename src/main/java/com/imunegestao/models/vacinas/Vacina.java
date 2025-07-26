@@ -7,9 +7,17 @@ public class Vacina {
     private int id;
     private String nome;
     private String fabricante;
-    private String dosesDisponiveis;
-    private String dosesRecomendadas;
+    private int dosesDisponiveis;
+    private int dosesRecomendadas;
     private LocalDate dataValidade;
+
+    public Vacina(String nome, String fabricante, int dosesDisponiveis, int dosesRecomendadas, LocalDate dataValidade) {
+        this.nome = nome;
+        this.fabricante = fabricante;
+        this.dosesDisponiveis = dosesDisponiveis;
+        this.dosesRecomendadas = dosesRecomendadas;
+        this.dataValidade = dataValidade;
+    }
 
     public int getId() {return id;}
 
@@ -23,15 +31,15 @@ public class Vacina {
 
     public void setFabricante(String fabricante) {this.fabricante = fabricante;}
 
-    public String getDosesDisponiveis() {return dosesDisponiveis;}
+    public int getDosesDisponiveis() {return dosesDisponiveis;}
 
-    public void setDosesDisponiveis(String doses) {this.dosesDisponiveis = doses;}
+    public void setDosesDisponiveis(int doses) {this.dosesDisponiveis = doses;}
 
-    public String getDosesRecomendadas() {return dosesRecomendadas;}
+    public int getDosesRecomendadas() {return dosesRecomendadas;}
 
-    public void setDosesRecomendadas(String dosesRecomendadas) {this.dosesRecomendadas = dosesRecomendadas;}
+    public void setDosesRecomendadas(int dosesRecomendadas) {this.dosesRecomendadas = dosesRecomendadas;}
 
-    public LocalDate getValidade() {return dataValidade;}
+    public LocalDate getDataValidade() {return dataValidade;}
 
-    public void setValidade(LocalDate validade) {this.dataValidade = validade;}
+    public void setDataValidade(LocalDate validade) {this.dataValidade = validade;}
 }
