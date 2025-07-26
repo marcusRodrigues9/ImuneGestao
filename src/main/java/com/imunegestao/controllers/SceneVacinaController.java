@@ -13,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -34,6 +35,7 @@ public class SceneVacinaController extends BaseController {
     @FXML private TableColumn<Vacina, LocalDate> coluna_data_validade;
     @FXML private TableColumn<Vacina, Integer> coluna_doses_disponiveis;
     @FXML private TableColumn<Vacina, Integer> coluna_doses_recomendadas;
+    @FXML private TableColumn<Vacina, Void> coluna_acao_vacina;
 
     // --- Campos Formulário ---
     @FXML private TextField campo_nome, campo_fabricante, campo_doses_disponiveis, campo_doses_recomendadas;
@@ -70,6 +72,7 @@ public class SceneVacinaController extends BaseController {
         coluna_data_validade.setCellValueFactory(new PropertyValueFactory<>("dataValidade"));
         coluna_doses_disponiveis.setCellValueFactory(new PropertyValueFactory<>("dosesDisponiveis"));
         coluna_doses_recomendadas.setCellValueFactory(new PropertyValueFactory<>("dosesRecomendadas"));
+        adicionarColunaAcoes(); // adiciona a coluna de exclusão
 
         tabela_vacinas.setItems(listaVacinas);
     }
@@ -113,6 +116,34 @@ public class SceneVacinaController extends BaseController {
                 "\nDoses Disponíveis: " + v.getDosesDisponiveis() +
                 "\nData de Validade: " + dataFormatada;
     }
+    private void excluirVacina(Vacina vacina) {
+        repositorioVacina.listarVacinas().remove(vacina.getId());
+        listaVacinas.remove(vacina);
+        mostrarAlertaInformacao("Vacina excluída com sucesso.");
+    }
+    private void adicionarColunaAcoes() {
+        coluna_acao_vacina.setCellFactory(param -> new TableCell<>() {
+            private final Button excluir = new Button("Excluir");
+
+            {
+                String estiloPadrao = "-fx-background-color: #E4E1E2; -fx-text-fill: black; -fx-cursor: hand;";
+                excluir.setStyle(estiloPadrao);
+
+                // Efeito hover: vermelho
+                excluir.setOnMouseEntered(e -> excluir.setStyle("-fx-background-color: #ff4d4d; -fx-text-fill: white; -fx-cursor: hand;"));
+                excluir.setOnMouseExited(e -> excluir.setStyle(estiloPadrao));
+
+                excluir.setOnAction(e -> excluirVacina(getTableView().getItems().get(getIndex())));
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                setGraphic(empty ? null : new HBox(10, excluir));
+            }
+        });
+    }
+
 
     // =================== NAVEGAÇÃO ENTRE TELAS ===================
 
@@ -157,4 +188,5 @@ public class SceneVacinaController extends BaseController {
         listaVacinas.setAll(repositorioVacina.listarVacinas().values());
         tabela_vacinas.refresh();
     }
+
 }
