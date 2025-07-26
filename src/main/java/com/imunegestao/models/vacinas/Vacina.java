@@ -1,14 +1,15 @@
 package com.imunegestao.models.vacinas;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Vacina {
     private int id;
     private String nome;
     private String fabricante;
-    private String doses;
+    private String dosesDisponiveis;
     private String dosesRecomendadas;
-    private LocalDateTime validade;
+    private LocalDate dataValidade;
 
     public int getId() {return id;}
 
@@ -22,15 +23,15 @@ public class Vacina {
 
     public void setFabricante(String fabricante) {this.fabricante = fabricante;}
 
-    public String getDoses() {return doses;}
+    public String getDosesDisponiveis() {return dosesDisponiveis;}
 
-    public void setDoses(String doses) {this.doses = doses;}
+    public void setDosesDisponiveis(String doses) {this.dosesDisponiveis = doses;}
 
     public String getDosesRecomendadas() {return dosesRecomendadas;}
 
     public void setDosesRecomendadas(String dosesRecomendadas) {this.dosesRecomendadas = dosesRecomendadas;}
 
-    public LocalDateTime getValidade() {return validade;}
+    public LocalDate getValidade() {return dataValidade;}
 
-    public void setValidade(LocalDateTime validade) {this.validade = validade;}
+    public void setValidade(LocalDate validade) {this.dataValidade = validade;}
 }
