@@ -1,8 +1,6 @@
-*{
-    -fx-font-family: "Arial", sans-serif; /* Exemplo: Arial, com fallback para sans-serif */
-}
 
 .text-field {
+    -fx-font-family: "Arial", sans-serif; /* Exemplo: Arial, com fallback para sans-serif */
     -fx-prompt-text-fill: #888888;
     -fx-border-color: #cccccc;
     -fx-border-width: 1px;
@@ -17,7 +15,8 @@
     -fx-padding: 8px 15px;         /* Preenchimento */
     -fx-border-radius: 5px;        /* Bordas arredondadas */
     -fx-cursor: hand;              /* Cursor de mão */
-    /* Adicione quaisquer outras propriedades que você queira por padrão */
+    -fx-font-family: "Arial", sans-serif; /* Exemplo: Arial, com fallback para sans-serif */
+
 }
 
 /* Estilos para o Botão Sair quando o mouse está sobre ele (HOVER) */
@@ -27,11 +26,12 @@
 
 /* Estilo geral da TableView */
 .table-view {
+    -fx-font-family: "Arial", sans-serif; /* Exemplo: Arial, com fallback para sans-serif */
     -fx-background-color: transparent; /* Fundo transparente para que o fundo do painel pai apareça */
     -fx-border-color: #ffc4d4; /* Borda da tabela com sua cor tema */
     -fx-border-width: 1px;
     -fx-border-radius: 5px; /* Bordas arredondadas para a tabela */
-    -fx-font-size: 15px;
+    -fx-font-size: 13px;
 }
 
 */
@@ -39,7 +39,7 @@
 .table-view .column-header .label {
     -fx-text-fill: black; /* Cor do texto do cabeçalho (branco para contraste) */
     -fx-font-weight: bold; /* Negrito */
-    -fx-font-size: 14px;
+    -fx-font-size: 12px;
 }
 
 /* Estilo das Células da Tabela (cor do texto, padding) */
