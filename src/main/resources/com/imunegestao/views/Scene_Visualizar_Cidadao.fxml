@@ -76,7 +76,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </MenuButton>
-            <Button fx:id="botao_sair" layoutX="1229.0" layoutY="27.0" mnemonicParsing="false" onAction="#sair" prefHeight="36.0" prefWidth="98.0" style="-fx-background-color: #ffc4d4;" text="SAIR">
+            <Button fx:id="botao_sair" layoutX="1229.0" layoutY="27.0" mnemonicParsing="false" onAction="#sair" prefHeight="36.0" prefWidth="98.0" text="Sair">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -131,15 +131,15 @@
                         <Font name="Arial Bold" size="34.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="tabela_cidadaos" layoutX="25.0" layoutY="230.0" prefHeight="365.0" prefWidth="1157.0" style="-fx-background-color: white; -fx-border-color: gray;" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="177.0">
+                  <TableView fx:id="tabela_cidadaos" layoutX="25.0" layoutY="230.0" prefHeight="365.0" prefWidth="1183.0" style="-fx-background-color: white; -fx-border-color: gray;" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="151.0">
                     <columns>
                       <TableColumn fx:id="coluna_id_cidadao" prefWidth="75.0" text="Id" />
                       <TableColumn fx:id="coluna_nome_cidadao" prefWidth="200.0" text="Nome" />
                         <TableColumn fx:id="coluna_cpf_cidadao" prefWidth="91.0" text="Cpf" />
                         <TableColumn fx:id="coluna_idade_cidadao" prefWidth="68.0" text="Idade" />
                         <TableColumn fx:id="coluna_telefone_cidadao" prefWidth="114.0" text="telefone" />
-                        <TableColumn fx:id="coluna_email_cidadao" prefWidth="123.0" text="email" />
-                        <TableColumn fx:id="coluna_endereco_cidadao" prefWidth="200.0" text="Endereço" />
+                        <TableColumn fx:id="coluna_email_cidadao" prefWidth="134.0" text="email" />
+                        <TableColumn fx:id="coluna_endereco_cidadao" prefWidth="189.0" text="Endereço" />
                         <TableColumn fx:id="coluna_sexo_cidadao" prefWidth="78.0" text="Sexo" />
                         <TableColumn fx:id="coluna_acao_cidadao" prefWidth="227.0" />
                     </columns>

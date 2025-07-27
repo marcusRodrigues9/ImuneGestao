@@ -20,6 +20,7 @@ public abstract class BaseController {
     protected void trocarCena(ActionEvent event, String fxmlPath, String titulo) throws IOException {
         Parent novaTela = FXMLLoader.load(getClass().getResource(fxmlPath));
         Scene novaCena = new Scene(novaTela);
+        novaCena.getStylesheets().add(getClass().getResource("/com/imunegestao/style.css").toExternalForm());
 
         // Como o source é um MenuItem, não é Node, use getParentPopup()
         MenuItem menuItem = (MenuItem) event.getSource();

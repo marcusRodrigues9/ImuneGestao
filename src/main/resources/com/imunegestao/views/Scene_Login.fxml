@@ -10,6 +10,7 @@
 <?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.PasswordField?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imunegestao.controllers.SceneLoginController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
@@ -23,7 +24,7 @@
                </cursor>
             </Button>
             <TextField fx:id="input_usuario" layoutX="355.0" layoutY="151.0" maxWidth="400.0" prefHeight="36.0" promptText="Digite seu usuario" AnchorPane.leftAnchor="355.0" AnchorPane.rightAnchor="355.0" AnchorPane.topAnchor="100.0" />
-            <TextField fx:id="input_senha" layoutX="358.0" layoutY="194.0" maxWidth="400.0" prefHeight="36.0" promptText="Digite sua senha" AnchorPane.leftAnchor="355.0" AnchorPane.rightAnchor="355.0" AnchorPane.topAnchor="155.0" />
+            <PasswordField fx:id="input_senha" layoutX="358.0" layoutY="194.0" maxWidth="400.0" prefHeight="36.0" promptText="Digite sua senha" AnchorPane.leftAnchor="355.0" AnchorPane.rightAnchor="355.0" AnchorPane.topAnchor="155.0" />
             <Label alignment="CENTER" layoutX="333.0" layoutY="20.0" text="Imune Gestão" textAlignment="RIGHT" textFill="#ffc4d4" AnchorPane.bottomAnchor="296.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="20.0">
                <font>
                   <Font name="Arial Bold" size="44.0" />

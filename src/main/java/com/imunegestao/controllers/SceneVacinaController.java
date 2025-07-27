@@ -73,7 +73,6 @@ public class SceneVacinaController extends BaseController {
         coluna_doses_disponiveis.setCellValueFactory(new PropertyValueFactory<>("dosesDisponiveis"));
         coluna_doses_recomendadas.setCellValueFactory(new PropertyValueFactory<>("dosesRecomendadas"));
         adicionarColunaAcoes(); // adiciona a coluna de exclusão
-
         tabela_vacinas.setItems(listaVacinas);
     }
 
@@ -96,13 +95,13 @@ public class SceneVacinaController extends BaseController {
             Vacina nova = new Vacina(nome, fabricante, dosesDisponiveis, dosesRecomendadas, dataValidade);
             repositorioVacina.adicionarVacina(nova);
             listaVacinas.add(nova);
-
             mostrarAlertaInformacao("Vacina cadastrada com sucesso!\n\n" + formatarDados(nova));
+            limparCampos();
+
         } catch (ValidacaoException e) {
             mostrarAlertaErro(e.getMessage());
         }
 
-        limparCampos();
     }
 
     private String formatarDados(Vacina v) {

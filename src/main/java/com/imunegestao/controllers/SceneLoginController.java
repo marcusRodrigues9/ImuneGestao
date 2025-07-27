@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -18,7 +19,7 @@ public class SceneLoginController {
     private Button botao_entrar;
 
     @FXML
-    private TextField input_senha;
+    private PasswordField input_senha;
 
     @FXML
     private TextField input_usuario;
@@ -47,6 +48,7 @@ public class SceneLoginController {
 
             Parent telaCidadaos = FXMLLoader.load(getClass().getResource("/com/imunegestao/views/Scene_Visualizar_Cidadao.fxml"));
             Scene CenaCidadaos = new Scene(telaCidadaos);
+            CenaCidadaos.getStylesheets().add(getClass().getResource("/com/imunegestao/style.css").toExternalForm());
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(CenaCidadaos);
