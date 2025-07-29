@@ -1,5 +1,8 @@
 package com.imunegestao.models.pessoas;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cidadao {
     private int id;
     private String nome;
@@ -9,6 +12,7 @@ public class Cidadao {
     private String endereco;
     private String numeroTelefone;
     private String email;
+    private List<Integer> idsVacinasTomadas;
 
 
     public Cidadao(String nome, String cpf, int idade, String sexo, String endereco,String numeroTelefone, String email) {
@@ -19,6 +23,7 @@ public class Cidadao {
         this.endereco = endereco;
         this.numeroTelefone = numeroTelefone;
         this.email = email;
+        this.idsVacinasTomadas = new ArrayList<>();
     }
 
     public int getId() {return id;}
@@ -59,5 +64,26 @@ public class Cidadao {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+
+    public List<Integer> getIdsVacinasTomadas() {
+        return idsVacinasTomadas;
+    }
+
+    public void setIdsVacinasTomadas(List<Integer> idsVacinasTomadas) {
+        this.idsVacinasTomadas = idsVacinasTomadas;
+    }
+
+    // Método para adicionar uma única vacina à lista
+    public void adicionarVacinaTomada(int vacinaId) {
+        if (!this.idsVacinasTomadas.contains(vacinaId)) { // Evita duplicatas
+            this.idsVacinasTomadas.add(vacinaId);
+        }
+    }
+
+    // Método para remover uma única vacina da lista
+    public void removerVacinaTomada(int vacinaId) {
+        this.idsVacinasTomadas.remove(Integer.valueOf(vacinaId)); // Usa Integer.valueOf para remover o objeto, não o índice
     }
 }
