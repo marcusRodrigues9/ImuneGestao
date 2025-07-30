@@ -9,7 +9,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -165,7 +168,11 @@ public class SceneCidadaoController extends BaseController {
 
                 editar.setOnAction(e -> preencherFormularioParaEdicao(getTableView().getItems().get(getIndex())));
                 excluir.setOnAction(e -> excluirCidadao(getTableView().getItems().get(getIndex())));
-                // visualizar.setOnAction(e -> ...); // adicionar funcionalidade se necessário
+
+                visualizar.setOnAction(e -> {
+                    Cidadao cidadaoDaLinha = getTableView().getItems().get(getIndex());
+                    visualizarPerfilCidadao(cidadaoDaLinha, e);
+                });
             }
 
             @Override
@@ -235,6 +242,36 @@ public class SceneCidadaoController extends BaseController {
     private void sair(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(Main.getCenaLogin());
+    }
+
+    // NOVO MÉTODO: Ação para o MenuItem "Cartão de Vacina"
+    @FXML
+    private void abrirCartaoVacinaMenu(ActionEvent event) {
+        Cidadao cidadaoSelecionado = tabela_cidadaos.getSelectionModel().getSelectedItem(); // Pega o cidadão da tabela
+
+
+        // Se um cidadão foi selecionado, chame o método que abre a tela de perfil
+        visualizarPerfilCidadao(cidadaoSelecionado, event);
+    }
+
+    // Método que abre a tela de perfil, que já te passei e você já deve ter
+    private void visualizarPerfilCidadao(Cidadao cidadao, ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/imunegestao/views/Scene_Visualizar_PerfilCidadao.fxml"));
+            Parent root = loader.load();
+
+            ScenePerfilCidadaoController perfilController = loader.getController();
+            perfilController.setCidadao(cidadao); // Passa o cidadão para o novo controller
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Perfil do Cidadão: " + cidadao.getNome());
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            mostrarAlertaErro("Erro ao carregar perfil ,Não foi possível carregar a tela de perfil do cidadão.");
+        }
     }
 
     // =================== FUNCIONALIDADES AUXILIARES ===================

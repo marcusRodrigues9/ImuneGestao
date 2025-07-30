@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imunegestao.controllers.ScenePerfilCidadaoController"> <top>
+    <AnchorPane prefHeight="107.0" prefWidth="1360.0" BorderPane.alignment="CENTER">
+        <children>
+            <MenuButton layoutX="331.0" layoutY="12.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="176.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" text="CIDADAOS" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="12.0">
+                <items>
+                    <MenuItem fx:id="botao_menu_visualizar_cidadao" mnemonicParsing="false" text="Visualizar cidadaos" onAction="#voltarParaCidadaos" /> <MenuItem fx:id="botao_menu_cadastrar_cidadao" mnemonicParsing="false"  text="Cadastrar cidadaos" /> <MenuItem fx:id="botao_menu_cartao_vacina" mnemonicParsing="false" text="Cartao de vacina" />
+                </items>
+                <padding>
+                    <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
+                </padding>
+                <font>
+                    <Font name="Arial Bold" size="19.0" />
+                </font>
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+            </MenuButton>
+            <Label layoutX="17.0" layoutY="17.0" style="-fx-background-color: #ffc4d4; -fx-background-radius: 15;" text="Imune Gestão" textFill="WHITE">
+                <font>
+                    <Font name="Arial Bold" size="41.0" />
+                </font>
+                <padding>
+                    <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                </padding>
+            </Label>
+            <MenuButton layoutX="537.0" layoutY="12.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="176.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" text="VACINAS" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="12.0">
+                <items>
+                    <MenuItem fx:id="botao_menu_visualizar_vacina" mnemonicParsing="false"  text="Visualizar vacinas" />
+                    <MenuItem mnemonicParsing="false"  text="Cadastrar vacinas" /> </items>
+                <padding>
+                    <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
+                </padding>
+                <font>
+                    <Font name="Arial Bold" size="19.0" />
+                </font>
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+            </MenuButton>
+            <MenuButton layoutX="741.0" layoutY="14.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="244.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" text="AGENDAMENTOS" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="12.0">
+                <items>
+                    <MenuItem mnemonicParsing="false"  text="Visualizar Agendamentos" /> <MenuItem mnemonicParsing="false"  text="Cadastrar Agendamento" /> </items>
+                <padding>
+                    <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
+                </padding>
+                <font>
+                    <Font name="Arial Bold" size="19.0" />
+                </font>
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+            </MenuButton>
+            <Button fx:id="botao_sair" layoutX="1229.0" layoutY="27.0" mnemonicParsing="false"  prefHeight="36.0" prefWidth="98.0" text="Sair">
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+            </Button>
+        </children>
+    </AnchorPane>
+</top>
+    <center>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label fx:id="labelNome" layoutX="50.0" layoutY="83.0" prefHeight="59.0" prefWidth="504.0" text="null">
+                    <font>
+                        <Font size="41.0" />
+                    </font>
+                </Label>
+                <Label layoutX="40.0" layoutY="193.0" prefHeight="35.0" prefWidth="62.0" text="CPF: ">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label layoutX="40.0" layoutY="234.0" prefHeight="35.0" prefWidth="117.0" text="Endereço:">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label layoutX="40.0" layoutY="276.0" prefHeight="35.0" prefWidth="76.0" text="Email:">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label layoutX="40.0" layoutY="321.0" prefHeight="35.0" prefWidth="114.0" text="Telefone: ">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label layoutX="40.0" layoutY="372.0" prefHeight="35.0" prefWidth="76.0" text="Sexo:">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label layoutX="40.0" layoutY="418.0" prefHeight="35.0" prefWidth="76.0" text="Idade: ">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label fx:id="labelCpf" layoutX="99.0" layoutY="193.0" prefHeight="35.0" prefWidth="219.0" text="null">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label fx:id="labelEndereco" layoutX="157.0" layoutY="234.0" prefHeight="35.0" prefWidth="333.0" text="null">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label fx:id="labelEmail" layoutX="123.0" layoutY="276.0" prefHeight="35.0" prefWidth="322.0" text="null">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label fx:id="labelTelefone" layoutX="157.0" layoutY="321.0" prefHeight="35.0" prefWidth="196.0" text="null">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label fx:id="labelSexo" layoutX="116.0" layoutY="372.0" prefHeight="35.0" prefWidth="196.0" text="null">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label fx:id="labelIdade" layoutX="123.0" layoutY="418.0" prefHeight="35.0" prefWidth="196.0" text="null">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label layoutX="826.0" layoutY="64.0" text="Vacinas Tomadas:">
+                    <font>
+                        <Font name="Arial Bold" size="24.0" />
+                    </font>
+                </Label>
+                <TableView fx:id="tabelaVacinasTomadas" layoutX="826.0" layoutY="99.0" prefHeight="480.0" prefWidth="501.0">
+                    <columns>
+                        <TableColumn fx:id="colunaVacinaNome" prefWidth="195.0" text="Nome" />
+                        <TableColumn fx:id="colunaVacinaFabricante" minWidth="3.0" prefWidth="177.0" text="Fabricante" />
+                        <TableColumn fx:id="colunaVacinaValidade" minWidth="0.0" prefWidth="122.0" text="Validade" />
+                    </columns>
+                </TableView>
+                <Button layoutX="40.0" layoutY="480.0" mnemonicParsing="false"  prefHeight="36.0" prefWidth="180.0" text="Adicionar Nova Vacina">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <Button layoutX="230.0" layoutY="480.0" mnemonicParsing="false"  prefHeight="36.0" prefWidth="180.0" text="Remover Vacina">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>
