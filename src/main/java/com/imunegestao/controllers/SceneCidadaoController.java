@@ -1,10 +1,13 @@
 package com.imunegestao.controllers;
 
+import java.io.IOException;
+
 import com.imunegestao.Main;
 import com.imunegestao.models.pessoas.Cidadao;
 import com.imunegestao.repository.RepositorioCidadao;
 import com.imunegestao.utils.ValidacaoException;
 import com.imunegestao.utils.ValidacoesCidadao;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,13 +16,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class SceneCidadaoController extends BaseController {
 
@@ -259,12 +267,13 @@ public class SceneCidadaoController extends BaseController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/imunegestao/views/Scene_Visualizar_PerfilCidadao.fxml"));
             Parent root = loader.load();
-
+            
             ScenePerfilCidadaoController perfilController = loader.getController();
             perfilController.setCidadao(cidadao); // Passa o cidadão para o novo controller
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/com/imunegestao/style.css").toExternalForm());
             stage.setScene(scene);
             stage.setTitle("Perfil do Cidadão: " + cidadao.getNome());
             stage.show();

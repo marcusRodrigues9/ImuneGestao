@@ -26,7 +26,7 @@
               <items>
                 <MenuItem fx:id="botao_menu_visualizar_cidadao" mnemonicParsing="false" onAction="#mostrar_tabela_cidadao" text="Visualizar cidadaos" />
                 <MenuItem fx:id="botao_menu_cadastrar_cidadao" mnemonicParsing="false" onAction="#mostrar_formulario_cidadao" text="Cadastrar cidadaos" />
-                  <MenuItem fx:id="botao_menu_cartao_vacina"  mnemonicParsing="false" onAction="#abrirCartaoVacinaMenu" text="Cartao de vacina" />
+                  <MenuItem fx:id="botao_menu_cartao_vacina" mnemonicParsing="false" onAction="#abrirCartaoVacinaMenu" text="Cartao de vacina" />
               </items>
                <padding>
                   <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />

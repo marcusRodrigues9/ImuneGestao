@@ -1,6 +1,5 @@
 package com.imunegestao;
 
-import com.imunegestao.models.pessoas.Cidadao;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

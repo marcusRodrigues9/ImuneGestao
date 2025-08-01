@@ -1,26 +1,17 @@
 package com.imunegestao.controllers;
 
+import java.io.IOException;
+
 import com.imunegestao.Main;
 import com.imunegestao.models.pessoas.Cidadao;
-import com.imunegestao.models.vacinas.Vacina;
-import com.imunegestao.repository.RepositorioCidadao;
-import com.imunegestao.repository.RepositorioVacina;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.time.LocalDate;
-
 public class ScenePerfilCidadaoController extends BaseController {
-
     // --- Variável de Instância ---
     private Cidadao cidadaoAtual; // Variável para armazenar o cidadão que está sendo visualizado
 

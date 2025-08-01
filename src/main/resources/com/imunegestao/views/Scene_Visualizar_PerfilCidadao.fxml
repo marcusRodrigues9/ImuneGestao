@@ -12,12 +12,12 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imunegestao.controllers.ScenePerfilCidadaoController"> <top>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imunegestao.controllers.ScenePerfilCidadaoController"> <top>
     <AnchorPane prefHeight="107.0" prefWidth="1360.0" BorderPane.alignment="CENTER">
         <children>
             <MenuButton layoutX="331.0" layoutY="12.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="176.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" text="CIDADAOS" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="12.0">
                 <items>
-                    <MenuItem fx:id="botao_menu_visualizar_cidadao" mnemonicParsing="false" text="Visualizar cidadaos" onAction="#voltarParaCidadaos" /> <MenuItem fx:id="botao_menu_cadastrar_cidadao" mnemonicParsing="false"  text="Cadastrar cidadaos" /> <MenuItem fx:id="botao_menu_cartao_vacina" mnemonicParsing="false" text="Cartao de vacina" />
+                    <MenuItem fx:id="botao_menu_visualizar_cidadao" mnemonicParsing="false" onAction="#voltarParaCidadaos" text="Visualizar cidadaos" /> <MenuItem fx:id="botao_menu_cadastrar_cidadao" mnemonicParsing="false" text="Cadastrar cidadaos" /> <MenuItem fx:id="botao_menu_cartao_vacina" mnemonicParsing="false" text="Cartao de vacina" />
                 </items>
                 <padding>
                     <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
@@ -39,8 +39,8 @@
             </Label>
             <MenuButton layoutX="537.0" layoutY="12.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="176.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" text="VACINAS" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="12.0">
                 <items>
-                    <MenuItem fx:id="botao_menu_visualizar_vacina" mnemonicParsing="false"  text="Visualizar vacinas" />
-                    <MenuItem mnemonicParsing="false"  text="Cadastrar vacinas" /> </items>
+                    <MenuItem fx:id="botao_menu_visualizar_vacina" mnemonicParsing="false" text="Visualizar vacinas" />
+                    <MenuItem mnemonicParsing="false" text="Cadastrar vacinas" /> </items>
                 <padding>
                     <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
                 </padding>
@@ -53,7 +53,7 @@
             </MenuButton>
             <MenuButton layoutX="741.0" layoutY="14.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="244.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" text="AGENDAMENTOS" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="12.0">
                 <items>
-                    <MenuItem mnemonicParsing="false"  text="Visualizar Agendamentos" /> <MenuItem mnemonicParsing="false"  text="Cadastrar Agendamento" /> </items>
+                    <MenuItem mnemonicParsing="false" text="Visualizar Agendamentos" /> <MenuItem mnemonicParsing="false" text="Cadastrar Agendamento" /> </items>
                 <padding>
                     <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
                 </padding>
@@ -64,7 +64,7 @@
                     <Cursor fx:constant="HAND" />
                 </cursor>
             </MenuButton>
-            <Button fx:id="botao_sair" layoutX="1229.0" layoutY="27.0" mnemonicParsing="false"  prefHeight="36.0" prefWidth="98.0" text="Sair">
+            <Button fx:id="botao_sair" layoutX="1229.0" layoutY="27.0" mnemonicParsing="false" onAction="#sair" prefHeight="36.0" prefWidth="98.0" style="-fx-background-color: #ffc4d4;" text="Sair">
                 <cursor>
                     <Cursor fx:constant="HAND" />
                 </cursor>
@@ -145,19 +145,19 @@
                         <Font name="Arial Bold" size="24.0" />
                     </font>
                 </Label>
-                <TableView fx:id="tabelaVacinasTomadas" layoutX="826.0" layoutY="99.0" prefHeight="480.0" prefWidth="501.0">
+                <TableView fx:id="tabelaVacinasTomadas" layoutX="826.0" layoutY="99.0" prefHeight="480.0" prefWidth="501.0" style="-fx-background-color: white; -fx-border-color: gray;">
                     <columns>
                         <TableColumn fx:id="colunaVacinaNome" prefWidth="195.0" text="Nome" />
                         <TableColumn fx:id="colunaVacinaFabricante" minWidth="3.0" prefWidth="177.0" text="Fabricante" />
                         <TableColumn fx:id="colunaVacinaValidade" minWidth="0.0" prefWidth="122.0" text="Validade" />
                     </columns>
                 </TableView>
-                <Button layoutX="40.0" layoutY="480.0" mnemonicParsing="false"  prefHeight="36.0" prefWidth="180.0" text="Adicionar Nova Vacina">
+                <Button layoutX="40.0" layoutY="480.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="180.0" text="Adicionar Nova Vacina">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Button layoutX="230.0" layoutY="480.0" mnemonicParsing="false"  prefHeight="36.0" prefWidth="180.0" text="Remover Vacina">
+                <Button layoutX="230.0" layoutY="480.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="180.0" text="Remover Vacina">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>

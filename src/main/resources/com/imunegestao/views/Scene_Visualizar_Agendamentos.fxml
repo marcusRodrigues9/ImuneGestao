@@ -73,7 +73,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </MenuButton>
-            <Button fx:id="botao_sair" layoutX="1229.0" layoutY="27.0" mnemonicParsing="false" onAction="#sair" prefHeight="36.0" prefWidth="98.0"  text="Sair">
+            <Button fx:id="botao_sair" layoutX="1229.0" layoutY="27.0" mnemonicParsing="false" onAction="#sair" prefHeight="36.0" prefWidth="98.0" text="Sair">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -84,19 +84,19 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane fx:id="formulario_agendamento" layoutX="443.0" layoutY="46.0" prefHeight="504.0" prefWidth="507.0" style="-fx-border-radius: 15;" AnchorPane.bottomAnchor="111.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="46.0">
+            <AnchorPane fx:id="formulario_agendamento" layoutX="443.0" layoutY="46.0" prefHeight="504.0" prefWidth="507.0" style="-fx-border-radius: 15;" visible="false" AnchorPane.bottomAnchor="111.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="46.0">
                <children>
                   <VBox layoutX="520.0" layoutY="127.0" prefHeight="160.0" prefWidth="490.0" spacing="20.0" AnchorPane.leftAnchor="435.0" AnchorPane.rightAnchor="435.0">
                      <children>
-                        <TextField prefHeight="33.0" promptText="nome completo" />
-                        <DatePicker prefHeight="31.0" prefWidth="424.0" />
-                        <TextField prefHeight="33.0" promptText="status do agendamento" />
+                        <TextField fx:id="campo_cpf" prefHeight="33.0" promptText="Digite o CPF do paciente" />
+                        <DatePicker fx:id="campo_data" prefHeight="31.0" prefWidth="424.0" />
+                        <TextField fx:id="campo_horario" prefHeight="33.0" promptText="Digite o horario em horas:minutos" />
                      </children>
                      <padding>
                         <Insets left="33.0" right="33.0" />
                      </padding>
                   </VBox>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="75.0" prefHeight="27.0" prefWidth="435.0" text="Preencha as informações do agendamento" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="75.0" prefHeight="27.0" prefWidth="435.0" text="Preencha as informações para agendamento" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <font>
                         <Font name="Arial Bold" size="24.0" />
                      </font>
@@ -104,7 +104,7 @@
                   <Button fx:id="realizar_cadastro_agendamento" layoutX="555.0" layoutY="292.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="250.0" text="Agendar" AnchorPane.leftAnchor="555.0" AnchorPane.rightAnchor="555.0" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="tela_agendamento" layoutY="-3.0" prefHeight="665.0" prefWidth="1359.0" visible="false">
+            <AnchorPane fx:id="tela_agendamento" layoutY="-3.0" prefHeight="665.0" prefWidth="1359.0">
                <children>
                   <Label layoutX="26.0" layoutY="137.0" text="Pesquisar Agendamento: ">
                      <font>
@@ -116,10 +116,10 @@
                         <TableColumn prefWidth="75.0" text="Id" />
                         <TableColumn prefWidth="149.0" text="Nome" />
                         <TableColumn prefWidth="160.0" text="data" />
-                        <TableColumn prefWidth="160.0" text="Status do agendamento" />
+                        <TableColumn prefWidth="160.0" text="horario" />
                      </columns>
                   </TableView>
-                  <TextField fx:id="buscar_agendamento" layoutX="454.0" layoutY="140.0" prefHeight="33.0" prefWidth="345.0" promptText="Digite o id ou nome da vacina" text="Digite o id do cidadao ou nome completo do cidadao" />
+                  <TextField fx:id="buscar_agendamento" layoutX="454.0" layoutY="140.0" prefHeight="33.0" prefWidth="345.0" text="Digite o id do cidadao ou nome completo do cidadao" />
                </children>
             </AnchorPane>
          </children>

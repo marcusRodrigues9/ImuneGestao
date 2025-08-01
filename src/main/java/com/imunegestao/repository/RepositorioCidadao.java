@@ -1,11 +1,9 @@
 package com.imunegestao.repository;
 
-import com.imunegestao.models.pessoas.Cidadao;
-import com.imunegestao.models.vacinas.Vacina;
-
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+
+import com.imunegestao.models.pessoas.Cidadao;
 
 public class RepositorioCidadao {
 
@@ -49,8 +47,8 @@ public class RepositorioCidadao {
     public Cidadao buscarCidadaoPorId(int id) {
         return cidadaos.get(id);
     }
-
-    public boolean adicionarVacinaACidadao(int idCidadao, int idVacina) {
+}
+ /*  public boolean adicionarVacinaACidadao(int idCidadao, int idVacina) {
         Cidadao cidadao = buscarCidadaoPorId(idCidadao);
         if (cidadao != null) {
             if (!cidadao.getIdsVacinasTomadas().contains(idVacina)) {
@@ -80,7 +78,7 @@ public class RepositorioCidadao {
             return false;
         }
     }
-
+  
 
     public List<Integer> listarVacinasDeCidadao(int idCidadao) {
         Cidadao cidadao = buscarCidadaoPorId(idCidadao);
@@ -91,6 +89,6 @@ public class RepositorioCidadao {
     }
 }
 
-
-
+*/
+  
 
