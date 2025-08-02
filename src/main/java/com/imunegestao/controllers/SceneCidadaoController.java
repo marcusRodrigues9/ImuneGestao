@@ -286,16 +286,18 @@ public class SceneCidadaoController extends BaseController {
     // =================== FUNCIONALIDADES AUXILIARES ===================
 
     private void buscarCidadao() {
-        String cpf = buscar_cidadao.getText().trim();
-        if (cpf.isEmpty()) {
+        String textoBusca = buscar_cidadao.getText().trim().toLowerCase();
+
+        if (textoBusca.isEmpty()) {
             listaCidadaos.setAll(repositorioCidadao.listarCidadaos().values());
         } else {
             listaCidadaos.setAll(
                     repositorioCidadao.listarCidadaos().values().stream()
-                            .filter(c -> c.getCpf().equals(cpf))
+                            .filter(c -> c.getCpf().toLowerCase().contains(textoBusca))
                             .toList()
             );
         }
+
         tabela_cidadaos.refresh();
     }
 
