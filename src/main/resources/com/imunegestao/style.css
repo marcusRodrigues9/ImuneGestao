@@ -83,3 +83,44 @@
     -fx-background-color: #f0f0f0; /* Cor do trilho da barra de rolagem */
     -fx-background-radius: 5em;
 }
+/* Crie um arquivo styles.css na pasta resources/css/ */
+
+/* Status: REALIZADO - Verde */
+.table-row-cell.row-realizado {
+    -fx-background-color: #69e897;
+    -fx-text-fill: #155724;
+}
+
+.table-row-cell.row-realizado:selected {
+    -fx-background-color: #69e897;
+}
+
+/* Status: AGENDADO - Rosa */
+.table-row-cell.row-agendado {
+    -fx-background-color: #f8d7da;
+    -fx-text-fill: #721c24;
+}
+
+.table-row-cell.row-agendado:selected {
+    -fx-background-color: #f0a3aa;
+}
+
+/* Status: CONFIRMADO - Amarelo */
+.table-row-cell.row-confirmado {
+    -fx-background-color: #e2f279;
+    -fx-text-fill: #856404;
+}
+
+.table-row-cell.row-confirmado:selected {
+    -fx-background-color: #e2f279;
+}
+
+/* Status: CANCELADO - Vermelho */
+.table-row-cell.row-cancelado {
+    -fx-background-color: #f5c6cb;
+    -fx-text-fill: #721c24;
+}
+
+.table-row-cell.row-cancelado:selected {
+    -fx-background-color: #e86a6a;
+}

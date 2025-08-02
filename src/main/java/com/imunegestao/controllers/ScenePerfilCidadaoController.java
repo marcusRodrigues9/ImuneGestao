@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.stage.Stage;
 
 public class ScenePerfilCidadaoController extends BaseController {
@@ -24,6 +25,16 @@ public class ScenePerfilCidadaoController extends BaseController {
     @FXML private Label labelSexo;
     @FXML private Label labelIdade;
 
+    //colunas tabela
+    @FXML TableColumn<?, ?> coluna_data;
+    @FXML
+    private TableColumn<?, ?> coluna_fabricante;
+
+    @FXML
+    private TableColumn<?, ?> coluna_funcionario;
+
+    @FXML
+    private TableColumn<?, ?> coluna_vacina;
 
     @FXML
     public void initialize() {

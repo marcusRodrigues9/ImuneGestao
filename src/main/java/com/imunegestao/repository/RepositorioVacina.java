@@ -38,7 +38,6 @@ public class RepositorioVacina {
         return vacinas;
     }
 
-    // 🔧 ADICIONE ESTE MÉTODO
     public Vacina buscarVacinaPorId(int id) {
         return vacinas.get(id);
     }

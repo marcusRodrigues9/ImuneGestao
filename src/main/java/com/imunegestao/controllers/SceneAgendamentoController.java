@@ -10,6 +10,7 @@ import com.imunegestao.repository.RepositorioCidadao;
 import com.imunegestao.repository.RepositorioVacina;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -17,9 +18,15 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import com.imunegestao.models.agendamento.Agendamento;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class SceneAgendamentoController extends BaseController {
 
@@ -27,7 +34,9 @@ public class SceneAgendamentoController extends BaseController {
     private final RepositorioAgendamento repositorioAgendamento = RepositorioAgendamento.getInstancia();
     private final RepositorioVacina repositorioVacina = RepositorioVacina.getInstancia();
 
-    private final ObservableList<Agendamento> listaAgendamentos = FXCollections.observableArrayList();
+    private final ObservableList<Agendamento> listaAgendamentosBase = FXCollections.observableArrayList();
+    private final FilteredList<Agendamento> listaAgendamentos = new FilteredList<>(listaAgendamentosBase, a -> true);
+
     private final RepositorioCidadao repositorioCidadao = RepositorioCidadao.getInstancia();
 
     // Componentes FXML
@@ -74,7 +83,6 @@ public class SceneAgendamentoController extends BaseController {
         System.out.println("Vacinas no repositório ao iniciar agendamento:");
         repositorioVacina.listarVacinas().values().forEach(v -> System.out.println(v.getNome() + " - doses: " + v.getDosesDisponiveis()));
     }
-
     // Configura a tabela e colunas
     private void configurarTabela() {
         coluna_id.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -87,8 +95,10 @@ public class SceneAgendamentoController extends BaseController {
         coluna_doses.setCellValueFactory(new PropertyValueFactory<>("doses"));
 
         adicionarColunaAcoes();
+        configurarCoresLinhas();
 
-        listaAgendamentos.setAll(repositorioAgendamento.listarAgendamentos().values());
+        coluna_id.setVisible(false);
+        listaAgendamentosBase.setAll(repositorioAgendamento.listarAgendamentos().values());
         tabela_agendamento.setItems(listaAgendamentos);
     }
 
@@ -101,10 +111,24 @@ public class SceneAgendamentoController extends BaseController {
                 comboStatus.getItems().addAll(StatusAgendamento.values());
                 comboStatus.setOnAction(e -> {
                     Agendamento ag = getTableView().getItems().get(getIndex());
-                    ag.setStatus(comboStatus.getValue());
-                    tabela_agendamento.refresh();
+                    StatusAgendamento novoStatus = comboStatus.getValue();
+
+                    if (ag.getStatus() != novoStatus) {
+                        Alert confirmacao = new Alert(Alert.AlertType.CONFIRMATION);
+                        confirmacao.setTitle("Confirmar alteração");
+                        confirmacao.setHeaderText("Alterar status do agendamento");
+                        confirmacao.setContentText("Deseja alterar o status para " + novoStatus + "?");
+
+                        if (confirmacao.showAndWait().orElse(ButtonType.CANCEL) == ButtonType.OK) {
+                            ag.setStatus(novoStatus);
+                            tabela_agendamento.refresh();
+                        } else {
+                            comboStatus.setValue(ag.getStatus()); // Reverte a seleção
+                        }
+                    }
                 });
             }
+            // ... resto do código
 
             @Override
             protected void updateItem(Void item, boolean empty) {
@@ -169,7 +193,7 @@ public class SceneAgendamentoController extends BaseController {
         // Cria o agendamento
         Agendamento novo = new Agendamento(cidadao, data, vacina,doses, hora, StatusAgendamento.AGENDADO);
         repositorioAgendamento.adicionarAgendamento(novo);
-        listaAgendamentos.add(novo);
+        listaAgendamentosBase.setAll(repositorioAgendamento.listarAgendamentos().values()); // ✅ Atualiza com o filtro aplicado
 
         limparCampos();
         mostrarAlertaInformacao("Agendamento cadastrado com sucesso!");
@@ -183,7 +207,6 @@ public class SceneAgendamentoController extends BaseController {
         campo_hora.clear();
         campo_data.setValue(null);
         campo_nome_vacina.clear();
-        campo_id_vacina.clear();
         campo_doses.clear();
     }
 
@@ -231,23 +254,86 @@ public class SceneAgendamentoController extends BaseController {
     }
     @FXML
     private void buscarVacinaPorId() {
-        String idDigitado = campo_id_vacina.getText();
+        String idDigitado = campo_id_vacina.getText().trim();
 
-        int idVacina;
-        try {
-            idVacina = Integer.parseInt(idDigitado);
-        } catch (NumberFormatException e) {
-            mostrarAlertaErro("ID da vacina inválido.");
+        if (idDigitado.isEmpty()) {
+            campo_nome_vacina.clear();
             return;
         }
 
-        Vacina vacina = repositorioVacina.buscarVacinaPorId(idVacina);
-        if (vacina != null) {
-            campo_nome_vacina.setText(vacina.getNome());
-        } else {
+        try {
+            int idVacina = Integer.parseInt(idDigitado);
+            Vacina vacina = repositorioVacina.buscarVacinaPorId(idVacina);
+
+            if (vacina != null) {
+                campo_nome_vacina.setText(vacina.getNome());
+            } else {
+                campo_nome_vacina.clear();
+                // Só mostra erro se o usuário digitou um ID válido mas não encontrado
+                if (!idDigitado.isEmpty()) {
+                    mostrarAlertaErro("Vacina com ID " + idVacina + " não encontrada.");
+                }
+            }
+        } catch (NumberFormatException e) {
             campo_nome_vacina.clear();
-            mostrarAlertaErro("Vacina com ID " + idVacina + " não encontrada.");
+            // Só mostra erro se não for apenas caracteres não numéricos iniciais
+            if (!idDigitado.isEmpty()) {
+                mostrarAlertaErro("ID da vacina deve ser um número válido.");
+            }
         }
     }
 
+    private void esconderCancelados() {
+        listaAgendamentos.setPredicate(agendamento ->
+                agendamento.getStatus() != StatusAgendamento.CANCELADO
+        );
+    }
+    private void mostrarTodos() {
+        listaAgendamentos.setPredicate(agendamento -> true);
+    }
+    @FXML
+    private ToggleButton toggle_ocultar_cancelados;
+
+    @FXML
+    private void alternarFiltroCancelados() {
+        if (toggle_ocultar_cancelados.isSelected()) {
+            esconderCancelados();
+        } else {
+            mostrarTodos();
+        }
+    }
+
+    // Adicione este método na sua classe SceneAgendamentoController
+
+    private void configurarCoresLinhas() {
+        tabela_agendamento.setRowFactory(tv -> new TableRow<Agendamento>() {
+            @Override
+            protected void updateItem(Agendamento agendamento, boolean empty) {
+                super.updateItem(agendamento, empty);
+
+                // Remove todas as classes de status anteriores
+                getStyleClass().removeAll("row-realizado", "row-agendado", "row-confirmado", "row-cancelado");
+
+                if (empty || agendamento == null) {
+                    return;
+                }
+
+                // Adiciona a classe CSS baseada no status
+                switch (agendamento.getStatus()) {
+                    case REALIZADO:
+                        getStyleClass().add("row-realizado");
+                        break;
+                    case AGENDADO:
+                        getStyleClass().add("row-agendado");
+                        break;
+                    case CONFIRMADO:
+                        getStyleClass().add("row-confirmado");
+                        break;
+                    case CANCELADO:
+                        getStyleClass().add("row-cancelado");
+                        break;
+                }
+            }
+        });
+    }
 }
