@@ -85,31 +85,31 @@
 }
 /* Crie um arquivo styles.css na pasta resources/css/ */
 
-/* Status: REALIZADO - Verde */
 .table-row-cell.row-realizado {
-    -fx-background-color: #69e897;
-    -fx-text-fill: #155724;
+    -fx-background-color: #d4edda !important; /* Verde claro */
+    -fx-text-fill: #155724 !important;
 }
 
-.table-row-cell.row-realizado:selected {
-    -fx-background-color: #69e897;
-}
-
-/* Status: AGENDADO - Rosa */
 .table-row-cell.row-agendado {
-    -fx-background-color: #f8d7da;
-    -fx-text-fill: #721c24;
+    -fx-background-color: #fff3cd !important; /* Amarelo claro */
+    -fx-text-fill: #856404 !important;
 }
 
-.table-row-cell.row-agendado:selected {
-    -fx-background-color: #f0a3aa;
-}
-
-/* Status: CONFIRMADO - Amarelo */
 .table-row-cell.row-confirmado {
-    -fx-background-color: #e2f279;
-    -fx-text-fill: #856404;
+    -fx-background-color: #cce5ff !important; /* Azul claro */
+    -fx-text-fill: #004085 !important;
 }
+
+.table-row-cell.row-cancelado {
+    -fx-background-color: #f8d7da !important; /* Vermelho claro */
+    -fx-text-fill: #721c24 !important;
+}
+
+/* Remove a seleção padrão para evitar conflitos */
+.table-row-cell:selected {
+    -fx-background-color: derive(-fx-selection-bar, 50%) !important;
+}
+
 
 .table-row-cell.row-confirmado:selected {
     -fx-background-color: #e2f279;

@@ -6,15 +6,6 @@ public enum StatusAgendamento {
     REALIZADO,
     CANCELADO;
 
-    public int getPrioridade() {
-        switch(this) {
-            case AGENDADO: return 0;      // maior prioridade
-            case CONFIRMADO: return 1;
-            case REALIZADO: return 2;
-            case CANCELADO: return 3;     // menor prioridade
-            default: return 99;
-        }
-    }
     @Override
     public String toString() {
         switch (this) {

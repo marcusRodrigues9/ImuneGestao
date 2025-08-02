@@ -8,9 +8,11 @@ import com.imunegestao.models.vacinas.Vacina;
 import com.imunegestao.repository.RepositorioAgendamento;
 import com.imunegestao.repository.RepositorioCidadao;
 import com.imunegestao.repository.RepositorioVacina;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -35,7 +37,8 @@ public class SceneAgendamentoController extends BaseController {
     private final RepositorioVacina repositorioVacina = RepositorioVacina.getInstancia();
 
     private final ObservableList<Agendamento> listaAgendamentosBase = FXCollections.observableArrayList();
-    private final FilteredList<Agendamento> listaAgendamentos = new FilteredList<>(listaAgendamentosBase, a -> true);
+    private final FilteredList<Agendamento> listaAgendamentosFiltrada = new FilteredList<>(listaAgendamentosBase, a -> true);
+    private final SortedList<Agendamento> listaAgendamentos = new SortedList<>(listaAgendamentosFiltrada);
 
     private final RepositorioCidadao repositorioCidadao = RepositorioCidadao.getInstancia();
 
@@ -69,6 +72,8 @@ public class SceneAgendamentoController extends BaseController {
     @FXML
     public void initialize() {
         configurarTabela();
+        configurarBusca();
+
         campo_cpf.textProperty().addListener((obs, oldText, newText) -> {
             Cidadao c = repositorioCidadao.buscarCidadaoPorCpf(newText);
             if (c != null) {
@@ -77,11 +82,21 @@ public class SceneAgendamentoController extends BaseController {
                 campo_nome.clear();
             }
         });
+
         campo_id_vacina.textProperty().addListener((obs, oldText, newText) -> {
             buscarVacinaPorId();
         });
+
+        // ✅ CORREÇÃO: Garante que a lista seja carregada corretamente no início
+        Platform.runLater(() -> {
+            atualizarListaCompleta();
+            debugListaAgendamentos(); // Remova esta linha depois de testar
+        });
+
         System.out.println("Vacinas no repositório ao iniciar agendamento:");
-        repositorioVacina.listarVacinas().values().forEach(v -> System.out.println(v.getNome() + " - doses: " + v.getDosesDisponiveis()));
+        repositorioVacina.listarVacinas().values().forEach(v ->
+                System.out.println(v.getNome() + " - doses: " + v.getDosesDisponiveis())
+        );
     }
     // Configura a tabela e colunas
     private void configurarTabela() {
@@ -96,11 +111,13 @@ public class SceneAgendamentoController extends BaseController {
 
         adicionarColunaAcoes();
         configurarCoresLinhas();
+        configurarOrdenacaoPorPrioridade(); // ✅ Adicione esta linha
 
         coluna_id.setVisible(false);
         listaAgendamentosBase.setAll(repositorioAgendamento.listarAgendamentos().values());
         tabela_agendamento.setItems(listaAgendamentos);
     }
+
 
     // Coluna para alterar status via ComboBox
     private void adicionarColunaAcoes() {
@@ -121,14 +138,15 @@ public class SceneAgendamentoController extends BaseController {
 
                         if (confirmacao.showAndWait().orElse(ButtonType.CANCEL) == ButtonType.OK) {
                             ag.setStatus(novoStatus);
-                            tabela_agendamento.refresh();
+
+                            // ✅ CORREÇÃO: Usa o método de atualização completa
+                            atualizarListaCompleta();
                         } else {
-                            comboStatus.setValue(ag.getStatus()); // Reverte a seleção
+                            comboStatus.setValue(ag.getStatus());
                         }
                     }
                 });
             }
-            // ... resto do código
 
             @Override
             protected void updateItem(Void item, boolean empty) {
@@ -143,6 +161,20 @@ public class SceneAgendamentoController extends BaseController {
             }
         });
     }
+    public void debugListaAgendamentos() {
+        System.out.println("=== DEBUG LISTA AGENDAMENTOS ===");
+        System.out.println("Total no repositório: " + repositorioAgendamento.listarAgendamentos().size());
+        System.out.println("Total na lista base: " + listaAgendamentosBase.size());
+        System.out.println("Total na lista filtrada: " + listaAgendamentosFiltrada.size());
+        System.out.println("Total na lista final (tabela): " + listaAgendamentos.size());
+
+        System.out.println("Agendamentos na lista base:");
+        listaAgendamentosBase.forEach(a ->
+                System.out.println("  - " + a.getNome() + " (" + a.getStatus() + ")")
+        );
+        System.out.println("================================");
+    }
+
 
     // Salvar agendamento
     @FXML
@@ -191,14 +223,25 @@ public class SceneAgendamentoController extends BaseController {
         vacina.setDosesDisponiveis(vacina.getDosesDisponiveis() - doses);
 
         // Cria o agendamento
-        Agendamento novo = new Agendamento(cidadao, data, vacina,doses, hora, StatusAgendamento.AGENDADO);
+        Agendamento novo = new Agendamento(cidadao, data, vacina, doses, hora, StatusAgendamento.AGENDADO);
         repositorioAgendamento.adicionarAgendamento(novo);
-        listaAgendamentosBase.setAll(repositorioAgendamento.listarAgendamentos().values()); // ✅ Atualiza com o filtro aplicado
+
+        // ✅ CORREÇÃO: Atualiza PRIMEIRO a lista base
+        atualizarListaCompleta();
 
         limparCampos();
         mostrarAlertaInformacao("Agendamento cadastrado com sucesso!");
     }
+    private void atualizarListaCompleta() {
+        // Atualiza a lista base com todos os agendamentos do repositório
+        listaAgendamentosBase.setAll(repositorioAgendamento.listarAgendamentos().values());
 
+        // Força a reaplicação dos filtros para garantir que tudo apareça corretamente
+        Platform.runLater(() -> {
+            aplicarFiltros();
+            atualizarCoresTabela();
+        });
+    }
 
     // Limpar campos do formulário
     private void limparCampos() {
@@ -218,6 +261,8 @@ public class SceneAgendamentoController extends BaseController {
 
     @FXML
     void mostrar_tabela_agendamento(ActionEvent event) {
+        // ✅ CORREÇÃO: Atualiza a lista ANTES de mostrar a tela
+        atualizarListaCompleta();
         mostrarTela(tela_agendamento, formulario_agendamento);
     }
 
@@ -284,25 +329,58 @@ public class SceneAgendamentoController extends BaseController {
     }
 
     private void esconderCancelados() {
-        listaAgendamentos.setPredicate(agendamento ->
+        listaAgendamentosFiltrada.setPredicate(agendamento ->
                 agendamento.getStatus() != StatusAgendamento.CANCELADO
         );
     }
     private void mostrarTodos() {
-        listaAgendamentos.setPredicate(agendamento -> true);
+        listaAgendamentosFiltrada.setPredicate(agendamento -> true);
     }
     @FXML
     private ToggleButton toggle_ocultar_cancelados;
 
     @FXML
     private void alternarFiltroCancelados() {
-        if (toggle_ocultar_cancelados.isSelected()) {
-            esconderCancelados();
-        } else {
-            mostrarTodos();
-        }
+        // ✅ CORREÇÃO: Primeiro atualiza a lista, depois aplica filtros
+        Platform.runLater(() -> {
+            aplicarFiltros();
+            atualizarCoresTabela();
+        });
     }
 
+    private void aplicarFiltros() {
+        String textoBusca = buscar_agendamento != null ? buscar_agendamento.getText().toLowerCase().trim() : "";
+        boolean ocultarCancelados = toggle_ocultar_cancelados != null && toggle_ocultar_cancelados.isSelected();
+
+        // ✅ DEBUG: Adicione logs para verificar o que está acontecendo
+        System.out.println("Aplicando filtros - Total de agendamentos: " + listaAgendamentosBase.size());
+        System.out.println("Texto busca: '" + textoBusca + "'");
+        System.out.println("Ocultar cancelados: " + ocultarCancelados);
+
+        listaAgendamentosFiltrada.setPredicate(agendamento -> {
+            // Primeiro verifica o filtro de cancelados
+            if (ocultarCancelados && agendamento.getStatus() == StatusAgendamento.CANCELADO) {
+                return false;
+            }
+
+            // Se não há texto de busca, mostra todos os não-cancelados
+            if (textoBusca.isEmpty()) {
+                return true;
+            }
+
+            // Se há texto de busca, aplica a busca nos não-cancelados
+            boolean match = agendamento.getNome().toLowerCase().contains(textoBusca) ||
+                    agendamento.getCpf().contains(textoBusca) ||
+                    agendamento.getVacina().toLowerCase().contains(textoBusca) ||
+                    agendamento.getStatus().toString().toLowerCase().contains(textoBusca) ||
+                    agendamento.getData().toString().contains(textoBusca);
+
+            return match;
+        });
+
+        // ✅ DEBUG: Mostra quantos itens passaram no filtro
+        System.out.println("Itens após filtro: " + listaAgendamentosFiltrada.size());
+    }
     // Adicione este método na sua classe SceneAgendamentoController
 
     private void configurarCoresLinhas() {
@@ -311,29 +389,102 @@ public class SceneAgendamentoController extends BaseController {
             protected void updateItem(Agendamento agendamento, boolean empty) {
                 super.updateItem(agendamento, empty);
 
-                // Remove todas as classes de status anteriores
+                // Limpa todos os estilos anteriores
                 getStyleClass().removeAll("row-realizado", "row-agendado", "row-confirmado", "row-cancelado");
+
+                // Remove estilos inline que podem estar causando conflito
+                setStyle("");
 
                 if (empty || agendamento == null) {
                     return;
                 }
 
-                // Adiciona a classe CSS baseada no status
+                // Aplica o estilo baseado no status
+                String estiloClass = "";
                 switch (agendamento.getStatus()) {
                     case REALIZADO:
-                        getStyleClass().add("row-realizado");
+                        estiloClass = "row-realizado";
                         break;
                     case AGENDADO:
-                        getStyleClass().add("row-agendado");
+                        estiloClass = "row-agendado";
                         break;
                     case CONFIRMADO:
-                        getStyleClass().add("row-confirmado");
+                        estiloClass = "row-confirmado";
                         break;
                     case CANCELADO:
-                        getStyleClass().add("row-cancelado");
+                        estiloClass = "row-cancelado";
                         break;
                 }
+
+                if (!estiloClass.isEmpty()) {
+                    getStyleClass().add(estiloClass);
+                }
             }
+
+            @Override
+            public void updateSelected(boolean selected) {
+                super.updateSelected(selected);
+                // Força a atualização do item quando a seleção muda
+                updateItem(getItem(), isEmpty());
+            }
+        });
+    }
+
+    private void configurarOrdenacaoPorPrioridade() {
+        Comparator<Agendamento> comparadorPrioridade = (a1, a2) -> {
+            int prioridade1 = obterPrioridadeStatus(a1.getStatus());
+            int prioridade2 = obterPrioridadeStatus(a2.getStatus());
+
+            // Compara por prioridade primeiro (menor número = maior prioridade)
+            int comparacaoPrioridade = Integer.compare(prioridade1, prioridade2);
+
+            if (comparacaoPrioridade != 0) {
+                return comparacaoPrioridade;
+            }
+
+            // Se a prioridade for igual, ordena por data (mais próxima primeiro)
+            int comparacaoData = a1.getData().compareTo(a2.getData());
+
+            if (comparacaoData != 0) {
+                return comparacaoData;
+            }
+
+            // Se data também for igual, ordena por hora
+            return a1.getHora().compareTo(a2.getHora());
+        };
+
+        // ✅ CORREÇÃO: Agora usa SortedList que tem o método setComparator
+        listaAgendamentos.setComparator(comparadorPrioridade);
+    }
+    private int obterPrioridadeStatus(StatusAgendamento status) {
+        switch (status) {
+            case AGENDADO:
+                return 1; // Prioridade máxima
+            case CONFIRMADO:
+                return 2; // Segunda prioridade
+            case REALIZADO:
+                return 3; // Terceira prioridade
+            case CANCELADO:
+                return 4; // Prioridade mínima
+            default:
+                return 5; // Outros status (se houver)
+        }
+    }
+    private void configurarBusca() {
+        buscar_agendamento.textProperty().addListener((obs, oldText, newText) -> {
+            aplicarFiltros();
+        });
+    }
+    private void atualizarCoresTabela() {
+        Platform.runLater(() -> {
+            // Força refresh completo da tabela
+            tabela_agendamento.refresh();
+
+            // Se ainda não funcionar, force uma nova atribuição
+            ObservableList<Agendamento> currentItems = tabela_agendamento.getItems();
+            tabela_agendamento.setItems(null);
+            tabela_agendamento.layout(); // Força o layout
+            tabela_agendamento.setItems(currentItems);
         });
     }
 }
