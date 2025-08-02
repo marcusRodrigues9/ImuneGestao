@@ -86,11 +86,15 @@
          <children>
             <AnchorPane fx:id="formulario_agendamento" layoutX="443.0" layoutY="46.0" prefHeight="504.0" prefWidth="507.0" style="-fx-border-radius: 15;" visible="false" AnchorPane.bottomAnchor="111.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="46.0">
                <children>
-                  <VBox layoutX="520.0" layoutY="127.0" prefHeight="160.0" prefWidth="490.0" spacing="20.0" AnchorPane.leftAnchor="435.0" AnchorPane.rightAnchor="435.0">
+                  <VBox layoutX="520.0" layoutY="127.0" prefHeight="186.0" prefWidth="490.0" spacing="20.0" AnchorPane.leftAnchor="435.0" AnchorPane.rightAnchor="435.0">
                      <children>
-                        <TextField fx:id="campo_cpf" prefHeight="33.0" promptText="Digite o CPF do paciente" />
-                        <DatePicker fx:id="campo_data" prefHeight="31.0" prefWidth="424.0" />
-                        <TextField fx:id="campo_horario" prefHeight="33.0" promptText="Digite o horario em horas:minutos" />
+                        <TextField fx:id="campo_cpf" onKeyReleased="#buscarNomePorCpf" prefHeight="33.0" promptText="Digite o CPF do paciente" />
+                        <TextField fx:id="campo_nome" prefHeight="33.0" promptText="nome do paciente" />
+                        <TextField fx:id="campo_id_vacina" prefHeight="33.0" promptText="id da vacina" />
+                        <TextField fx:id="campo_nome_vacina" prefHeight="33.0" promptText="nme da vacina" />
+                        <TextField fx:id="campo_doses" prefHeight="33.0" promptText="Quantidade de doses" />
+                        <DatePicker fx:id="campo_data" prefHeight="34.0" prefWidth="424.0" />
+                        <TextField fx:id="campo_hora" prefHeight="38.0" prefWidth="424.0" promptText="Digite o horario em horas:minutos" />
                      </children>
                      <padding>
                         <Insets left="33.0" right="33.0" />
@@ -101,7 +105,7 @@
                         <Font name="Arial Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Button fx:id="realizar_cadastro_agendamento" layoutX="555.0" layoutY="292.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="250.0" text="Agendar" AnchorPane.leftAnchor="555.0" AnchorPane.rightAnchor="555.0" />
+                  <Button layoutX="555.0" layoutY="440.0" mnemonicParsing="false" onAction="#salvarAgendamento" prefHeight="24.0" prefWidth="250.0" text="Agendar" AnchorPane.leftAnchor="555.0" AnchorPane.rightAnchor="555.0" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="tela_agendamento" layoutY="-3.0" prefHeight="665.0" prefWidth="1359.0">
@@ -111,12 +115,17 @@
                         <Font name="Arial Bold" size="34.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="tabela_agendamento" layoutX="25.0" layoutY="230.0" prefHeight="365.0" prefWidth="1232.0" style="-fx-background-color: white; -fx-border-color: gray;" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="165.0">
+                  <TableView fx:id="tabela_agendamento" layoutX="14.0" layoutY="232.0" prefHeight="365.0" prefWidth="1300.0" style="-fx-background-color: white; -fx-border-color: gray;" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="45.0">
                      <columns>
-                        <TableColumn prefWidth="75.0" text="Id" />
-                        <TableColumn prefWidth="149.0" text="Nome" />
-                        <TableColumn prefWidth="160.0" text="data" />
-                        <TableColumn prefWidth="160.0" text="horario" />
+                        <TableColumn fx:id="coluna_id" prefWidth="75.0" text="Id" />
+                        <TableColumn fx:id="coluna_nome" prefWidth="149.0" text="Nome" />
+                        <TableColumn fx:id="coluna_cpf" prefWidth="160.0" text="cpf" />
+                        <TableColumn fx:id="coluna_vacina" prefWidth="160.0" text="vacina" />
+                        <TableColumn fx:id="coluna_data" prefWidth="160.0" text="data" />
+                        <TableColumn fx:id="coluna_hora" prefWidth="160.0" text="horario" />
+                        <TableColumn fx:id="coluna_doses" prefWidth="160.0" text="Doses" />
+                        <TableColumn fx:id="coluna_status" prefWidth="160.0" text="status" />
+                        <TableColumn fx:id="coluna_acao" prefWidth="112.0" text="ação" />
                      </columns>
                   </TableView>
                   <TextField fx:id="buscar_agendamento" layoutX="454.0" layoutY="140.0" prefHeight="33.0" prefWidth="345.0" text="Digite o id do cidadao ou nome completo do cidadao" />

@@ -47,6 +47,12 @@ public class RepositorioCidadao {
     public Cidadao buscarCidadaoPorId(int id) {
         return cidadaos.get(id);
     }
+    public Cidadao buscarCidadaoPorCpf(String cpf) {
+        return cidadaos.values().stream()
+                .filter(c -> c.getCpf().equals(cpf))
+                .findFirst()
+                .orElse(null);
+    }
 }
  /*  public boolean adicionarVacinaACidadao(int idCidadao, int idVacina) {
         Cidadao cidadao = buscarCidadaoPorId(idCidadao);

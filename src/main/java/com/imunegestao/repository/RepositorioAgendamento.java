@@ -18,9 +18,8 @@ public class RepositorioAgendamento {
     }
 
     public void adicionarAgendamento(Agendamento agendamento) {
-        int id = encontrarMenorIdDisponivel();
-        agendamento.setId(id);
-        agendamentos.put(id, agendamento);
+        agendamento.setId(proximoId++);
+        agendamentos.put(agendamento.getId(), agendamento);
     }
 
     public Map<Integer, Agendamento> listarAgendamentos() {

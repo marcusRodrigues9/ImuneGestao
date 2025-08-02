@@ -9,37 +9,43 @@ import java.time.LocalTime;
 
 public class Agendamento {
     private int id;
-    private String nome;
     private Cidadao cidadao;
-    private Vacina vacina;
     private LocalDate data;
+    private Vacina vacina;
+    private int doses;
     private String hora;
     private StatusAgendamento status; // agendado, confirmado, realizado, cancelado
 
-    public Agendamento(String nome, Cidadao cidadao, Vacina vacina, LocalDate data, String hora, StatusAgendamento status) {
-        this.nome = nome;
+    public Agendamento( Cidadao cidadao, LocalDate data, Vacina vacina,int doses, String hora, StatusAgendamento status) {
         this.cidadao = cidadao;
-        this.vacina = vacina;
         this.data = data;
+        this.vacina = vacina;
+        this.doses = doses;
         this.hora = hora;
         this.status = status;
     }
+    public int getDoses() {
+        return doses;
+    }
 
+    public void setDoses(int doses) {
+        this.doses = doses;
+    }
     public int getId() {return id;}
 
     public void setId(int id) {this.id = id;}
 
-    public String getNome() {return nome;}
+    public String getCpf() {
+        return cidadao != null ? cidadao.getCpf() : "";
+    }
 
-    public void setNome(String nome) {this.nome = nome;}
+    public String getNome() {
+        return cidadao != null ? cidadao.getNome() : "";
+    }
+    public String getVacina() {
+        return vacina != null ? vacina.getNome() : "";
+    }
 
-    public Cidadao getCidadao() {return cidadao;}
-
-    public void setCidadao(Cidadao cidadao) {this.cidadao = cidadao;}
-
-    public Vacina getVacina() {return vacina;}
-
-    public void setVacina(Vacina vacina) {this.vacina = vacina;}
 
     public LocalDate getData() {return data;}
 

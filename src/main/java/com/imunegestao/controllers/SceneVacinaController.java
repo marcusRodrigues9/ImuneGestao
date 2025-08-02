@@ -51,19 +51,14 @@ public class SceneVacinaController extends BaseController {
 
     @FXML
     public void initialize() {
-        carregarVacinasIniciais();
         configurarTabela();
-    }
+        carregarVacinas();
 
-    private void carregarVacinasIniciais() {
-        if (repositorioVacina.listarVacinas().isEmpty()) {
-            Vacina v1 = new Vacina("Gripe", "Cimed", 5, 2, LocalDate.now().plusMonths(6));
-            Vacina v2 = new Vacina("Covid-19", "BioPharma", 10, 2, LocalDate.now().plusMonths(12));
-            repositorioVacina.adicionarVacina(v1);
-            repositorioVacina.adicionarVacina(v2);
-        }
+    }
+    private void carregarVacinas() {
         listaVacinas.setAll(repositorioVacina.listarVacinas().values());
     }
+
 
     private void configurarTabela() {
         coluna_id.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -154,6 +149,7 @@ public class SceneVacinaController extends BaseController {
     @FXML
     private void mostrar_tabela_vacina(ActionEvent event) {
         iniciarTabela();
+        carregarVacinas();
         mostrarTela(tela_vacina, formulario_vacina);
     }
 
