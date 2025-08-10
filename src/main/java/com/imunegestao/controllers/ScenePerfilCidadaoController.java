@@ -1,15 +1,22 @@
 package com.imunegestao.controllers;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 import com.imunegestao.Main;
+import com.imunegestao.models.RegistroVacina;
 import com.imunegestao.models.pessoas.Cidadao;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 public class ScenePerfilCidadaoController extends BaseController {
@@ -25,19 +32,27 @@ public class ScenePerfilCidadaoController extends BaseController {
     @FXML private Label labelSexo;
     @FXML private Label labelIdade;
 
-    //colunas tabela
-    @FXML TableColumn<?, ?> coluna_data;
-    @FXML
-    private TableColumn<?, ?> coluna_fabricante;
 
-    @FXML
-    private TableColumn<?, ?> coluna_funcionario;
+    @FXML private TableView<RegistroVacina> tabela_historico;
 
-    @FXML
-    private TableColumn<?, ?> coluna_vacina;
+    @FXML private TableColumn<RegistroVacina, LocalDate> coluna_data;
+    @FXML private TableColumn<RegistroVacina, String> coluna_vacina;
+    @FXML private TableColumn<RegistroVacina, String> coluna_fabricante;
+    //@FXML private TableColumn<RegistroVacina, String> coluna_funcionario;
+
+    private ObservableList<RegistroVacina> listaDeVacinasTomadas;
 
     @FXML
     public void initialize() {
+        // Inicializa a lista e a tabela
+        listaDeVacinasTomadas = FXCollections.observableArrayList();
+        tabela_historico.setItems(listaDeVacinasTomadas);
+
+        // Configura as colunas
+        coluna_data.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getDataAplicacao()));
+        coluna_vacina.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getVacina().getNome()));
+        coluna_fabricante.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getVacina().getFabricante()));
+        //coluna_funcionario.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNomeFuncionario()));
 
     }
 
@@ -45,6 +60,13 @@ public class ScenePerfilCidadaoController extends BaseController {
     public void setCidadao(Cidadao cidadao) {
         this.cidadaoAtual = cidadao; // Armazena o cidadão recebido
         preencherDadosCidadao();    // Preenche os Labels com os dados
+        carregarVacinasDoCidadao();
+    }
+    private void carregarVacinasDoCidadao() {
+        if (cidadaoAtual != null) {
+            listaDeVacinasTomadas.clear();
+            listaDeVacinasTomadas.addAll(cidadaoAtual.getVacinasTomadas());
+        }
     }
 
 

@@ -1,6 +1,10 @@
 package com.imunegestao;
 
+import com.imunegestao.models.RegistroVacina;
+import com.imunegestao.models.pessoas.Cidadao;
+import com.imunegestao.models.pessoas.ProfissionalSaude;
 import com.imunegestao.models.vacinas.Vacina;
+import com.imunegestao.repository.RepositorioCidadao;
 import com.imunegestao.repository.RepositorioVacina;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -32,6 +36,8 @@ public class Main extends Application {
             repositorioVacina.adicionarVacina(v1);
             repositorioVacina.adicionarVacina(v2);
         }
+
+
     }
     public static void main(String[] args) {
         launch(args);

@@ -149,7 +149,7 @@
                     <columns>
                         <TableColumn fx:id="coluna_vacina" prefWidth="143.0" text="Vacina" />
                         <TableColumn fx:id="coluna_fabricante" minWidth="0.0" prefWidth="170.0" text="fabricante" />
-                  <TableColumn fx:id="coluna_data" prefWidth="143.0" text="data de aplicação" />
+                        <TableColumn fx:id="coluna_data" prefWidth="143.0" text="data de aplicação" />
                         <TableColumn fx:id="coluna_funcionario" minWidth="3.0" prefWidth="181.0" text="funcionario" />
                     </columns>
                 </TableView>

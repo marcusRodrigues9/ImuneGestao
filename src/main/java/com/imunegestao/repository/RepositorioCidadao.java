@@ -3,6 +3,7 @@ package com.imunegestao.repository;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.imunegestao.models.RegistroVacina;
 import com.imunegestao.models.pessoas.Cidadao;
 
 public class RepositorioCidadao {
@@ -53,48 +54,14 @@ public class RepositorioCidadao {
                 .findFirst()
                 .orElse(null);
     }
-}
- /*  public boolean adicionarVacinaACidadao(int idCidadao, int idVacina) {
-        Cidadao cidadao = buscarCidadaoPorId(idCidadao);
-        if (cidadao != null) {
-            if (!cidadao.getIdsVacinasTomadas().contains(idVacina)) {
-                cidadao.adicionarVacinaTomada(idVacina);
 
-                RepositorioVacina repVacina = RepositorioVacina.getInstancia(); // Acessa o repositório de vacinas
-                Vacina vacina = repVacina.listarVacinas().get(idVacina); // Busca a vacina pelo ID
-                String nomeVacina = (vacina != null) ? vacina.getNome() : "Vacina Desconhecida";
-                System.out.println("Vacina '" + nomeVacina + "' (ID: " + idVacina + ") foi adicionada ao cidadão '" + cidadao.getNome() + "' (ID: " + cidadao.getId() + ").");
-
-                return true;
-            } else {
-                System.out.println("Vacina (ID: " + idVacina + ") já registrada para o cidadão '" + cidadao.getNome() + "' (ID: " + cidadao.getId() + ").");
-                return false;
-            }
-        } else {
-            System.out.println("Cidadão com ID " + idCidadao + " não encontrado.");
-            return false;
-        }
-    }
-    public boolean removerVacinaDeCidadao(int idCidadao, int idVacina) {
+    public void registrarVacinaParaCidadao(int idCidadao, RegistroVacina registro){
         Cidadao cidadao = buscarCidadaoPorId(idCidadao);
-        if (cidadao != null) {
-            return cidadao.getIdsVacinasTomadas().remove(Integer.valueOf(idVacina)); // Remove o objeto Integer
-        } else {
-            System.out.println("Cidadão com ID " + idCidadao + " não encontrado.");
-            return false;
+        if (cidadao != null){
+           cidadao.adicionarVacina(registro);
         }
-    }
-  
-
-    public List<Integer> listarVacinasDeCidadao(int idCidadao) {
-        Cidadao cidadao = buscarCidadaoPorId(idCidadao);
-        if (cidadao != null) {
-            return cidadao.getIdsVacinasTomadas();
-        }
-        return null;
     }
 }
 
-*/
   
 
