@@ -247,9 +247,8 @@ public class SceneCidadaoController extends BaseController {
     }
 
     @FXML
-    private void sair(ActionEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(Main.getCenaLogin());
+    public void sair(ActionEvent event) {
+        super.sair(event);
     }
 
     // NOVO MÉTODO: Ação para o MenuItem "Cartão de Vacina"

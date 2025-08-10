@@ -16,7 +16,7 @@ public class ScenePerfilCidadaoController extends BaseController {
     // --- Variável de Instância ---
     private Cidadao cidadaoAtual; // Variável para armazenar o cidadão que está sendo visualizado
 
-    // --- Componentes FXML (conectados ao seu Scene_Perfil_Cidadao.fxml) ---
+    // --- Componentes FXML ---
     @FXML private Label labelNome;
     @FXML private Label labelCpf;
     @FXML private Label labelEndereco;
@@ -47,18 +47,18 @@ public class ScenePerfilCidadaoController extends BaseController {
         preencherDadosCidadao();    // Preenche os Labels com os dados
     }
 
-    // Preenche os Labels na tela com os dados do cidadão atual
+
     private void preencherDadosCidadao() {
         if (cidadaoAtual != null) {
             labelNome.setText(cidadaoAtual.getNome());
             labelCpf.setText(cidadaoAtual.getCpf());
             labelEndereco.setText(cidadaoAtual.getEndereco());
-            labelEmail.setText(cidadaoAtual.getNumeroTelefone()); // Era 'Email', ajustado para 'NumeroTelefone' se for o caso
-            labelTelefone.setText(cidadaoAtual.getEmail()); // Era 'Telefone', ajustado para 'Email' se for o caso
+            labelEmail.setText(cidadaoAtual.getNumeroTelefone());
+            labelTelefone.setText(cidadaoAtual.getEmail());
             labelSexo.setText(cidadaoAtual.getSexo());
             labelIdade.setText(String.valueOf(cidadaoAtual.getIdade())); // Converte int para String
         } else {
-            // Se por algum motivo o cidadão for nulo, limpe os campos ou mostre uma mensagem padrão
+            // Se por algum motivo o cidadão for nulo.
             labelNome.setText("N/A");
             labelCpf.setText("N/A");
             labelEndereco.setText("N/A");
@@ -69,22 +69,20 @@ public class ScenePerfilCidadaoController extends BaseController {
         }
     }
 
-    // --- Métodos de Navegação (se necessário, copie do SceneCidadaoController ou BaseController) ---
+
     @FXML
     private void voltarParaCidadaos(ActionEvent event) {
-        // Este método só será necessário se você tiver um botão "Voltar" no seu Scene_Perfil_Cidadao.fxml
+
         try {
             trocarCena(event, "/com/imunegestao/views/Scene_Visualizar_Cidadao.fxml", "Cidadãos");
         } catch (IOException e) {
             e.printStackTrace();
-            // Use o seu método de alerta de erro, como você ajustou no SceneCidadaoController
             mostrarAlertaErro("Erro ao voltar para a tela de cidadãos.");
         }
     }
 
     @FXML
-    private void sair(ActionEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(Main.getCenaLogin());
+    public void sair(ActionEvent event){
+        super.sair(event);
     }
 }

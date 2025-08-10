@@ -1,5 +1,6 @@
 package com.imunegestao.controllers;
 
+import com.imunegestao.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -32,6 +33,10 @@ public abstract class BaseController {
         stage.setScene(novaCena);
         stage.setTitle(titulo);
         stage.show();
+    }
+    protected void sair(ActionEvent event){
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(Main.getCenaLogin());
     }
 
     public static void mostrarAlertaInformacao(String mensagem) {
