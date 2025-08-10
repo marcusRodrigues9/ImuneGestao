@@ -276,17 +276,14 @@ public class SceneCidadaoController extends BaseController {
         super.sair(event);
     }
 
-    // NOVO MÉTODO: Ação para o MenuItem "Cartão de Vacina"
+
     @FXML
     private void abrirCartaoVacinaMenu(ActionEvent event) {
         Cidadao cidadaoSelecionado = tabela_cidadaos.getSelectionModel().getSelectedItem(); // Pega o cidadão da tabela
 
-
-        // Se um cidadão foi selecionado, chame o método que abre a tela de perfil
         visualizarPerfilCidadao(cidadaoSelecionado, event);
     }
 
-    // Método que abre a tela de perfil, que já te passei e você já deve ter
     private void visualizarPerfilCidadao(Cidadao cidadao, ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/imunegestao/views/Scene_Visualizar_PerfilCidadao.fxml"));

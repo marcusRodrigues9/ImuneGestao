@@ -4,6 +4,7 @@ module com.imunegestao.imunegestao {
 
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
+    requires com.google.gson;
 
     opens com.imunegestao to javafx.fxml;
     opens com.imunegestao.controllers to javafx.fxml;
