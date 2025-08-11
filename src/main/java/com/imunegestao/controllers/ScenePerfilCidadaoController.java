@@ -75,8 +75,8 @@ public class ScenePerfilCidadaoController extends BaseController {
             labelNome.setText(cidadaoAtual.getNome());
             labelCpf.setText(cidadaoAtual.getCpf());
             labelEndereco.setText(cidadaoAtual.getEndereco());
-            labelEmail.setText(cidadaoAtual.getNumeroTelefone());
-            labelTelefone.setText(cidadaoAtual.getEmail());
+            labelEmail.setText(cidadaoAtual.getEmail());
+            labelTelefone.setText(cidadaoAtual.getNumeroTelefone());
             labelSexo.setText(cidadaoAtual.getSexo());
             labelIdade.setText(String.valueOf(cidadaoAtual.getIdade())); // Converte int para String
         } else {
