@@ -83,21 +83,7 @@ public class SceneCidadaoController extends BaseController {
         Vacina vacinaCovid = vacinasDisponiveis.get(1);
 
         if (repositorioCidadao.listarCidadaos().isEmpty()) {
-            Cidadao c1 = new Cidadao("Maria Silva", "12345678901", 30, "Feminino", "Rua das Flores, 123", "35997337238", "marcus0vv@gmail.com");
-            Cidadao c2 = new Cidadao("João Souza", "98765432100", 45, "Masculino", "Av. Brasil, 456", "35997337238", "marcus2vv@gmail.com");
-
-
-            // Criando e adicionando registros de vacina para Maria
-            RegistroVacina registroMaria1 = new RegistroVacina(LocalDate.of(2025, 10, 15), vacinaGripe);
-            RegistroVacina registroMaria2 = new RegistroVacina(LocalDate.of(2025, 2, 20), vacinaCovid);
-            c1.adicionarVacina(registroMaria1);
-            c1.adicionarVacina(registroMaria2);
-            // Criando e adicionando um registro de vacina para João
-            RegistroVacina registroJoao1 = new RegistroVacina(LocalDate.of(2025, 11, 5), vacinaGripe);
-            c2.adicionarVacina(registroJoao1);
-
-            repositorioCidadao.adicionarCidadao(c1);
-            repositorioCidadao.adicionarCidadao(c2);
+            System.out.println("Cidadaos Vazio");
         }
 
 
@@ -155,6 +141,7 @@ public class SceneCidadaoController extends BaseController {
                 listaCidadaos.setAll(repositorioCidadao.listarCidadaos().values());
                 tabela_cidadaos.refresh();
                 mostrarAlertaInformacao("Cidadão atualizado com sucesso!");
+
                 cidadaoEmEdicao = null;
             }
 
@@ -167,8 +154,7 @@ public class SceneCidadaoController extends BaseController {
     }
 
     private void excluirCidadao(Cidadao cidadao) {
-        repositorioCidadao.listarCidadaos().remove(cidadao.getId());
-        listaCidadaos.remove(cidadao);
+        repositorioCidadao.excluirCidadao(cidadao.getId());
         mostrarAlertaInformacao("Cidadão excluído com sucesso.");
     }
 
