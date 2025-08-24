@@ -19,10 +19,10 @@
    <top>
       <AnchorPane prefHeight="107.0" prefWidth="1360.0" BorderPane.alignment="CENTER">
          <children>
-            <MenuButton layoutX="331.0" layoutY="12.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="176.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" text="CIDADAOS" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="12.0">
+            <MenuButton layoutX="331.0" layoutY="12.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="176.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" text="PACIENTES" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="12.0">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#alterar_tela_cidadao" text="Visualizar cidadaos" />
-                  <MenuItem mnemonicParsing="false" text="Cadastrar cidadaos" />
+                  <MenuItem mnemonicParsing="false" onAction="#alterar_tela_paciente" text="Visualizar pacientes" />
+                  <MenuItem mnemonicParsing="false" text="Cadastrar pacientes" />
                   <MenuItem mnemonicParsing="false" text="Cartao de vacina" />
                </items>
                <padding>
@@ -60,8 +60,8 @@
             </MenuButton>
             <MenuButton layoutX="741.0" layoutY="14.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="244.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" text="AGENDAMENTOS" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="12.0">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#alterar_tela_agendamento" text="Visualizar cidadaos" />
-                  <MenuItem mnemonicParsing="false" text="Cadastrar cidadaos" />
+                  <MenuItem mnemonicParsing="false" onAction="#alterar_tela_agendamento" text="Visualizar pacientes" />
+                  <MenuItem mnemonicParsing="false" text="Cadastrar pacientes" />
                </items>
                <padding>
                   <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />

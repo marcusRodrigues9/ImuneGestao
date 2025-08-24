@@ -1,6 +1,6 @@
 package com.imunegestao.repository;
 
-import com.imunegestao.models.pessoas.Cidadao;
+import com.imunegestao.models.pessoas.Paciente;
 import com.imunegestao.models.vacinas.Vacina;
 
 import java.util.HashMap;

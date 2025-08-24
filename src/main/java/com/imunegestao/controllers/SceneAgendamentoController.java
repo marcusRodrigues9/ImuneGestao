@@ -3,10 +3,10 @@ package com.imunegestao.controllers;
 import com.imunegestao.Main;
 import com.imunegestao.models.agendamento.Agendamento;
 import com.imunegestao.models.enums.StatusAgendamento;
-import com.imunegestao.models.pessoas.Cidadao;
+import com.imunegestao.models.pessoas.Paciente;
 import com.imunegestao.models.vacinas.Vacina;
 import com.imunegestao.repository.RepositorioAgendamento;
-import com.imunegestao.repository.RepositorioCidadao;
+import com.imunegestao.repository.RepositorioPaciente;
 import com.imunegestao.repository.RepositorioVacina;
 
 import javafx.application.Platform;
@@ -32,7 +32,7 @@ public class SceneAgendamentoController extends BaseController {
     // =================== INSTÂNCIAS ===================
     private final RepositorioAgendamento repositorioAgendamento = RepositorioAgendamento.getInstancia();
     private final RepositorioVacina repositorioVacina = RepositorioVacina.getInstancia();
-    private final RepositorioCidadao repositorioCidadao = RepositorioCidadao.getInstancia();
+    private final RepositorioPaciente repositorioPaciente = RepositorioPaciente.getInstancia();
 
     private final ObservableList<Agendamento> listaAgendamentosBase = FXCollections.observableArrayList();
     private final FilteredList<Agendamento> listaAgendamentosFiltrada = new FilteredList<>(listaAgendamentosBase, a -> true);
@@ -61,7 +61,7 @@ public class SceneAgendamentoController extends BaseController {
         configurarBusca();
 
         campo_cpf.textProperty().addListener((obs, oldText, newText) -> {
-            Cidadao c = repositorioCidadao.buscarCidadaoPorCpf(newText);
+            Paciente c = repositorioPaciente.buscarPacientePorCpf(newText);
             campo_nome.setText(c != null ? c.getNome() : "");
         });
 
@@ -230,9 +230,9 @@ public class SceneAgendamentoController extends BaseController {
             return;
         }
 
-        Cidadao cidadao = repositorioCidadao.buscarCidadaoPorCpf(cpf);
-        if (cidadao == null) {
-            mostrarAlertaErro("Cidadão com CPF " + cpf + " não encontrado.");
+        Paciente paciente = repositorioPaciente.buscarPacientePorCpf(cpf);
+        if (paciente == null) {
+            mostrarAlertaErro("Pacienteão com CPF " + cpf + " não encontrado.");
             return;
         }
 
@@ -248,7 +248,7 @@ public class SceneAgendamentoController extends BaseController {
         }
 
         vacina.setDosesDisponiveis(vacina.getDosesDisponiveis() - doses);
-        Agendamento novo = new Agendamento(cidadao, data, vacina, doses, hora, StatusAgendamento.AGENDADO);
+        Agendamento novo = new Agendamento(paciente, data, vacina, doses, hora, StatusAgendamento.AGENDADO);
         repositorioAgendamento.adicionarAgendamento(novo);
         atualizarListaCompleta();
         limparCampos();
@@ -274,8 +274,8 @@ public class SceneAgendamentoController extends BaseController {
         mostrarTela(tela_agendamento, formulario_agendamento);
     }
 
-    @FXML private void alterar_tela_cidadao(ActionEvent event) throws IOException {
-        trocarCena(event, "/com/imunegestao/views/Scene_Visualizar_Cidadao.fxml", "Cidadãos");
+    @FXML private void alterar_tela_paciente(ActionEvent event) throws IOException {
+        trocarCena(event, "/com/imunegestao/views/Scene_Visualizar_paciente.fxml", "Pacienteãos");
     }
 
     @FXML private void alterar_tela_vacina(ActionEvent event) throws IOException {

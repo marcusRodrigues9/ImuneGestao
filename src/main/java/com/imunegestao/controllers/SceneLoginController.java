@@ -46,13 +46,13 @@ public class SceneLoginController {
             alert.setContentText("Login realizado com sucesso!");
             alert.showAndWait();
 
-            Parent telaCidadaos = FXMLLoader.load(getClass().getResource("/com/imunegestao/views/Scene_Visualizar_Cidadao.fxml"));
-            Scene CenaCidadaos = new Scene(telaCidadaos);
-            CenaCidadaos.getStylesheets().add(getClass().getResource("/com/imunegestao/style.css").toExternalForm());
+            Parent telaPacientes = FXMLLoader.load(getClass().getResource("/com/imunegestao/views/Scene_Visualizar_Paciente.fxml"));
+            Scene CenaPacientes = new Scene(telaPacientes);
+            CenaPacientes.getStylesheets().add(getClass().getResource("/com/imunegestao/style.css").toExternalForm());
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(CenaCidadaos);
-            stage.setTitle("Cidadaos");
+            stage.setScene(CenaPacientes);
+            stage.setTitle("Pacientes");
             stage.show();
         }
     }

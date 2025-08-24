@@ -1,7 +1,7 @@
 package com.imunegestao.models.agendamento;
 
 import com.imunegestao.models.enums.StatusAgendamento;
-import com.imunegestao.models.pessoas.Cidadao;
+import com.imunegestao.models.pessoas.Paciente;
 import com.imunegestao.models.vacinas.Vacina;
 
 import java.time.LocalDate;
@@ -9,15 +9,15 @@ import java.time.LocalTime;
 
 public class Agendamento {
     private int id;
-    private Cidadao cidadao;
+    private Paciente paciente;
     private LocalDate data;
     private Vacina vacina;
     private int doses;
     private String hora;
     private StatusAgendamento status; // agendado, confirmado, realizado, cancelado
 
-    public Agendamento( Cidadao cidadao, LocalDate data, Vacina vacina,int doses, String hora, StatusAgendamento status) {
-        this.cidadao = cidadao;
+    public Agendamento( Paciente paciente, LocalDate data, Vacina vacina,int doses, String hora, StatusAgendamento status) {
+        this.paciente = paciente;
         this.data = data;
         this.vacina = vacina;
         this.doses = doses;
@@ -36,11 +36,11 @@ public class Agendamento {
     public void setId(int id) {this.id = id;}
 
     public String getCpf() {
-        return cidadao != null ? cidadao.getCpf() : "";
+        return paciente != null ? paciente.getCpf() : "";
     }
 
     public String getNome() {
-        return cidadao != null ? cidadao.getNome() : "";
+        return paciente != null ? paciente.getNome() : "";
     }
     public String getVacina() {
         return vacina != null ? vacina.getNome() : "";

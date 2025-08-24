@@ -18,14 +18,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imunegestao.controllers.SceneCidadaoController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imunegestao.controllers.ScenePacienteController">
    <top>
       <AnchorPane prefHeight="107.0" prefWidth="1360.0" BorderPane.alignment="CENTER">
          <children>
-            <MenuButton layoutX="331.0" layoutY="12.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="176.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" text="CIDADAOS" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="12.0">
+            <MenuButton layoutX="331.0" layoutY="12.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="176.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" text="PACIENTES" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="12.0">
               <items>
-                <MenuItem fx:id="botao_menu_visualizar_cidadao" mnemonicParsing="false" onAction="#mostrar_tabela_cidadao" text="Visualizar cidadaos" />
-                <MenuItem fx:id="botao_menu_cadastrar_cidadao" mnemonicParsing="false" onAction="#mostrar_formulario_cidadao" text="Cadastrar cidadaos" />
+                <MenuItem fx:id="botao_menu_visualizar_paciente" mnemonicParsing="false" onAction="#mostrar_tabela_paciente" text="Visualizar pacientes" />
+                <MenuItem fx:id="botao_menu_cadastrar_paciente" mnemonicParsing="false" onAction="#mostrar_formulario_paciente" text="Cadastrar pacientes" />
                   <MenuItem fx:id="botao_menu_cartao_vacina" mnemonicParsing="false" onAction="#abrirCartaoVacinaMenu" text="Cartao de vacina" />
               </items>
                <padding>
@@ -63,8 +63,8 @@
             </MenuButton>
             <MenuButton layoutX="741.0" layoutY="14.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="244.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" text="AGENDAMENTOS" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="12.0">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#alterar_tela_agendamento" text="Visualizar cidadaos" />
-                  <MenuItem mnemonicParsing="false" text="Cadastrar cidadaos" />
+                  <MenuItem mnemonicParsing="false" onAction="#alterar_tela_agendamento" text="Visualizar pacientes" />
+                  <MenuItem mnemonicParsing="false" text="Cadastrar pacientes" />
                </items>
                <padding>
                   <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
@@ -87,7 +87,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane fx:id="formulario_cidadao" layoutX="443.0" layoutY="46.0" prefHeight="504.0" prefWidth="507.0" style="-fx-border-radius: 15;" visible="false" AnchorPane.bottomAnchor="111.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="46.0">
+            <AnchorPane fx:id="formulario_paciente" layoutX="443.0" layoutY="46.0" prefHeight="504.0" prefWidth="507.0" style="-fx-border-radius: 15;" visible="false" AnchorPane.bottomAnchor="111.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="46.0">
                <children>
                   <VBox layoutX="520.0" layoutY="127.0" prefHeight="377.0" prefWidth="490.0" spacing="20.0" AnchorPane.leftAnchor="435.0" AnchorPane.rightAnchor="435.0">
                      <children>
@@ -101,50 +101,50 @@
                            <children>
                               <RadioButton fx:id="masculino" layoutX="46.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="100.0" text="Masculino">
                                  <toggleGroup>
-                                    <ToggleGroup fx:id="sexo_cidadao" />
+                                    <ToggleGroup fx:id="sexo_paciente" />
                                  </toggleGroup>
                               </RadioButton>
-                              <RadioButton fx:id="feminino" layoutX="133.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="100.0" text="Feminino" toggleGroup="$sexo_cidadao" />
+                              <RadioButton fx:id="feminino" layoutX="133.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="100.0" text="Feminino" toggleGroup="$sexo_paciente" />
                               <Text layoutX="3.0" layoutY="13.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sexo" />
                            </children>
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
                         </Pane>
-                        <Button fx:id="botao_cadastrar_cidadao" mnemonicParsing="false" onAction="#salvarCidadao" prefHeight="31.0" prefWidth="424.0" text="Cadastrar" />
+                        <Button fx:id="botao_cadastrar_paciente" mnemonicParsing="false" onAction="#salvarPaciente" prefHeight="31.0" prefWidth="424.0" text="Cadastrar" />
                      </children>
                      <padding>
                         <Insets left="33.0" right="33.0" />
                      </padding>
                   </VBox>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="75.0" prefHeight="27.0" prefWidth="435.0" text="Prencha os dados do cidadao" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="75.0" prefHeight="27.0" prefWidth="435.0" text="Prencha os dados do paciente" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <font>
                         <Font name="Arial Bold" size="24.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="tela_cidadao" layoutY="-3.0" prefHeight="665.0" prefWidth="1359.0">
+            <AnchorPane fx:id="tela_paciente" layoutY="-3.0" prefHeight="665.0" prefWidth="1359.0">
                <children>
-                  <Label layoutX="26.0" layoutY="137.0" text="Pesquisar Cidadao: ">
+                  <Label layoutX="26.0" layoutY="137.0" text="Pesquisar Paciente: ">
                      <font>
                         <Font name="Arial Bold" size="34.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="tabela_cidadaos" layoutX="25.0" layoutY="230.0" prefHeight="365.0" prefWidth="1215.0" style="-fx-background-color: white; -fx-border-color: gray;" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="119.0">
+                  <TableView fx:id="tabela_pacientes" layoutX="25.0" layoutY="230.0" prefHeight="365.0" prefWidth="1215.0" style="-fx-background-color: white; -fx-border-color: gray;" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="119.0">
                     <columns>
-                      <TableColumn fx:id="coluna_id_cidadao" prefWidth="75.0" text="Id" />
-                      <TableColumn fx:id="coluna_nome_cidadao" prefWidth="200.0" text="Nome" />
-                        <TableColumn fx:id="coluna_cpf_cidadao" prefWidth="114.0" text="Cpf" />
-                        <TableColumn fx:id="coluna_idade_cidadao" prefWidth="45.0" text="Idade" />
-                        <TableColumn fx:id="coluna_telefone_cidadao" prefWidth="114.0" text="telefone" />
-                        <TableColumn fx:id="coluna_email_cidadao" prefWidth="172.0" text="email" />
-                        <TableColumn fx:id="coluna_endereco_cidadao" prefWidth="133.0" text="Endereço" />
-                        <TableColumn fx:id="coluna_sexo_cidadao" prefWidth="92.0" text="Sexo" />
-                        <TableColumn fx:id="coluna_acao_cidadao" prefWidth="300.0" />
+                      <TableColumn fx:id="coluna_id_paciente" prefWidth="75.0" text="Id" />
+                      <TableColumn fx:id="coluna_nome_paciente" prefWidth="200.0" text="Nome" />
+                        <TableColumn fx:id="coluna_cpf_paciente" prefWidth="114.0" text="Cpf" />
+                        <TableColumn fx:id="coluna_idade_paciente" prefWidth="45.0" text="Idade" />
+                        <TableColumn fx:id="coluna_telefone_paciente" prefWidth="114.0" text="telefone" />
+                        <TableColumn fx:id="coluna_email_paciente" prefWidth="172.0" text="email" />
+                        <TableColumn fx:id="coluna_endereco_paciente" prefWidth="133.0" text="Endereço" />
+                        <TableColumn fx:id="coluna_sexo_paciente" prefWidth="92.0" text="Sexo" />
+                        <TableColumn fx:id="coluna_acao_paciente" prefWidth="300.0" />
                     </columns>
                   </TableView>
-                  <TextField fx:id="buscar_cidadao" layoutX="362.0" layoutY="142.0" prefHeight="33.0" prefWidth="265.0" promptText="Digite o CPF" />
+                  <TextField fx:id="buscar_paciente" layoutX="362.0" layoutY="142.0" prefHeight="33.0" prefWidth="265.0" promptText="Digite o CPF" />
                </children>
             </AnchorPane>
          </children>

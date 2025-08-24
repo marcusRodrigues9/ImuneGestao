@@ -1,6 +1,6 @@
 package com.imunegestao.utils;
 
-public class ValidacoesCidadao {
+public class ValidacoesPaciente {
 
     public static void validar(String nome, String cpf, String idadeStr, String sexo, String endereco, String email, String telefone) throws ValidacaoException {
         if (nome == null || nome.trim().isEmpty())

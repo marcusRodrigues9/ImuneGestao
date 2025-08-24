@@ -1,10 +1,10 @@
 package com.imunegestao;
 
 import com.imunegestao.models.RegistroVacina;
-import com.imunegestao.models.pessoas.Cidadao;
+import com.imunegestao.models.pessoas.Paciente;
 import com.imunegestao.models.pessoas.ProfissionalSaude;
 import com.imunegestao.models.vacinas.Vacina;
-import com.imunegestao.repository.RepositorioCidadao;
+import com.imunegestao.repository.RepositorioPaciente;
 import com.imunegestao.repository.RepositorioVacina;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

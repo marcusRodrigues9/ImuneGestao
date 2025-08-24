@@ -3,9 +3,8 @@ package com.imunegestao.controllers;
 import java.io.IOException;
 import java.time.LocalDate;
 
-import com.imunegestao.Main;
 import com.imunegestao.models.RegistroVacina;
-import com.imunegestao.models.pessoas.Cidadao;
+import com.imunegestao.models.pessoas.Paciente;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleStringProperty;
@@ -13,15 +12,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.stage.Stage;
 
-public class ScenePerfilCidadaoController extends BaseController {
+public class ScenePerfilPacienteController extends BaseController {
     // --- Variável de Instância ---
-    private Cidadao cidadaoAtual; // Variável para armazenar o cidadão que está sendo visualizado
+    private Paciente pacienteAtual; // Variável para armazenar o paciente que está sendo visualizado
 
     // --- Componentes FXML ---
     @FXML private Label labelNome;
@@ -57,30 +54,30 @@ public class ScenePerfilCidadaoController extends BaseController {
     }
 
 
-    public void setCidadao(Cidadao cidadao) {
-        this.cidadaoAtual = cidadao; // Armazena o cidadão recebido
-        preencherDadosCidadao();    // Preenche os Labels com os dados
-        carregarVacinasDoCidadao();
+    public void setPaciente(Paciente paciente) {
+        this.pacienteAtual = paciente; // Armazena o paciente recebido
+        preencherDadospaciente();    // Preenche os Labels com os dados
+        carregarVacinasDoPaciente();
     }
-    private void carregarVacinasDoCidadao() {
-        if (cidadaoAtual != null) {
+    private void carregarVacinasDoPaciente() {
+        if (pacienteAtual != null) {
             listaDeVacinasTomadas.clear();
-            listaDeVacinasTomadas.addAll(cidadaoAtual.getVacinasTomadas());
+            listaDeVacinasTomadas.addAll(pacienteAtual.getVacinasTomadas());
         }
     }
 
 
-    private void preencherDadosCidadao() {
-        if (cidadaoAtual != null) {
-            labelNome.setText(cidadaoAtual.getNome());
-            labelCpf.setText(cidadaoAtual.getCpf());
-            labelEndereco.setText(cidadaoAtual.getEndereco());
-            labelEmail.setText(cidadaoAtual.getEmail());
-            labelTelefone.setText(cidadaoAtual.getNumeroTelefone());
-            labelSexo.setText(cidadaoAtual.getSexo());
-            labelIdade.setText(String.valueOf(cidadaoAtual.getIdade())); // Converte int para String
+    private void preencherDadospaciente() {
+        if (pacienteAtual != null) {
+            labelNome.setText(pacienteAtual.getNome());
+            labelCpf.setText(pacienteAtual.getCpf());
+            labelEndereco.setText(pacienteAtual.getEndereco());
+            labelEmail.setText(pacienteAtual.getEmail());
+            labelTelefone.setText(pacienteAtual.getNumeroTelefone());
+            labelSexo.setText(pacienteAtual.getSexo());
+            labelIdade.setText(String.valueOf(pacienteAtual.getIdade())); // Converte int para String
         } else {
-            // Se por algum motivo o cidadão for nulo.
+            // Se por algum motivo o paciente for nulo.
             labelNome.setText("N/A");
             labelCpf.setText("N/A");
             labelEndereco.setText("N/A");
@@ -93,13 +90,13 @@ public class ScenePerfilCidadaoController extends BaseController {
 
 
     @FXML
-    private void voltarParaCidadaos(ActionEvent event) {
+    private void voltarParaPacientes(ActionEvent event) {
 
         try {
-            trocarCena(event, "/com/imunegestao/views/Scene_Visualizar_Cidadao.fxml", "Cidadãos");
+            trocarCena(event, "/com/imunegestao/views/Scene_Visualizar_Paciente.fxml", "Pacienteãos");
         } catch (IOException e) {
             e.printStackTrace();
-            mostrarAlertaErro("Erro ao voltar para a tela de cidadãos.");
+            mostrarAlertaErro("Erro ao voltar para a tela de Pacienteãos.");
         }
     }
 

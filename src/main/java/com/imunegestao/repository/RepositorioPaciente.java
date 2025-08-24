@@ -13,19 +13,19 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.imunegestao.models.RegistroVacina;
-import com.imunegestao.models.pessoas.Cidadao;
+import com.imunegestao.models.pessoas.Paciente;
 import com.imunegestao.utils.LocalDateAdapter;
 
-public class RepositorioCidadao {
+public class RepositorioPaciente {
 
-    private static RepositorioCidadao instancia;
-    private Map<Integer, Cidadao> cidadaos = new HashMap<>();
+    private static RepositorioPaciente instancia;
+    private Map<Integer, Paciente> pacientes = new HashMap<>();
     private int proximoId = 1; // contador de ID automático
 
 
     // --- NOVOS ATRIBUTOS PARA PERSISTÊNCIA ---
     // Define o nome do arquivo onde os dados serão salvos.
-    private static final String ARQUIVO_JSON = "cidadaos.json";
+    private static final String ARQUIVO_JSON = "pacientes.json";
     // Cria uma instância do Gson. GsonBuilder para formatar o JSON e deixá-lo legível.
     private final Gson gson = new GsonBuilder()
             .registerTypeAdapter(LocalDate.class, new LocalDateAdapter()) // <-- LINHA ADICIONADA
@@ -36,58 +36,58 @@ public class RepositorioCidadao {
 
 
     // Construtor privado para impedir que criem novas instâncias
-    private RepositorioCidadao() {
+    private RepositorioPaciente() {
         carregarDados();
     }
 
 
     // Método para acessar a única instância
-    public static RepositorioCidadao getInstancia() {
+    public static RepositorioPaciente getInstancia() {
         if (instancia == null) {
-            instancia = new RepositorioCidadao();
+            instancia = new RepositorioPaciente();
         }
         return instancia;
     }
 
-    //metodo para que sempre que algum cidadao for excluido, o proximo cidadao criado pegue o id de menor valor
+    //metodo para que sempre que algum paciente for excluido, o proximo paciente criado pegue o id de menor valor
     private int encontrarMenorIdDisponivel() {
         int id = 1;
-        while (cidadaos.containsKey(id)) {
+        while (pacientes.containsKey(id)) {
             id++;
         }
         return id;
     }
-    public void excluirCidadao(int id) {
-        cidadaos.remove(id);
+    public void excluirPaciente(int id) {
+        pacientes.remove(id);
         salvarDados();
     }
 
-    public void adicionarCidadao(Cidadao cidadao) {
+    public void adicionarPaciente(Paciente paciente) {
         int novoId = encontrarMenorIdDisponivel();
-        cidadao.setId(novoId);
-        cidadaos.put(novoId, cidadao);
+        paciente.setId(novoId);
+        pacientes.put(novoId, paciente);
         salvarDados();
     }
 
-    public Map<Integer, Cidadao> listarCidadaos() {
-        return cidadaos;
+    public Map<Integer, Paciente> listarPacientes() {
+        return pacientes;
     }
 
 
-    public Cidadao buscarCidadaoPorId(int id) {
-        return cidadaos.get(id);
+    public Paciente buscarPacientePorId(int id) {
+        return pacientes.get(id);
     }
-    public Cidadao buscarCidadaoPorCpf(String cpf) {
-        return cidadaos.values().stream()
+    public Paciente buscarPacientePorCpf(String cpf) {
+        return pacientes.values().stream()
                 .filter(c -> c.getCpf().equals(cpf))
                 .findFirst()
                 .orElse(null);
     }
 
-    public void registrarVacinaParaCidadao(int idCidadao, RegistroVacina registro){
-        Cidadao cidadao = buscarCidadaoPorId(idCidadao);
-        if (cidadao != null){
-           cidadao.adicionarVacina(registro);
+    public void registrarVacinaParaPaciente(int idPaciente, RegistroVacina registro){
+        Paciente paciente = buscarPacientePorId(idPaciente);
+        if (paciente != null){
+           paciente.adicionarVacina(registro);
            salvarDados(); // <--- Salva também após adicionar uma vacina
         }
     }
@@ -97,9 +97,9 @@ public class RepositorioCidadao {
 
     private void salvarDados() {
         try (FileWriter writer = new FileWriter(ARQUIVO_JSON)) {
-            gson.toJson(cidadaos, writer);
+            gson.toJson(pacientes, writer);
         } catch (IOException e) {
-            System.err.println("Erro ao salvar os dados dos cidadãos: " + e.getMessage());
+            System.err.println("Erro ao salvar os dados dos pacientes: " + e.getMessage());
 
         }
     }
@@ -110,20 +110,20 @@ public class RepositorioCidadao {
         // se o arquivo existe E tem conteúdo
         if (arquivo.exists() && arquivo.length() > 0) {
             try (FileReader reader = new FileReader(arquivo)) {
-                Type tipoDoMapa = new TypeToken<HashMap<Integer, Cidadao>>() {}.getType();
-                cidadaos = gson.fromJson(reader, tipoDoMapa);
+                Type tipoDoMapa = new TypeToken<HashMap<Integer, Paciente>>() {}.getType();
+                pacientes = gson.fromJson(reader, tipoDoMapa);
 
-                if (cidadaos == null) {
-                    cidadaos = new HashMap<>();
+                if (pacientes == null) {
+                    pacientes = new HashMap<>();
                 }
 
             } catch (IOException e) {
-                System.err.println("Erro ao carregar os dados dos cidadãos: " + e.getMessage());
-                cidadaos = new HashMap<>();
+                System.err.println("Erro ao carregar os dados dos pacientes: " + e.getMessage());
+                pacientes = new HashMap<>();
             }
         } else {
             // Se o arquivo não existe OU está vazio, começa com um mapa novo.
-            cidadaos = new HashMap<>();
+            pacientes = new HashMap<>();
         }
 }}
 

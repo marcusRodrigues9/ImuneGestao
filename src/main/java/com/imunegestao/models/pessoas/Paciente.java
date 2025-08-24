@@ -5,7 +5,7 @@ import com.imunegestao.models.RegistroVacina;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cidadao {
+public class Paciente {
     private int id;
     private String nome;
     private String cpf;
@@ -18,7 +18,7 @@ public class Cidadao {
     private List<RegistroVacina> vacinasTomadas = new ArrayList<>();
 
 
-    public Cidadao(String nome, String cpf, int idade, String sexo, String endereco,String numeroTelefone, String email) {
+    public Paciente(String nome, String cpf, int idade, String sexo, String endereco,String numeroTelefone, String email) {
         this.nome = nome;
         this.cpf = cpf;
         this.idade = idade;
@@ -28,7 +28,7 @@ public class Cidadao {
         this.email = email;
     }
 
-    public Cidadao(List<RegistroVacina> vacinasTomadas, String email, String numeroTelefone, String endereco, String sexo, int idade, String cpf, String nome, int id) {
+    public Paciente(List<RegistroVacina> vacinasTomadas, String email, String numeroTelefone, String endereco, String sexo, int idade, String cpf, String nome, int id) {
         this.vacinasTomadas = vacinasTomadas;
         this.email = email;
         this.numeroTelefone = numeroTelefone;

@@ -20,10 +20,10 @@
    <top>
       <AnchorPane prefHeight="107.0" prefWidth="1360.0" BorderPane.alignment="CENTER">
          <children>
-            <MenuButton layoutX="331.0" layoutY="12.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="176.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" text="CIDADAOS" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="12.0">
+            <MenuButton layoutX="331.0" layoutY="12.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="176.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" text="PacienteS" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="12.0">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#alterar_tela_cidadao" text="Visualizar cidadaos" />
-                  <MenuItem mnemonicParsing="false" text="Cadastrar cidadaos" />
+                  <MenuItem mnemonicParsing="false" onAction="#alterar_tela_paciente" text="Visualizar pacientes" />
+                  <MenuItem mnemonicParsing="false" text="Cadastrar pacientes" />
                   <MenuItem mnemonicParsing="false" text="Cartao de vacina" />
                </items>
                <padding>
@@ -129,7 +129,7 @@
                         <TableColumn fx:id="coluna_acao" prefWidth="112.0" text="ação" />
                      </columns>
                   </TableView>
-                  <TextField fx:id="buscar_agendamento" layoutX="454.0" layoutY="140.0" prefHeight="33.0" prefWidth="345.0" promptText="Digite o id do cidadao ou nome completo do cidadao" />
+                  <TextField fx:id="buscar_agendamento" layoutX="454.0" layoutY="140.0" prefHeight="33.0" prefWidth="345.0" promptText="Digite o id do paciente ou nome completo do paciente" />
                   <ToggleButton fx:id="toggle_ocultar_cancelados" layoutX="1104.0" layoutY="194.0" mnemonicParsing="false" onAction="#alternarFiltroCancelados" text="Esconder Agendamentos cancelados" />
                </children>
             </AnchorPane>
