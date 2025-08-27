@@ -246,12 +246,12 @@ public class ScenePacienteController extends BaseController {
 
     @FXML
     private void alterar_tela_vacina(ActionEvent event) throws IOException {
-        trocarCena(event, "/com/imunegestao/views/Scene_Visualizar_Vacinas.fxml", "Vacinas");
+        trocarCena(event, "/com/imunegestao/views/scene-visualizar-vacinas.fxml", "Vacinas");
     }
 
     @FXML
     private void alterar_tela_agendamento(ActionEvent event) throws IOException {
-        trocarCena(event, "/com/imunegestao/views/Scene_Visualizar_Agendamentos.fxml", "Agendamento");
+        trocarCena(event, "/com/imunegestao/views/scene-visualizar-agendamentos.fxml", "Agendamento");
     }
 
     @FXML
@@ -269,7 +269,7 @@ public class ScenePacienteController extends BaseController {
 
     private void visualizarPerfilPaciente(Paciente paciente, ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/imunegestao/views/Scene_Visualizar_Perfilpaciente.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/imunegestao/views/scene-visualizar-perfil-paciente.fxml"));
             Parent root = loader.load();
 
             ScenePerfilPacienteController perfilController = loader.getController();

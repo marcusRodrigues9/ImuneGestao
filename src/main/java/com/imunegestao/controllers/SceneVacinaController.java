@@ -155,12 +155,12 @@ public class SceneVacinaController extends BaseController {
 
     @FXML
     private void alterar_tela_agendamento(ActionEvent event) throws IOException {
-        trocarCena(event, "/com/imunegestao/views/Scene_Visualizar_Agendamentos.fxml", "Agendamento");
+        trocarCena(event, "/com/imunegestao/views/scene-visualizar-agendamentos.fxml", "Agendamento");
     }
 
     @FXML
     private void alterar_tela_paciente(ActionEvent event) throws IOException {
-        trocarCena(event, "/com/imunegestao/views/Scene_Visualizar_Paciente.fxml", "Pacientes");
+        trocarCena(event, "/com/imunegestao/views/scene-visualizar-paciente.fxml", "Pacientes");
     }
 
     @FXML

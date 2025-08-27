@@ -46,7 +46,7 @@ public class SceneLoginController {
             alert.setContentText("Login realizado com sucesso!");
             alert.showAndWait();
 
-            Parent telaPacientes = FXMLLoader.load(getClass().getResource("/com/imunegestao/views/Scene_Visualizar_Paciente.fxml"));
+            Parent telaPacientes = FXMLLoader.load(getClass().getResource("/com/imunegestao/views/scene-visualizar-paciente.fxml"));
             Scene CenaPacientes = new Scene(telaPacientes);
             CenaPacientes.getStylesheets().add(getClass().getResource("/com/imunegestao/style.css").toExternalForm());
 

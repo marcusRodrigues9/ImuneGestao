@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -16,15 +22,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imunegestao.controllers.SceneAgendamentoController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imunegestao.controllers.SceneAgendamentoController">
    <top>
       <AnchorPane prefHeight="107.0" prefWidth="1360.0" BorderPane.alignment="CENTER">
          <children>
-            <MenuButton layoutX="331.0" layoutY="12.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="176.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" text="PacienteS" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="12.0">
+            <MenuButton layoutX="331.0" layoutY="12.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="188.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" text="PACIENTES" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="12.0">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#alterar_tela_paciente" text="Visualizar pacientes" />
                   <MenuItem mnemonicParsing="false" text="Cadastrar pacientes" />
-                  <MenuItem mnemonicParsing="false" text="Cartao de vacina" />
                </items>
                <padding>
                   <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
@@ -61,8 +66,8 @@
             </MenuButton>
             <MenuButton layoutX="741.0" layoutY="14.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="244.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" text="AGENDAMENTOS" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="12.0">
                <items>
-                  <MenuItem fx:id="botao_menu_visualizar_agendamento" mnemonicParsing="false" onAction="#mostrar_tabela_agendamento" text="Visualizar Agendamentos" />
-                  <MenuItem fx:id="botao_menu_cadastrar_agendamento" mnemonicParsing="false" onAction="#mostrar_formulario_agendamento" text="Realizar Agendamento" />
+                  <MenuItem fx:id="botao_menu_visualizar_agendamento" mnemonicParsing="false" onAction="#mostrar_tabela_agendamento" text="Visualizar agendamentos" />
+                  <MenuItem fx:id="botao_menu_cadastrar_agendamento" mnemonicParsing="false" onAction="#mostrar_formulario_agendamento" text="Realizar agendamento" />
                </items>
                <padding>
                   <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
@@ -120,13 +125,13 @@
                      <columns>
                         <TableColumn fx:id="coluna_id" prefWidth="75.0" text="Id" />
                         <TableColumn fx:id="coluna_nome" prefWidth="149.0" text="Nome" />
-                        <TableColumn fx:id="coluna_cpf" prefWidth="160.0" text="cpf" />
-                        <TableColumn fx:id="coluna_vacina" prefWidth="160.0" text="vacina" />
-                        <TableColumn fx:id="coluna_data" prefWidth="160.0" text="data" />
-                        <TableColumn fx:id="coluna_hora" prefWidth="160.0" text="horario" />
+                        <TableColumn fx:id="coluna_cpf" prefWidth="160.0" text="Cpf" />
+                        <TableColumn fx:id="coluna_vacina" prefWidth="160.0" text="Vacina" />
+                        <TableColumn fx:id="coluna_data" prefWidth="160.0" text="Data" />
+                        <TableColumn fx:id="coluna_hora" prefWidth="160.0" text="Horario" />
                         <TableColumn fx:id="coluna_doses" prefWidth="160.0" text="Doses" />
-                        <TableColumn fx:id="coluna_status" prefWidth="160.0" text="status" />
-                        <TableColumn fx:id="coluna_acao" prefWidth="112.0" text="ação" />
+                        <TableColumn fx:id="coluna_status" prefWidth="160.0" text="Status" />
+                        <TableColumn fx:id="coluna_acao" prefWidth="112.0" text="Ação" />
                      </columns>
                   </TableView>
                   <TextField fx:id="buscar_agendamento" layoutX="454.0" layoutY="140.0" prefHeight="33.0" prefWidth="345.0" promptText="Digite o id do paciente ou nome completo do paciente" />

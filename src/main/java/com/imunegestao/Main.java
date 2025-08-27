@@ -1,10 +1,6 @@
 package com.imunegestao;
 
-import com.imunegestao.models.RegistroVacina;
-import com.imunegestao.models.pessoas.Paciente;
-import com.imunegestao.models.pessoas.ProfissionalSaude;
 import com.imunegestao.models.vacinas.Vacina;
-import com.imunegestao.repository.RepositorioPaciente;
 import com.imunegestao.repository.RepositorioVacina;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -21,7 +17,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         inicializarDados();
         janela = stage;
-        Parent telaLogin = FXMLLoader.load(getClass().getResource("/com/imunegestao/views/Scene_Login.fxml"));
+        Parent telaLogin = FXMLLoader.load(getClass().getResource("/com/imunegestao/views/scene-login.fxml"));
         cenaLogin = new Scene(telaLogin);
         cenaLogin.getStylesheets().add(getClass().getResource("/com/imunegestao/style.css").toExternalForm());
         janela.setScene(cenaLogin);

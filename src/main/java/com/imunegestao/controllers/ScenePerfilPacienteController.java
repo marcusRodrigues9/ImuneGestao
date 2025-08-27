@@ -93,7 +93,7 @@ public class ScenePerfilPacienteController extends BaseController {
     private void voltarParaPacientes(ActionEvent event) {
 
         try {
-            trocarCena(event, "/com/imunegestao/views/Scene_Visualizar_Paciente.fxml", "Pacienteãos");
+            trocarCena(event, "/com/imunegestao/views/scene-visualizar-paciente.fxml", "Pacienteãos");
         } catch (IOException e) {
             e.printStackTrace();
             mostrarAlertaErro("Erro ao voltar para a tela de Pacienteãos.");

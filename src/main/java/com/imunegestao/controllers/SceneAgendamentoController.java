@@ -25,7 +25,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.Comparator;
 
 public class SceneAgendamentoController extends BaseController {
 
@@ -275,11 +274,11 @@ public class SceneAgendamentoController extends BaseController {
     }
 
     @FXML private void alterar_tela_paciente(ActionEvent event) throws IOException {
-        trocarCena(event, "/com/imunegestao/views/Scene_Visualizar_paciente.fxml", "Pacienteãos");
+        trocarCena(event, "/com/imunegestao/views/scene-visualizar-vacinas.fxml", "Pacienteãos");
     }
 
     @FXML private void alterar_tela_vacina(ActionEvent event) throws IOException {
-        trocarCena(event, "/com/imunegestao/views/Scene_Visualizar_Vacinas.fxml", "Vacinas");
+        trocarCena(event, "/com/imunegestao/views/scene-visualizar-vacinas.fxml", "Vacinas");
     }
 
     @FXML public void sair(ActionEvent event) {
