@@ -32,8 +32,6 @@ public class Main extends Application {
             repositorioVacina.adicionarVacina(v1);
             repositorioVacina.adicionarVacina(v2);
         }
-
-
     }
     public static void main(String[] args) {
         launch(args);
