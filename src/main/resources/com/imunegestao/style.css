@@ -16,19 +16,20 @@
 }
 
 #botao_sair{
-    -fx-background-color:#ffc4d4; /* Cor de fundo padrão (vermelho) */
-    -fx-text-fill: black;          /* Cor do texto padrão (branco) */
+    -fx-background-color:#43C7CC; /* Cor de fundo padrão (vermelho) */
+    -fx-text-fill: white;          /* Cor do texto padrão (branco) */
     -fx-font-size: 20px;           /* Tamanho da fonte */
     -fx-padding: 8px 15px;         /* Preenchimento */
     -fx-border-radius: 5px;        /* Bordas arredondadas */
-    -fx-cursor: hand;              /* Cursor de mão */
+    -fx-cursor: hand;
+    -fx-font-weight: bold; /* Negrito *//* Cursor de mão */
     -fx-font-family: "Roboto", sans-serif; /* Exemplo: Arial, com fallback para sans-serif */
 
 }
 
 /* Estilos para o Botão Sair quando o mouse está sobre ele (HOVER) */
 #botao_sair:hover {
-    -fx-background-color: #F5E0E6;
+    -fx-background-color: #02B0B8;
 }
 
 /* Estilo geral da TableView */

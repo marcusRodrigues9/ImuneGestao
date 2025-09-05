@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -22,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imunegestao.controllers.SceneAgendamentoController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imunegestao.controllers.SceneAgendamentoController">
    <top>
       <AnchorPane prefHeight="107.0" prefWidth="1360.0" BorderPane.alignment="CENTER">
          <children>
@@ -41,7 +35,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </MenuButton>
-            <Label layoutX="17.0" layoutY="17.0" style="-fx-background-color: #ffc4d4; -fx-background-radius: 15;" text="Imune Gestão" textFill="WHITE">
+            <Label layoutX="17.0" layoutY="17.0" style="-fx-background-color: #02B0B8; -fx-background-radius: 15;" text="Imune Gestão" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="41.0" />
                </font>
@@ -100,7 +94,8 @@
                         <TextField fx:id="campo_nome_vacina" prefHeight="33.0" promptText="nme da vacina" />
                         <TextField fx:id="campo_doses" prefHeight="33.0" promptText="Quantidade de doses" />
                         <DatePicker fx:id="campo_data" prefHeight="34.0" prefWidth="424.0" />
-                        <TextField fx:id="campo_hora" prefHeight="38.0" prefWidth="424.0" promptText="Digite o horario em horas:minutos" />
+                        <TextField fx:id="campo_hora" prefHeight="74.0" prefWidth="424.0" promptText="Digite o horario em horas:minutos" />
+                        <Button mnemonicParsing="false" onAction="#salvarAgendamento" prefHeight="25.0" prefWidth="435.0" text="Agendar" />
                      </children>
                      <padding>
                         <Insets left="33.0" right="33.0" />
@@ -111,7 +106,6 @@
                         <Font name="Arial Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Button layoutX="555.0" layoutY="440.0" mnemonicParsing="false" onAction="#salvarAgendamento" prefHeight="24.0" prefWidth="250.0" text="Agendar" AnchorPane.leftAnchor="555.0" AnchorPane.rightAnchor="555.0" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="tela_agendamento" layoutY="-3.0" prefHeight="665.0" prefWidth="1359.0">
