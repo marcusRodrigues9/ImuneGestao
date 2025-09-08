@@ -1,13 +1,16 @@
+/* --- DECLARAÇÃO DA FONTE --- */
 @font-face {
     font-family: 'Roboto';
-    src: url('Roboto-Medium.ttf');
+    src: url('fonts/Roboto-Medium.ttf');
 }
+
+/* --- ESTILOS GERAIS --- */
 .root {
     -fx-font-family: "Roboto";
 }
 
 .text-field {
-    -fx-font-family: "Roboto", sans-serif; /* Exemplo: Arial, com fallback para sans-serif */
+    -fx-font-family: "Roboto", sans-serif;
     -fx-prompt-text-fill: #888888;
     -fx-border-color: #cccccc;
     -fx-border-width: 1px;
@@ -15,65 +18,92 @@
     -fx-padding: 8px;
 }
 
-#botao_sair{
-    -fx-background-color:#43C7CC; /* Cor de fundo padrão (vermelho) */
-    -fx-text-fill: white;          /* Cor do texto padrão (branco) */
-    -fx-font-size: 20px;           /* Tamanho da fonte */
-    -fx-padding: 8px 15px;         /* Preenchimento */
-    -fx-border-radius: 5px;        /* Bordas arredondadas */
+/* --- BOTÃO ESPECÍFICO --- */
+#botao_sair {
+    -fx-background-color: #43C7CC;
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-padding: 8px 15px;
+    -fx-border-radius: 5px;
     -fx-cursor: hand;
-    -fx-font-weight: bold; /* Negrito *//* Cursor de mão */
-    -fx-font-family: "Roboto", sans-serif; /* Exemplo: Arial, com fallback para sans-serif */
-
+    -fx-font-weight: bold;
+    -fx-font-family: "Roboto", sans-serif;
 }
 
-/* Estilos para o Botão Sair quando o mouse está sobre ele (HOVER) */
 #botao_sair:hover {
     -fx-background-color: #02B0B8;
 }
 
-/* Estilo geral da TableView */
+/* --- ESTILO DA TABLEVIEW --- */
 .table-view {
-    -fx-font-family: "Roboto", sans-serif; /* Exemplo: Arial, com fallback para sans-serif */
-    -fx-background-color: transparent; /* Fundo transparente para que o fundo do painel pai apareça */
+    -fx-font-family: "Roboto", sans-serif;
+    -fx-background-color: transparent;
     -fx-border-width: 1px;
-    -fx-border-radius: 5px; /* Bordas arredondadas para a tabela */
+    -fx-border-radius: 5px;
     -fx-font-size: 13px;
 }
 
-*/
-/* Estilo do Texto do Cabeçalho */
 .table-view .column-header {
-    -fx-text-fill: black; /* Cor do texto do cabeçalho (branco para contraste) */
-    -fx-font-weight: bold; /* Negrito */
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
     -fx-font-size: 12px;
 }
 
-/* Estilo das Células da Tabela (cor do texto, padding) */
 .table-view .table-cell {
-    -fx-text-fill: #333333; /* Cor do texto das células (cinza escuro) */
-    -fx-padding: 8px; /* Espaçamento interno das células */
-    -fx-alignment: CENTER_LEFT; /* Alinhamento do texto nas células */
+    -fx-text-fill: #333333;
+    -fx-padding: 8px;
+    -fx-alignment: CENTER_LEFT;
 }
 
-/* Estilo das Linhas da Tabela (alternando cores) */
+/* --- ESTILO DAS LINHAS DA TABELA (ROW) --- */
 .table-view .table-row-cell {
-    -fx-background-color: white; /* Fundo padrão das linhas */
-    -fx-cell-hover-color: #f0f0f0; /* Cor ao passar o mouse sobre a linha */
+    -fx-background-color: white;
 }
 
-/* Estilo para linhas pares (opcional, para um efeito zebrado) */
 .table-view .table-row-cell:odd {
-    -fx-background-color: #f9f9f9; /* Um cinza muito claro para linhas ímpares */
+    -fx-background-color: #f9f9f9;
 }
 
-/* Estilo para linhas selecionadas */
+/* Estilo PADRÃO para linha selecionada */
 .table-view .table-row-cell:selected {
-    -fx-background-color: #ffc4d4; /* Um tom mais escuro do seu tema ao selecionar a linha */
-    -fx-text-fill: white; /* Texto branco na linha selecionada */
+    -fx-background-color: #a3d9ff; /* Cor de seleção genérica e neutra */
 }
 
-/* Estilo para a barra de rolagem (opcional) */
+/* --- ESTILOS DAS LINHAS POR STATUS (SOBRESCREVEM O PADRÃO) --- */
+
+/* Status: REALIZADO */
+.table-row-cell.row-realizado {
+    -fx-background-color: #d4edda;
+}
+.table-row-cell.row-realizado:selected {
+    -fx-background-color: #a3d9a7; /* Versão mais escura do verde */
+}
+
+/* Status: AGENDADO */
+.table-row-cell.row-agendado {
+    -fx-background-color: #fff3cd;
+}
+.table-row-cell.row-agendado:selected {
+    -fx-background-color: #f0d984; /* Versão mais escura do amarelo */
+}
+
+/* Status: CONFIRMADO */
+.table-row-cell.row-confirmado {
+    -fx-background-color: #cce5ff;
+}
+.table-row-cell.row-confirmado:selected {
+    -fx-background-color: #8dbdff; /* Versão mais escura do azul */
+}
+
+/* Status: CANCELADO */
+.table-row-cell.row-cancelado {
+    -fx-background-color: #f8d7da;
+}
+.table-row-cell.row-cancelado:selected {
+    -fx-background-color: #f0959b; /* Versão mais escura do vermelho */
+}
+
+/* --- ESTILO DA BARRA DE ROLAGEM --- */
 .table-view .scroll-bar:vertical .thumb,
 .table-view .scroll-bar:horizontal .thumb {
     -fx-background-radius: 5em;
@@ -81,47 +111,6 @@
 
 .table-view .scroll-bar:vertical .track,
 .table-view .scroll-bar:horizontal .track {
-    -fx-background-color: #f0f0f0; /* Cor do trilho da barra de rolagem */
+    -fx-background-color: #f0f0f0;
     -fx-background-radius: 5em;
-}
-/* Crie um arquivo styles.css na pasta resources/css/ */
-
-.table-row-cell.row-realizado {
-    -fx-background-color: #d4edda !important; /* Verde claro */
-    -fx-text-fill: #155724 !important;
-}
-
-.table-row-cell.row-agendado {
-    -fx-background-color: #fff3cd !important; /* Amarelo claro */
-    -fx-text-fill: #856404 !important;
-}
-
-.table-row-cell.row-confirmado {
-    -fx-background-color: #cce5ff !important; /* Azul claro */
-    -fx-text-fill: #004085 !important;
-}
-
-.table-row-cell.row-cancelado {
-    -fx-background-color: #f8d7da !important; /* Vermelho claro */
-    -fx-text-fill: #721c24 !important;
-}
-
-/* Remove a seleção padrão para evitar conflitos */
-.table-row-cell:selected {
-    -fx-background-color: derive(-fx-selection-bar, 50%) !important;
-}
-
-
-.table-row-cell.row-confirmado:selected {
-    -fx-background-color: #e2f279;
-}
-
-/* Status: CANCELADO - Vermelho */
-.table-row-cell.row-cancelado {
-    -fx-background-color: #f5c6cb;
-    -fx-text-fill: #721c24;
-}
-
-.table-row-cell.row-cancelado:selected {
-    -fx-background-color: #e86a6a;
 }

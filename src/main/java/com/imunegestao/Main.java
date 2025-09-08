@@ -19,6 +19,7 @@ public class Main extends Application {
         janela = stage;
         Parent telaLogin = FXMLLoader.load(getClass().getResource("/com/imunegestao/views/scene-login.fxml"));
         cenaLogin = new Scene(telaLogin);
+
         cenaLogin.getStylesheets().add(getClass().getResource("/com/imunegestao/style.css").toExternalForm());
         janela.setScene(cenaLogin);
         janela.show();

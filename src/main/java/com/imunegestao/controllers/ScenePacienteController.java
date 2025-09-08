@@ -73,11 +73,7 @@ public class ScenePacienteController extends BaseController {
 
     private void carregarPacientesIniciais() {
 
-        //  Pegando as vacinas que foram criadas na classe Main
-        RepositorioVacina repositorioVacina = RepositorioVacina.getInstancia();
-        List<Vacina> vacinasDisponiveis = new ArrayList<>(repositorioVacina.listarVacinas().values());
-        Vacina vacinaGripe = vacinasDisponiveis.get(0);
-        Vacina vacinaCovid = vacinasDisponiveis.get(1);
+
 
         if (repositorioPaciente.listarPacientes().isEmpty()) {
             System.out.println("Pacientes Vazio");
@@ -125,7 +121,7 @@ public class ScenePacienteController extends BaseController {
                 Paciente novo = new Paciente(nome, cpf, idade, sexo, endereco, email, telefone);
                 repositorioPaciente.adicionarPaciente(novo);
                 listaPacientes.add(novo);
-                mostrarAlertaInformacao("Pacienteão cadastrado com sucesso!\n\n" + formatarDados(novo));
+                mostrarAlertaInformacao("Paciente cadastrado com sucesso!\n\n" + formatarDados(novo));
             } else {
                 pacienteEmEdicao.setNome(nome);
                 pacienteEmEdicao.setCpf(cpf);
@@ -137,7 +133,7 @@ public class ScenePacienteController extends BaseController {
 
                 listaPacientes.setAll(repositorioPaciente.listarPacientes().values());
                 tabela_pacientes.refresh();
-                mostrarAlertaInformacao("Pacienteão atualizado com sucesso!");
+                mostrarAlertaInformacao("Paciente atualizado com sucesso!");
 
                 pacienteEmEdicao = null;
             }

@@ -18,7 +18,7 @@ public class Paciente {
     private List<RegistroVacina> vacinasTomadas = new ArrayList<>();
 
 
-    public Paciente(String nome, String cpf, int idade, String sexo, String endereco,String numeroTelefone, String email) {
+    public Paciente(String nome, String cpf, int idade, String sexo, String endereco, String email,String numeroTelefone) {
         this.nome = nome;
         this.cpf = cpf;
         this.idade = idade;
