@@ -1,0 +1,26 @@
+{
+  "1": {
+    "id": 1,
+    "nome": "Gripe",
+    "fabricante": "Cimed",
+    "dosesDisponiveis": 5,
+    "dosesRecomendadas": 2,
+    "dataValidade": "2026-03-07"
+  },
+  "2": {
+    "id": 2,
+    "nome": "Covid-19",
+    "fabricante": "BioPharma",
+    "dosesDisponiveis": 10,
+    "dosesRecomendadas": 2,
+    "dataValidade": "2026-09-07"
+  },
+  "3": {
+    "id": 3,
+    "nome": "Teste",
+    "fabricante": "Nenhum",
+    "dosesDisponiveis": 5,
+    "dosesRecomendadas": 1,
+    "dataValidade": "2026-09-17"
+  }
+}

@@ -73,13 +73,9 @@ public class ScenePacienteController extends BaseController {
 
     private void carregarPacientesIniciais() {
 
-
-
         if (repositorioPaciente.listarPacientes().isEmpty()) {
             System.out.println("Pacientes Vazio");
         }
-
-
         listaPacientes.setAll(repositorioPaciente.listarPacientes().values());
     }
 
@@ -275,7 +271,7 @@ public class ScenePacienteController extends BaseController {
             Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("/com/imunegestao/style.css").toExternalForm());
             stage.setScene(scene);
-            stage.setTitle("Perfil do Pacienteão: " + paciente.getNome());
+            stage.setTitle("Perfil do Paciente: " + paciente.getNome());
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
