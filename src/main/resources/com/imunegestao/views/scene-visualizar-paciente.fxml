@@ -91,11 +91,11 @@
                   <VBox layoutX="520.0" layoutY="127.0" prefHeight="377.0" prefWidth="490.0" spacing="20.0" AnchorPane.leftAnchor="435.0" AnchorPane.rightAnchor="435.0">
                      <children>
                         <TextField fx:id="campo_nome" prefHeight="33.0" promptText="Nome completo" />
-                        <TextField fx:id="campo_cpf" prefHeight="33.0" promptText="cpf" />
-                        <TextField fx:id="campo_endereco" prefHeight="33.0" promptText="endereço" />
-                        <TextField fx:id="campo_idade" prefHeight="33.0" promptText="idade" />
-                        <TextField fx:id="campo_telefone" prefHeight="33.0" promptText="telefone" />
-                        <TextField fx:id="campo_email" prefHeight="33.0" promptText="email" />
+                        <TextField fx:id="campo_cpf" prefHeight="33.0" promptText="Cpf" />
+                        <TextField fx:id="campo_endereco" prefHeight="33.0" promptText="Endereço" />
+                        <TextField fx:id="campo_idade" prefHeight="33.0" promptText="Idade" />
+                        <TextField fx:id="campo_telefone" prefHeight="33.0" promptText="Telefone" />
+                        <TextField fx:id="campo_email" prefHeight="33.0" promptText="E-mail" />
                         <Pane prefHeight="40.0" prefWidth="424.0">
                            <children>
                               <RadioButton fx:id="masculino" layoutX="46.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="100.0" text="Masculino">

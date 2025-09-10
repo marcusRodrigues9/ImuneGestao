@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -15,7 +21,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imunegestao.controllers.SceneVacinaController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imunegestao.controllers.SceneVacinaController">
    <top>
       <AnchorPane prefHeight="107.0" prefWidth="1360.0" BorderPane.alignment="CENTER">
          <children>
@@ -45,7 +51,7 @@
             <MenuButton layoutX="537.0" layoutY="12.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="176.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" text="VACINAS" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="12.0">
                <items>
                   <MenuItem fx:id="botao_menu_visualizar_vacina" mnemonicParsing="false" onAction="#mostrar_tabela_vacina" text="Visualizar vacinas" />
-                  <MenuItem fx:id="botao_menu_cadastrar_vacina" mnemonicParsing="false" onAction="#mostrar_formulario_vacina" text="cadastrar vacinas" />
+                  <MenuItem fx:id="botao_menu_cadastrar_vacina" mnemonicParsing="false" onAction="#mostrar_formulario_vacina" text="Cadastrar vacinas" />
                </items>
                <padding>
                   <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
@@ -87,11 +93,11 @@
                <children>
                   <VBox layoutX="520.0" layoutY="127.0" prefHeight="289.0" prefWidth="490.0" spacing="20.0" AnchorPane.leftAnchor="435.0" AnchorPane.rightAnchor="435.0">
                      <children>
-                        <TextField fx:id="campo_nome" prefHeight="33.0" promptText="nome" />
-                        <TextField fx:id="campo_fabricante" prefHeight="33.0" promptText="fabricante" />
-                        <TextField fx:id="campo_doses_disponiveis" prefHeight="33.0" promptText="quantidade de doses disponiveis" />
-                        <TextField fx:id="campo_doses_recomendadas" prefHeight="33.0" promptText="doses recomendadas" />
-                        <DatePicker fx:id="campo_data_validade" prefHeight="27.0" prefWidth="424.0" promptText="data de validade" />
+                        <TextField fx:id="campo_nome" prefHeight="33.0" promptText="Nome" />
+                        <TextField fx:id="campo_fabricante" prefHeight="33.0" promptText="Fabricante" />
+                        <TextField fx:id="campo_doses_disponiveis" prefHeight="33.0" promptText="Quantidade de doses disponiveis" />
+                        <TextField fx:id="campo_doses_recomendadas" prefHeight="33.0" promptText="Doses recomendadas" />
+                        <DatePicker fx:id="campo_data_validade" prefHeight="27.0" prefWidth="424.0" promptText="Data de validade" />
                      </children>
                      <padding>
                         <Insets left="33.0" right="33.0" />
