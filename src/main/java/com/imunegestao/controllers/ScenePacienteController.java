@@ -1,6 +1,7 @@
 package com.imunegestao.controllers;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,14 +20,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -56,7 +50,7 @@ public class ScenePacienteController extends BaseController {
     @FXML private TextField campo_nome, campo_cpf, campo_endereco, campo_idade, campo_email, campo_telefone;
     @FXML private RadioButton masculino, feminino;
     @FXML private ToggleGroup sexo_paciente;
-
+    @FXML private DatePicker campo_data_nascimento;
     // --- Navegação ---
     @FXML private TextField buscar_paciente;
     @FXML private AnchorPane formulario_paciente, tela_paciente;
@@ -104,24 +98,23 @@ public class ScenePacienteController extends BaseController {
         String nome = campo_nome.getText();
         String cpf = campo_cpf.getText();
         String endereco = campo_endereco.getText();
-        String idadeStr = campo_idade.getText();
+        LocalDate dataNascimento = campo_data_nascimento.getValue(); // pega do DatePicker
         String email = campo_email.getText();
         String telefone = campo_telefone.getText();
         String sexo = masculino.isSelected() ? "Masculino" : feminino.isSelected() ? "Feminino" : null;
 
         try {
-            ValidacoesPaciente.validar(nome, cpf, idadeStr, sexo, endereco, email, telefone);
-            int idade = Integer.parseInt(idadeStr);
+            ValidacoesPaciente.validar(nome, cpf, dataNascimento, sexo, endereco, email, telefone);
 
             if (pacienteEmEdicao == null) {
-                Paciente novo = new Paciente(nome, cpf, idade, sexo, endereco, email, telefone);
+                Paciente novo = new Paciente(nome, cpf, dataNascimento, sexo, endereco, email, telefone);
                 repositorioPaciente.adicionarPaciente(novo);
                 listaPacientes.add(novo);
                 mostrarAlertaInformacao("Paciente cadastrado com sucesso!\n\n" + formatarDados(novo));
             } else {
                 pacienteEmEdicao.setNome(nome);
                 pacienteEmEdicao.setCpf(cpf);
-                pacienteEmEdicao.setIdade(idade);
+                pacienteEmEdicao.setDataNascimento(dataNascimento); // seta a data
                 pacienteEmEdicao.setSexo(sexo);
                 pacienteEmEdicao.setEndereco(endereco);
                 pacienteEmEdicao.setEmail(email);
@@ -198,7 +191,7 @@ public class ScenePacienteController extends BaseController {
         campo_endereco.setText(paciente.getEndereco());
         campo_email.setText(paciente.getEmail());
         campo_telefone.setText(paciente.getNumeroTelefone());
-        campo_idade.setText(String.valueOf(paciente.getIdade()));
+        campo_data_nascimento.setValue(paciente.getDataNascimento());
         sexo_paciente.selectToggle(paciente.getSexo().equalsIgnoreCase("Masculino") ? masculino : feminino);
         pacienteEmEdicao = paciente;
         mostrarTela(formulario_paciente, tela_paciente);
@@ -302,7 +295,6 @@ public class ScenePacienteController extends BaseController {
         campo_nome.clear();
         campo_cpf.clear();
         campo_endereco.clear();
-        campo_idade.clear();
         campo_telefone.clear();
         campo_email.clear();
         sexo_paciente.selectToggle(null);

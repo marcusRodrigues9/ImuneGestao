@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -93,9 +94,9 @@
                         <TextField fx:id="campo_nome" prefHeight="33.0" promptText="Nome completo" />
                         <TextField fx:id="campo_cpf" prefHeight="33.0" promptText="Cpf" />
                         <TextField fx:id="campo_endereco" prefHeight="33.0" promptText="Endereço" />
-                        <TextField fx:id="campo_idade" prefHeight="33.0" promptText="Idade" />
                         <TextField fx:id="campo_telefone" prefHeight="33.0" promptText="Telefone" />
                         <TextField fx:id="campo_email" prefHeight="33.0" promptText="E-mail" />
+                        <DatePicker fx:id="campo_data_nascimento" prefHeight="25.0" prefWidth="425.0" />
                         <Pane prefHeight="40.0" prefWidth="424.0">
                            <children>
                               <RadioButton fx:id="masculino" layoutX="46.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="100.0" text="Masculino">

@@ -2,6 +2,8 @@ package com.imunegestao.models.pessoas;
 
 import com.imunegestao.models.RegistroVacina;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,8 +11,8 @@ public class Paciente {
     private int id;
     private String nome;
     private String cpf;
-    private int idade;
-    private int 
+  /*  private int idade;*/
+    private LocalDate dataNascimento;
     private String sexo;
     private String endereco;
     private String numeroTelefone;
@@ -19,23 +21,24 @@ public class Paciente {
     private List<RegistroVacina> vacinasTomadas = new ArrayList<>();
 
 
-    public Paciente(String nome, String cpf, int idade, String sexo, String endereco, String email,String numeroTelefone) {
+    public Paciente(String nome, String cpf, LocalDate dataNascimento, String sexo, String endereco, String email,String numeroTelefone) {
         this.nome = nome;
         this.cpf = cpf;
-        this.idade = idade;
+        this.dataNascimento = dataNascimento;
         this.sexo = sexo;
         this.endereco = endereco;
         this.numeroTelefone = numeroTelefone;
         this.email = email;
     }
 
-    public Paciente(List<RegistroVacina> vacinasTomadas, String email, String numeroTelefone, String endereco, String sexo, int idade, String cpf, String nome, int id) {
+    public Paciente(List<RegistroVacina> vacinasTomadas, String email, String numeroTelefone, String endereco, String sexo, int idade,LocalDate dataNascimento, String cpf, String nome, int id) {
         this.vacinasTomadas = vacinasTomadas;
         this.email = email;
         this.numeroTelefone = numeroTelefone;
         this.endereco = endereco;
         this.sexo = sexo;
-        this.idade = idade;
+      /*  this.idade = idade; */
+        this.dataNascimento = dataNascimento;
         this.cpf = cpf;
         this.nome = nome;
         this.id = id;
@@ -60,9 +63,19 @@ public class Paciente {
 
     public void setCpf(String cpf) {this.cpf = cpf;}
 
-    public int getIdade() {return idade;}
+    public int getIdade() {
+        if (dataNascimento == null) return 0;
+        return Period.between(dataNascimento, LocalDate.now()).getYears();
+    }
 
-    public void setIdade(int idade) {this.idade = idade;}
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
 
     public String getSexo() {return sexo;}
 

@@ -1,8 +1,12 @@
 package com.imunegestao.utils;
 
+import java.time.LocalDate;
+import java.time.Period;
+
 public class ValidacoesPaciente {
 
-    public static void validar(String nome, String cpf, String idadeStr, String sexo, String endereco, String email, String telefone) throws ValidacaoException {
+    public static void validar(String nome, String cpf, LocalDate dataNascimento, String sexo,
+                               String endereco, String email, String telefone) throws ValidacaoException {
         if (nome == null || nome.trim().isEmpty())
             throw new ValidacaoException("Nome é obrigatório.");
 
@@ -12,21 +16,16 @@ public class ValidacoesPaciente {
         if (cpf == null || cpf.trim().isEmpty())
             throw new ValidacaoException("CPF é obrigatório.");
 
-        //  if (!cpf.matches("\\d{11}"))
-        //      throw new ValidacaoException("CPF deve conter exatamente 11 dígitos numéricos.");
+        // if (!cpf.matches("\\d{11}"))
+        //     throw new ValidacaoException("CPF deve conter exatamente 11 dígitos numéricos.");
 
-        if (idadeStr == null || idadeStr.trim().isEmpty())
-            throw new ValidacaoException("Idade é obrigatória.");
+        if (dataNascimento == null)
+            throw new ValidacaoException("Data de nascimento é obrigatória.");
 
-        int idade;
-        try {
-            idade = Integer.parseInt(idadeStr);
-        } catch (NumberFormatException e) {
-            throw new ValidacaoException("Idade inválida. Use apenas números.");
-        }
-
+        // Calcula a idade
+        int idade = Period.between(dataNascimento, LocalDate.now()).getYears();
         if (idade <= 0)
-            throw new ValidacaoException("Idade deve ser um número positivo.");
+            throw new ValidacaoException("Data de nascimento inválida.");
 
         if (sexo == null || sexo.trim().isEmpty())
             throw new ValidacaoException("Sexo é obrigatório.");
@@ -36,12 +35,14 @@ public class ValidacoesPaciente {
 
         if (endereco == null || endereco.trim().isEmpty())
             throw new ValidacaoException("Endereço é obrigatório.");
+
         if (email == null || email.trim().isEmpty()) {
             throw new ValidacaoException("E-mail é obrigatório.");
         }
         if (!email.matches("^[\\w.-]+@[\\w-]+\\.[a-zA-Z]{2,6}$")) {
             throw new ValidacaoException("E-mail inválido. Digite no formato: exemplo@dominio.com");
         }
+
         if (telefone == null || telefone.trim().isEmpty()) {
             throw new ValidacaoException("Telefone é obrigatório.");
         }
