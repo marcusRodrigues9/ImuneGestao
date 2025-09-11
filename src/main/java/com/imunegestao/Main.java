@@ -24,13 +24,10 @@ public class Main extends Application {
         janela.setScene(cenaLogin);
         janela.show();
     }
-
     public static void main(String[] args) {
         launch(args);
     }
     public static Scene getCenaLogin() {
         return cenaLogin;
     }
-
-
 }

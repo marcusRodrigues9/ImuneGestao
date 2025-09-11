@@ -144,6 +144,7 @@ public class ScenePacienteController extends BaseController {
 
     private void excluirPaciente(Paciente paciente) {
         repositorioPaciente.excluirPaciente(paciente.getId());
+        carregarPacientesIniciais();
         mostrarAlertaInformacao("Pacienteão excluído com sucesso.");
     }
 

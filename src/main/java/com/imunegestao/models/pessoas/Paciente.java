@@ -10,6 +10,7 @@ public class Paciente {
     private String nome;
     private String cpf;
     private int idade;
+    private int 
     private String sexo;
     private String endereco;
     private String numeroTelefone;
