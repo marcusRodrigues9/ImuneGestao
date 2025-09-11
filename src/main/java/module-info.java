@@ -18,5 +18,7 @@ module com.imunegestao.imunegestao {
 
     opens com.imunegestao.models to com.google.gson;
 
+    opens com.imunegestao.models.enums to com.google.gson;
+
     exports com.imunegestao;
 }

@@ -1,26 +1,82 @@
 {
   "1": {
     "id": 1,
-    "nome": "Gripe",
-    "fabricante": "Cimed",
-    "dosesDisponiveis": 5,
-    "dosesRecomendadas": 2,
-    "dataValidade": "2026-03-07"
+    "nome": "Febre Amarela",
+    "fabricante": "Bio-Manguinhos/Fiocruz",
+    "dosesDisponiveis": 150,
+    "dosesRecomendadas": 1,
+    "dataValidade": "2027-08-15"
   },
   "2": {
     "id": 2,
-    "nome": "Covid-19",
-    "fabricante": "BioPharma",
-    "dosesDisponiveis": 10,
+    "nome": "Tríplice Viral (SRC)",
+    "fabricante": "Serum Institute of India",
+    "dosesDisponiveis": 200,
     "dosesRecomendadas": 2,
-    "dataValidade": "2026-09-07"
+    "dataValidade": "2028-01-20"
   },
   "3": {
     "id": 3,
-    "nome": "Teste",
-    "fabricante": "Nenhum",
-    "dosesDisponiveis": 5,
+    "nome": "HPV Quadrivalente",
+    "fabricante": "Merck Sharp & Dohme (MSD)",
+    "dosesDisponiveis": 85,
+    "dosesRecomendadas": 2,
+    "dataValidade": "2027-11-10"
+  },
+  "4": {
+    "id": 4,
+    "nome": "COVID-19 (Bivalente)",
+    "fabricante": "Pfizer/BioNTech",
+    "dosesDisponiveis": 350,
     "dosesRecomendadas": 1,
-    "dataValidade": "2026-09-17"
+    "dataValidade": "2026-10-05"
+  },
+  "5": {
+    "id": 5,
+    "nome": "Influenza Quadrivalente",
+    "fabricante": "Instituto Butantan",
+    "dosesDisponiveis": 520,
+    "dosesRecomendadas": 1,
+    "dataValidade": "2026-05-30"
+  },
+  "6": {
+    "id": 6,
+    "nome": "BCG",
+    "fabricante": "Fundação Ataulpho de Paiva (FAP)",
+    "dosesDisponiveis": 120,
+    "dosesRecomendadas": 1,
+    "dataValidade": "2027-06-22"
+  },
+  "7": {
+    "id": 7,
+    "nome": "Pentavalente (DTP/Hib/HepB)",
+    "fabricante": "GlaxoSmithKline (GSK)",
+    "dosesDisponiveis": 180,
+    "dosesRecomendadas": 3,
+    "dataValidade": "2028-03-12"
+  },
+  "8": {
+    "id": 8,
+    "nome": "Poliomielite Oral (VOP)",
+    "fabricante": "Bio-Manguinhos/Fiocruz",
+    "dosesDisponiveis": 250,
+    "dosesRecomendadas": 2,
+    "dataValidade": "2027-09-01"
+  },
+  "9": {
+    "id": 9,
+    "nome": "Meningocócica C (Conjugada)",
+    "fabricante": "GSK",
+    "dosesDisponiveis": 95,
+    "dosesRecomendadas": 2,
+    "dataValidade": "2026-12-18"
+  },
+  "10": {
+    "id": 10,
+    "nome": "Hepatite B (Recombinante)",
+    "fabricante": "Instituto Butantan",
+    "dosesDisponiveis": 210,
+    "dosesRecomendadas": 3,
+    "dataValidade": "2028-04-30"
   }
 }

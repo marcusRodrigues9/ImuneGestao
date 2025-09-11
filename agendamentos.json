@@ -1,0 +1,28 @@
+{
+  "1": {
+    "id": 1,
+    "paciente": {
+      "id": 4,
+      "nome": "Alvim",
+      "cpf": "12345678900",
+      "idade": 15,
+      "sexo": "Masculino",
+      "endereco": "Rua da Alegria",
+      "numeroTelefone": "35999999999",
+      "email": "Alvimosesquilos@gmail.com",
+      "vacinasTomadas": []
+    },
+    "data": "2025-09-17",
+    "vacina": {
+      "id": 1,
+      "nome": "Gripe",
+      "fabricante": "Cimed",
+      "dosesDisponiveis": 4,
+      "dosesRecomendadas": 2,
+      "dataValidade": "2026-03-07"
+    },
+    "doses": 1,
+    "hora": "14:00",
+    "status": "CANCELADO"
+  }
+}

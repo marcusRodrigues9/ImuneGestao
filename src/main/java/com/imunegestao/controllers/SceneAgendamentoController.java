@@ -109,6 +109,7 @@ public class SceneAgendamentoController extends BaseController {
 
                         if (confirmacao.showAndWait().orElse(ButtonType.CANCEL) == ButtonType.OK) {
                             ag.setStatus(novoStatus);
+                            repositorioAgendamento.atualizarAgendamento(ag);  // atualiza a mudança de status no arquivo json
                             atualizarListaCompleta();
                         } else {
                             comboStatus.setValue(ag.getStatus());
