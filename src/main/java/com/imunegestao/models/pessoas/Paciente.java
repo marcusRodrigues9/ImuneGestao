@@ -11,6 +11,7 @@ public class Paciente {
     private int id;
     private String nome;
     private String cpf;
+    private String numeroSus;
   /*  private int idade;*/
     private LocalDate dataNascimento;
     private String sexo;
@@ -21,9 +22,10 @@ public class Paciente {
     private List<RegistroVacina> vacinasTomadas = new ArrayList<>();
 
 
-    public Paciente(String nome, String cpf, LocalDate dataNascimento, String sexo, String endereco, String email,String numeroTelefone) {
+    public Paciente(String nome, String cpf,String numeroSus, LocalDate dataNascimento, String sexo, String endereco, String email,String numeroTelefone) {
         this.nome = nome;
         this.cpf = cpf;
+        this.numeroSus = numeroSus;
         this.dataNascimento = dataNascimento;
         this.sexo = sexo;
         this.endereco = endereco;
@@ -31,12 +33,13 @@ public class Paciente {
         this.email = email;
     }
 
-    public Paciente(List<RegistroVacina> vacinasTomadas, String email, String numeroTelefone, String endereco, String sexo, int idade,LocalDate dataNascimento, String cpf, String nome, int id) {
+    public Paciente(List<RegistroVacina> vacinasTomadas, String email, String numeroTelefone, String endereco, String sexo, String numeroSus, LocalDate dataNascimento, String cpf, String nome, int id) {
         this.vacinasTomadas = vacinasTomadas;
         this.email = email;
         this.numeroTelefone = numeroTelefone;
         this.endereco = endereco;
         this.sexo = sexo;
+        this.numeroSus = numeroSus;
       /*  this.idade = idade; */
         this.dataNascimento = dataNascimento;
         this.cpf = cpf;
@@ -101,7 +104,11 @@ public class Paciente {
         this.email = email;
     }
 
+    public String getNumeroSus() {
+        return numeroSus;
+    }
 
-
-
+    public void setNumeroSus(String numeroSus) {
+        this.numeroSus = numeroSus;
+    }
 }

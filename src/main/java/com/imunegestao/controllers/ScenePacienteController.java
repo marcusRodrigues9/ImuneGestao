@@ -45,12 +45,13 @@ public class ScenePacienteController extends BaseController {
     @FXML private TableColumn<Paciente, String> coluna_email_paciente;
     @FXML private TableColumn<Paciente, String> coluna_telefone_paciente;
     @FXML private TableColumn<Paciente, Void> coluna_acao_paciente;
-
+    @FXML private TableColumn<Paciente, String> coluna_numeroSus;
     // --- Campos Formulário ---
-    @FXML private TextField campo_nome, campo_cpf, campo_endereco, campo_idade, campo_email, campo_telefone;
+    @FXML private TextField campo_nome, campo_cpf, campo_endereco, campo_idade, campo_email, campo_telefone, campo_sus;
     @FXML private RadioButton masculino, feminino;
     @FXML private ToggleGroup sexo_paciente;
     @FXML private DatePicker campo_data_nascimento;
+
     // --- Navegação ---
     @FXML private TextField buscar_paciente;
     @FXML private AnchorPane formulario_paciente, tela_paciente;
@@ -82,7 +83,7 @@ public class ScenePacienteController extends BaseController {
         coluna_endereco_paciente.setCellValueFactory(new PropertyValueFactory<>("endereco"));
         coluna_email_paciente.setCellValueFactory(new PropertyValueFactory<>("email"));
         coluna_telefone_paciente.setCellValueFactory(new PropertyValueFactory<>("numeroTelefone"));
-
+        coluna_numeroSus.setCellValueFactory(new PropertyValueFactory<>("numeroSus"));
         adicionarColunaAcoes();
         tabela_pacientes.setItems(listaPacientes);
     }
@@ -97,6 +98,7 @@ public class ScenePacienteController extends BaseController {
     private void salvarPaciente() {
         String nome = campo_nome.getText();
         String cpf = campo_cpf.getText();
+        String numeroSus = campo_sus.getText();
         String endereco = campo_endereco.getText();
         LocalDate dataNascimento = campo_data_nascimento.getValue(); // pega do DatePicker
         String email = campo_email.getText();
@@ -107,7 +109,7 @@ public class ScenePacienteController extends BaseController {
             ValidacoesPaciente.validar(nome, cpf, dataNascimento, sexo, endereco, email, telefone);
 
             if (pacienteEmEdicao == null) {
-                Paciente novo = new Paciente(nome, cpf, dataNascimento, sexo, endereco, email, telefone);
+                Paciente novo = new Paciente(nome, cpf, numeroSus, dataNascimento, sexo, endereco, email, telefone);
                 repositorioPaciente.adicionarPaciente(novo);
                 listaPacientes.add(novo);
                 mostrarAlertaInformacao("Paciente cadastrado com sucesso!\n\n" + formatarDados(novo));
@@ -119,6 +121,7 @@ public class ScenePacienteController extends BaseController {
                 pacienteEmEdicao.setEndereco(endereco);
                 pacienteEmEdicao.setEmail(email);
                 pacienteEmEdicao.setNumeroTelefone(telefone);
+                pacienteEmEdicao.setNumeroSus(numeroSus);
 
                 listaPacientes.setAll(repositorioPaciente.listarPacientes().values());
                 tabela_pacientes.refresh();
