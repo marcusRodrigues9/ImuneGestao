@@ -93,6 +93,7 @@
                      <children>
                         <TextField fx:id="campo_nome" prefHeight="33.0" promptText="Nome completo" />
                         <TextField fx:id="campo_cpf" prefHeight="33.0" promptText="Cpf" />
+                        <TextField fx:id="campo_sus" prefHeight="33.0" promptText="Numero do sus" />
                         <TextField fx:id="campo_endereco" prefHeight="33.0" promptText="Endereço" />
                         <TextField fx:id="campo_telefone" prefHeight="33.0" promptText="Telefone" />
                         <TextField fx:id="campo_email" prefHeight="33.0" promptText="E-mail" />
@@ -131,17 +132,18 @@
                         <Font name="Arial Bold" size="34.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="tabela_pacientes" layoutX="25.0" layoutY="230.0" prefHeight="365.0" prefWidth="1215.0" style="-fx-background-color: white; -fx-border-color: gray;" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="119.0">
+                  <TableView fx:id="tabela_pacientes" layoutX="25.0" layoutY="230.0" prefHeight="365.0" prefWidth="1315.0" style="-fx-background-color: white; -fx-border-color: gray;" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="19.0">
                     <columns>
                       <TableColumn fx:id="coluna_id_paciente" prefWidth="75.0" text="Id" />
-                      <TableColumn fx:id="coluna_nome_paciente" prefWidth="200.0" text="Nome" />
-                        <TableColumn fx:id="coluna_cpf_paciente" prefWidth="114.0" text="Cpf" />
-                        <TableColumn fx:id="coluna_idade_paciente" prefWidth="45.0" text="Idade" />
-                        <TableColumn fx:id="coluna_telefone_paciente" prefWidth="114.0" text="Telefone" />
-                        <TableColumn fx:id="coluna_email_paciente" prefWidth="172.0" text="E-mail" />
-                        <TableColumn fx:id="coluna_endereco_paciente" prefWidth="133.0" text="Endereço" />
-                        <TableColumn fx:id="coluna_sexo_paciente" prefWidth="92.0" text="Sexo" />
-                        <TableColumn fx:id="coluna_acao_paciente" prefWidth="300.0" />
+                      <TableColumn fx:id="coluna_nome_paciente" prefWidth="160.0" text="Nome" />
+                        <TableColumn fx:id="coluna_cpf_paciente" prefWidth="102.0" text="Cpf" />
+                        <TableColumn fx:id="coluna_numeroSus" prefWidth="141.0" text="NumeroSus" />
+                        <TableColumn fx:id="coluna_email_paciente" prefWidth="171.0" text="E-mail" />
+                        <TableColumn fx:id="coluna_telefone_paciente" prefWidth="119.0" text="Telefone" />
+                        <TableColumn fx:id="coluna_idade_paciente" prefWidth="59.0" text="Idade" />
+                        <TableColumn fx:id="coluna_sexo_paciente" prefWidth="87.0" text="Sexo" />
+                        <TableColumn fx:id="coluna_endereco_paciente" prefWidth="126.0" text="Endereço" />
+                        <TableColumn fx:id="coluna_acao_paciente" prefWidth="270.0" />
                     </columns>
                   </TableView>
                   <TextField fx:id="buscar_paciente" layoutX="362.0" layoutY="142.0" prefHeight="33.0" prefWidth="265.0" promptText="Digite o CPF" />

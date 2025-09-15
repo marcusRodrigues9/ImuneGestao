@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -22,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imunegestao.controllers.SceneAgendamentoController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imunegestao.controllers.SceneAgendamentoController">
    <top>
       <AnchorPane prefHeight="107.0" prefWidth="1360.0" BorderPane.alignment="CENTER">
          <children>
@@ -136,6 +131,11 @@
                   </TableView>
                   <TextField fx:id="buscar_agendamento" layoutX="454.0" layoutY="140.0" prefHeight="33.0" prefWidth="345.0" promptText="Digite o id do paciente ou nome completo do paciente" />
                   <ToggleButton fx:id="toggle_ocultar_cancelados" layoutX="1104.0" layoutY="194.0" mnemonicParsing="false" onAction="#alternarFiltroCancelados" text="Esconder Agendamentos cancelados" />
+                  <Hyperlink fx:id="link_wpp" layoutX="1119.0" layoutY="148.0" onAction="#abrirWhatsApp" text="Notificar paciente">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Hyperlink>
                </children>
             </AnchorPane>
          </children>

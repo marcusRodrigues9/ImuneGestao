@@ -18,13 +18,22 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.TableRow;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URI;
 import java.time.LocalDate;
+import java.util.Optional;
 
 public class SceneAgendamentoController extends BaseController {
 
@@ -52,6 +61,7 @@ public class SceneAgendamentoController extends BaseController {
     @FXML private TextField buscar_agendamento;
     @FXML private AnchorPane formulario_agendamento, tela_agendamento;
     @FXML private ToggleButton toggle_ocultar_cancelados;
+    @FXML private Hyperlink link_wpp;
 
     // =================== INICIALIZAÇÃO ===================
     @FXML
@@ -71,6 +81,7 @@ public class SceneAgendamentoController extends BaseController {
             debugListaAgendamentos();
         });
     }
+
 
     // =================== CONFIGURAÇÃO DA TABELA ===================
     private void configurarTabela() {
@@ -128,7 +139,80 @@ public class SceneAgendamentoController extends BaseController {
             }
         });
     }
+    @FXML
+    private void abrirWhatsApp() {
+        try {
+            // Criar diálogo customizado
+            Dialog<String> dialog = new Dialog<>();
+            dialog.setTitle("WhatsApp");
+            dialog.setHeaderText("Contato via WhatsApp");
 
+            // Configurar botões
+            ButtonType okButtonType = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+            dialog.getDialogPane().getButtonTypes().addAll(okButtonType, ButtonType.CANCEL);
+
+            // Criar campo de texto com placeholder
+            TextField campoNumero = new TextField();
+            campoNumero.setPromptText("Ex: (35) 99733-7237");
+            campoNumero.setPrefWidth(200);
+
+            // Layout do diálogo
+            VBox content = new VBox(10);
+            content.getChildren().addAll(
+                    new Label("Digite o número de telefone (com DDD):"),
+                    campoNumero
+            );
+            dialog.getDialogPane().setContent(content);
+
+            // Remover o foco automático - comentei a linha que focava no campo
+            // Platform.runLater(() -> campoNumero.requestFocus());
+
+            // Converter resultado
+            dialog.setResultConverter(dialogButton -> {
+                if (dialogButton == okButtonType) {
+                    return campoNumero.getText();
+                }
+                return null;
+            });
+
+            // Mostrar diálogo e processar resultado
+            Optional<String> resultado = dialog.showAndWait();
+
+            if (resultado.isPresent() && !resultado.get().trim().isEmpty()) {
+                String numeroDigitado = resultado.get().trim();
+
+                // Remover caracteres não numéricos (parênteses, espaços, traços)
+                String numeroLimpo = numeroDigitado.replaceAll("[^0-9]", "");
+
+                // Verificar se o número tem pelo menos 10 dígitos (DDD + telefone)
+                if (numeroLimpo.length() < 10) {
+                    mostrarAlertaErro("Número de telefone inválido. Digite o DDD + número.");
+                    return;
+                }
+
+                // Adicionar código do país (55) se não tiver
+                String numeroCompleto;
+                if (numeroLimpo.startsWith("55")) {
+                    numeroCompleto = numeroLimpo;
+                } else {
+                    numeroCompleto = "55" + numeroLimpo;
+                }
+
+                // Construir a URL do WhatsApp
+                String url = "https://api.whatsapp.com/send/?phone=" + numeroCompleto +
+                        "&text&type=phone_number&app_absent=0";
+
+                // Abrir no navegador
+                if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+                    Desktop.getDesktop().browse(new URI(url));
+                } else {
+                    mostrarAlertaErro("Navegador não suportado neste sistema.");
+                }
+            }
+        } catch (Exception e) {
+            mostrarAlertaErro("Erro ao abrir WhatsApp: " + e.getMessage());
+        }
+    }
     private void configurarCoresLinhas() {
         tabela_agendamento.setRowFactory(tv -> new TableRow<>() {
             @Override
