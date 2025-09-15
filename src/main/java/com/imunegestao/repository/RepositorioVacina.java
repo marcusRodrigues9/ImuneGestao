@@ -69,6 +69,12 @@ public class RepositorioVacina {
         return vacinas.get(id);
     }
 
+    public void gastarDoseVacina(int quatidadeDose, Vacina vacina){
+        int quantidadeRestante = vacina.getDosesDisponiveis() - quatidadeDose;
+        vacina.setDosesDisponiveis(quantidadeRestante);
+        salvarDados();
+    }
+
     // --- NOVOS MÉTODOS PARA SALVAR E CARREGAR ---
 
     private void salvarDados() {

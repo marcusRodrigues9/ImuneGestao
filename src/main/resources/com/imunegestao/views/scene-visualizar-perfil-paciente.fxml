@@ -8,11 +8,14 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imunegestao.controllers.ScenePerfilPacienteController"> <top>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imunegestao.controllers.ScenePerfilPacienteController"> <top>
     <AnchorPane prefHeight="107.0" prefWidth="1360.0" BorderPane.alignment="CENTER">
         <children>
             <MenuButton layoutX="331.0" layoutY="12.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="188.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" text="PACIENTES" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="12.0">
@@ -156,7 +159,7 @@
                         <TableColumn fx:id="coluna_funcionario" minWidth="3.0" prefWidth="181.0" text="Funcionario" />
                     </columns>
                 </TableView>
-                <Button layoutX="40.0" layoutY="480.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="180.0" text="Adicionar Nova Vacina">
+                <Button layoutX="40.0" layoutY="480.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="180.0" text="Administrar Nova Vacina" onAction="#mostrarFormularioAdministrarVacina">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
@@ -166,7 +169,46 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
+            <AnchorPane  layoutX="439.0" layoutY="71.0" prefHeight="511.0" prefWidth="546.0" />
+
+                <!-- FORMULARIO PARA ADMINISTRAR VACINA -->
+                <VBox    fx:id="formulario_administrar_vacina" alignment="CENTER" layoutX="491.0" layoutY="88.0" maxWidth="544.0" prefHeight="441.0" prefWidth="360.0" spacing="12" style="-fx-background-color: #f4f4f4; -fx-padding: 20; -fx-background-radius: 10;" visible="false" AnchorPane.leftAnchor="491.0" AnchorPane.rightAnchor="509.0" AnchorPane.topAnchor="88.0">
+
+                                <!-- Título -->
+                    <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Administrar Vacina" />
+
+                                <!-- Campo ID -->
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label minWidth="80" text="ID:" />
+                        <TextField fx:id="campo_id" prefWidth="180" />
+                    </HBox>
+
+                                <!-- Campo Nome -->
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label minWidth="80" text="Nome:" />
+                        <TextField fx:id="campo_nome" editable="false" prefWidth="180" />
+                    </HBox>
+
+                                <!-- Campo Fabricante -->
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label minWidth="80" text="Fabricante:" />
+                        <TextField fx:id="campo_fabricante" editable="false" prefWidth="180" />
+                    </HBox>
+               <HBox alignment="CENTER_LEFT" spacing="10">
+                  <children>
+                     <Label minWidth="80" text="x" />
+                     <TextField fx:id="campo_funcionario" editable="false" prefWidth="180" />
+                  </children>
+               </HBox>
+
+                                <!-- Botões -->
+                    <HBox alignment="CENTER" prefHeight="79.0" prefWidth="320.0" spacing="20">
+                        <Button fx:id="botaoAdministrar" text="Administrar" onAction="#administrarVacinaPaciente"/>
+                        <Button fx:id="botaoCancelar" text="Cancelar" onAction="#mostrarFormularioAdministrarVacina" />
+                    </HBox>
+                </VBox>
             </children>
         </AnchorPane>
+
     </center>
 </BorderPane>

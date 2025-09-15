@@ -10,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.DialogPane; // Adicione esta importação
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,6 +21,13 @@ public abstract class BaseController {
     protected void mostrarTela(AnchorPane telaParaMostrar, AnchorPane telaParaEsconder) {
         telaParaMostrar.setVisible(true);
         telaParaEsconder.setVisible(false);
+    }
+    protected void alternarVisibilidadeTela(VBox telaParaMostrar){
+        if (telaParaMostrar.isVisible()){
+            telaParaMostrar.setVisible(false);
+        }else{ telaParaMostrar.setVisible(true);
+        }
+
     }
     protected void trocarCena(ActionEvent event, String fxmlPath, String titulo) throws IOException {
         Parent novaTela = FXMLLoader.load(getClass().getResource(fxmlPath));

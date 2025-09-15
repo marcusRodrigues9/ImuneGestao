@@ -84,12 +84,14 @@ public class RepositorioPaciente {
                 .orElse(null);
     }
 
-    public void registrarVacinaParaPaciente(int idPaciente, RegistroVacina registro){
-        Paciente paciente = buscarPacientePorId(idPaciente);
-        if (paciente != null){
-           paciente.adicionarVacina(registro);
-           salvarDados(); // <--- Salva também após adicionar uma vacina
-        }
+    public void atualizarPaciente(Paciente paciente) {
+        pacientes.put(paciente.getId(), paciente);
+        salvarDados();
+    }
+
+    public void registrarVacinaParaPaciente(Paciente paciente, RegistroVacina registro){
+        paciente.adicionarVacina(registro);
+        atualizarPaciente(paciente);// <--- Salva também após adicionar uma vacina
     }
 
 
