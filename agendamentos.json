@@ -24,5 +24,136 @@
     "doses": 1,
     "hora": "14:00",
     "status": "CANCELADO"
+  },
+  "2": {
+    "id": 2,
+    "paciente": {
+      "id": 3,
+      "nome": "Mariana Silva",
+      "cpf": "98765432100",
+      "idade": 28,
+      "sexo": "Feminino",
+      "endereco": "Av. Central, 456",
+      "numeroTelefone": "31988887777",
+      "email": "mariana.silva@example.com",
+      "vacinasTomadas": []
+    },
+    "data": "2025-09-20",
+    "vacina": {
+      "id": 2,
+      "nome": "Hepatite B (Recombinante)",
+      "fabricante": "Instituto Butantan",
+      "dosesDisponiveis": 50,
+      "dosesRecomendadas": 3,
+      "dataValidade": "2027-01-01"
+    },
+    "doses": 1,
+    "hora": "09:30",
+    "status": "AGENDADO"
+  },
+  "3": {
+    "id": 3,
+    "paciente": {
+      "id": 5,
+      "nome": "João Pedro",
+      "cpf": "45612378900",
+      "idade": 35,
+      "sexo": "Masculino",
+      "endereco": "Rua Nova Esperança, 789",
+      "numeroTelefone": "31991112222",
+      "email": "joaopedro@example.com",
+      "vacinasTomadas": []
+    },
+    "data": "2025-09-21",
+    "vacina": {
+      "id": 4,
+      "nome": "Tríplice Viral (Sarampo, Caxumba e Rubéola)",
+      "fabricante": "Serum Institute of India",
+      "dosesDisponiveis": 120,
+      "dosesRecomendadas": 2,
+      "dataValidade": "2026-11-05"
+    },
+    "doses": 1,
+    "hora": "11:00",
+    "status": "CONFIRMADO"
+  },
+  "4": {
+    "id": 4,
+    "paciente": {
+      "id": 6,
+      "nome": "Carlos Eduardo",
+      "cpf": "32165498700",
+      "idade": 27,
+      "sexo": "Masculino",
+      "endereco": "Rua Horizonte Azul, 300",
+      "numeroTelefone": "31998887777",
+      "email": "cadu@example.com",
+      "vacinasTomadas": []
+    },
+    "data": "2025-09-22",
+    "vacina": {
+      "id": 1,
+      "nome": "Febre Amarela",
+      "fabricante": "Bio-Manguinhos/Fiocruz",
+      "dosesDisponiveis": 148,
+      "dosesRecomendadas": 1,
+      "dataValidade": "2027-08-15"
+    },
+    "doses": 1,
+    "hora": "15:15",
+    "status": "REALIZADO"
+  },
+  "5": {
+    "id": 5,
+    "paciente": {
+      "id": 7,
+      "nome": "Fernanda Oliveira",
+      "cpf": "78945612300",
+      "idade": 24,
+      "sexo": "Feminino",
+      "endereco": "Av. Brasil, 1500",
+      "numeroTelefone": "21997776655",
+      "email": "fernanda.oli@example.com",
+      "vacinasTomadas": []
+    },
+    "data": "2025-09-23",
+    "vacina": {
+      "id": 6,
+      "nome": "BCG",
+      "fabricante": "Fundação Ataulpho de Paiva (FAP)",
+      "dosesDisponiveis": 120,
+      "dosesRecomendadas": 1,
+      "dataValidade": "2027-06-22"
+    },
+    "doses": 1,
+    "hora": "10:45",
+    "status": "CANCELADO"
+  },
+  "6": {
+    "id": 6,
+    "paciente": {
+      "id": 8,
+      "nome": "Lucas Martins",
+      "cpf": "98712365400",
+      "idade": 14,
+      "sexo": "Masculino",
+      "endereco": "Rua Primavera, 80",
+      "numeroTelefone": "31994443322",
+      "email": "lucas.martins@example.com",
+      "vacinasTomadas": []
+    },
+    "data": "2025-09-24",
+    "vacina": {
+      "id": 9,
+      "nome": "Meningocócica C (Conjugada)",
+      "fabricante": "GSK",
+      "dosesDisponiveis": 95,
+      "dosesRecomendadas": 2,
+      "dataValidade": "2026-12-18"
+    },
+    "doses": 1,
+    "hora": "08:00",
+    "status": "AGENDADO"
   }
+
 }

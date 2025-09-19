@@ -3,7 +3,7 @@
     "id": 1,
     "nome": "Febre Amarela",
     "fabricante": "Bio-Manguinhos/Fiocruz",
-    "dosesDisponiveis": 150,
+    "dosesDisponiveis": 148,
     "dosesRecomendadas": 1,
     "dataValidade": "2027-08-15"
   },
@@ -11,15 +11,15 @@
     "id": 2,
     "nome": "Tríplice Viral (SRC)",
     "fabricante": "Serum Institute of India",
-    "dosesDisponiveis": 200,
+    "dosesDisponiveis": 198,
     "dosesRecomendadas": 2,
     "dataValidade": "2028-01-20"
   },
   "3": {
     "id": 3,
     "nome": "HPV Quadrivalente",
-    "fabricante": "Merck Sharp & Dohme (MSD)",
-    "dosesDisponiveis": 85,
+    "fabricante": "Merck Sharp \u0026 Dohme (MSD)",
+    "dosesDisponiveis": 83,
     "dosesRecomendadas": 2,
     "dataValidade": "2027-11-10"
   },

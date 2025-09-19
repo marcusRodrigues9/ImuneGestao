@@ -8,7 +8,19 @@
     "endereco": "rqrq",
     "numeroTelefone": "35666666444",
     "email": "rawa@gmai.com",
-    "vacinasTomadas": []
+    "vacinasTomadas": [
+      {
+        "dataAplicacao": "2025-09-14",
+        "vacina": {
+          "id": 2,
+          "nome": "Tríplice Viral (SRC)",
+          "fabricante": "Serum Institute of India",
+          "dosesDisponiveis": 198,
+          "dosesRecomendadas": 2,
+          "dataValidade": "2028-01-20"
+        }
+      }
+    ]
   },
   "2": {
     "id": 2,
@@ -20,6 +32,207 @@
     "endereco": "rua x",
     "numeroTelefone": "36997337238",
     "email": "marcus@gmail.com",
-    "vacinasTomadas": []
+    "vacinasTomadas": [
+      {
+        "dataAplicacao": "2025-09-14",
+        "vacina": {
+          "id": 3,
+          "nome": "HPV Quadrivalente",
+          "fabricante": "Merck Sharp & Dohme (MSD)",
+          "dosesDisponiveis": 83,
+          "dosesRecomendadas": 2,
+          "dataValidade": "2027-11-10"
+        }
+      }
+    ]
+  },
+  "3": {
+    "id": 3,
+    "nome": "Ana Silva",
+    "cpf": "15975348620",
+    "numeroSus": "456789123654",
+    "dataNascimento": "2015-05-12",
+    "sexo": "Feminino",
+    "endereco": "Rua das Flores, 120",
+    "numeroTelefone": "34987654321",
+    "email": "ana.silva@example.com",
+    "vacinasTomadas": [
+      {
+        "dataAplicacao": "2025-03-10",
+        "vacina": {
+          "id": 4,
+          "nome": "COVID-19 (Bivalente)",
+          "fabricante": "Pfizer/BioNTech",
+          "dosesDisponiveis": 350,
+          "dosesRecomendadas": 1,
+          "dataValidade": "2026-10-05"
+        }
+      }
+    ]
+  },
+  "4": {
+    "id": 4,
+    "nome": "João Pedro",
+    "cpf": "14725836900",
+    "numeroSus": "741852963159",
+    "dataNascimento": "2012-11-21",
+    "sexo": "Masculino",
+    "endereco": "Av. Central, 999",
+    "numeroTelefone": "31991112222",
+    "email": "joaopedro@example.com",
+    "vacinasTomadas": [
+      {
+        "dataAplicacao": "2024-12-20",
+        "vacina": {
+          "id": 5,
+          "nome": "Influenza Quadrivalente",
+          "fabricante": "Instituto Butantan",
+          "dosesDisponiveis": 520,
+          "dosesRecomendadas": 1,
+          "dataValidade": "2026-05-30"
+        }
+      },
+      {
+        "dataAplicacao": "2025-02-15",
+        "vacina": {
+          "id": 10,
+          "nome": "Hepatite B (Recombinante)",
+          "fabricante": "Instituto Butantan",
+          "dosesDisponiveis": 210,
+          "dosesRecomendadas": 3,
+          "dataValidade": "2028-04-30"
+        }
+      }
+    ]
+  },
+  "5": {
+    "id": 5,
+    "nome": "Beatriz Costa",
+    "cpf": "25836914700",
+    "numeroSus": "963852741258",
+    "dataNascimento": "2009-02-03",
+    "sexo": "Feminino",
+    "endereco": "Rua Nova Esperança, 45",
+    "numeroTelefone": "32992223333",
+    "email": "bia.costa@example.com",
+    "vacinasTomadas": [
+      {
+        "dataAplicacao": "2025-01-18",
+        "vacina": {
+          "id": 7,
+          "nome": "Pentavalente (DTP/Hib/HepB)",
+          "fabricante": "GlaxoSmithKline (GSK)",
+          "dosesDisponiveis": 180,
+          "dosesRecomendadas": 3,
+          "dataValidade": "2028-03-12"
+        }
+      },
+      {
+        "dataAplicacao": "2025-04-05",
+        "vacina": {
+          "id": 9,
+          "nome": "Meningocócica C (Conjugada)",
+          "fabricante": "GSK",
+          "dosesDisponiveis": 95,
+          "dosesRecomendadas": 2,
+          "dataValidade": "2026-12-18"
+        }
+      }
+    ]
+  },
+  "6": {
+    "id": 6,
+    "nome": "Carlos Eduardo",
+    "cpf": "32165498700",
+    "numeroSus": "852741963123",
+    "dataNascimento": "1998-07-19",
+    "sexo": "Masculino",
+    "endereco": "Rua Horizonte Azul, 300",
+    "numeroTelefone": "31998887777",
+    "email": "cadu@example.com",
+    "vacinasTomadas": [
+      {
+        "dataAplicacao": "2025-06-22",
+        "vacina": {
+          "id": 1,
+          "nome": "Febre Amarela",
+          "fabricante": "Bio-Manguinhos/Fiocruz",
+          "dosesDisponiveis": 148,
+          "dosesRecomendadas": 1,
+          "dataValidade": "2027-08-15"
+        }
+      }
+    ]
+  },
+  "7": {
+    "id": 7,
+    "nome": "Fernanda Oliveira",
+    "cpf": "78945612300",
+    "numeroSus": "456123789654",
+    "dataNascimento": "2001-03-25",
+    "sexo": "Feminino",
+    "endereco": "Av. Brasil, 1500",
+    "numeroTelefone": "21997776655",
+    "email": "fernanda.oli@example.com",
+    "vacinasTomadas": [
+      {
+        "dataAplicacao": "2025-05-11",
+        "vacina": {
+          "id": 6,
+          "nome": "BCG",
+          "fabricante": "Fundação Ataulpho de Paiva (FAP)",
+          "dosesDisponiveis": 120,
+          "dosesRecomendadas": 1,
+          "dataValidade": "2027-06-22"
+        }
+      },
+      {
+        "dataAplicacao": "2025-08-02",
+        "vacina": {
+          "id": 8,
+          "nome": "Poliomielite Oral (VOP)",
+          "fabricante": "Bio-Manguinhos/Fiocruz",
+          "dosesDisponiveis": 250,
+          "dosesRecomendadas": 2,
+          "dataValidade": "2027-09-01"
+        }
+      }
+    ]
+  },
+  "8": {
+    "id": 8,
+    "nome": "Lucas Martins",
+    "cpf": "98712365400",
+    "numeroSus": "159357456852",
+    "dataNascimento": "2010-12-02",
+    "sexo": "Masculino",
+    "endereco": "Rua Primavera, 80",
+    "numeroTelefone": "31994443322",
+    "email": "lucas.martins@example.com",
+    "vacinasTomadas": [
+      {
+        "dataAplicacao": "2025-07-09",
+        "vacina": {
+          "id": 9,
+          "nome": "Meningocócica C (Conjugada)",
+          "fabricante": "GSK",
+          "dosesDisponiveis": 95,
+          "dosesRecomendadas": 2,
+          "dataValidade": "2026-12-18"
+        }
+      },
+      {
+        "dataAplicacao": "2025-09-01",
+        "vacina": {
+          "id": 10,
+          "nome": "Hepatite B (Recombinante)",
+          "fabricante": "Instituto Butantan",
+          "dosesDisponiveis": 210,
+          "dosesRecomendadas": 3,
+          "dataValidade": "2028-04-30"
+        }
+      }
+    ]
   }
+
 }

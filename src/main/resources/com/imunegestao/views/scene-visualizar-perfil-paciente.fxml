@@ -159,7 +159,7 @@
                         <TableColumn fx:id="coluna_funcionario" minWidth="3.0" prefWidth="181.0" text="Funcionario" />
                     </columns>
                 </TableView>
-                <Button layoutX="40.0" layoutY="480.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="180.0" text="Administrar Nova Vacina" onAction="#mostrarFormularioAdministrarVacina">
+                <Button layoutX="40.0" layoutY="480.0" mnemonicParsing="false" onAction="#mostrarFormularioAdministrarVacina" prefHeight="36.0" prefWidth="180.0" text="Administrar Nova Vacina">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
@@ -169,10 +169,10 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-            <AnchorPane  layoutX="439.0" layoutY="71.0" prefHeight="511.0" prefWidth="546.0" />
+            <AnchorPane layoutX="439.0" layoutY="71.0" prefHeight="511.0" prefWidth="546.0" />
 
                 <!-- FORMULARIO PARA ADMINISTRAR VACINA -->
-                <VBox    fx:id="formulario_administrar_vacina" alignment="CENTER" layoutX="491.0" layoutY="88.0" maxWidth="544.0" prefHeight="441.0" prefWidth="360.0" spacing="12" style="-fx-background-color: #f4f4f4; -fx-padding: 20; -fx-background-radius: 10;" visible="false" AnchorPane.leftAnchor="491.0" AnchorPane.rightAnchor="509.0" AnchorPane.topAnchor="88.0">
+                <VBox fx:id="formulario_administrar_vacina" alignment="CENTER" layoutX="491.0" layoutY="88.0" maxWidth="544.0" prefHeight="441.0" prefWidth="360.0" spacing="12" style="-fx-background-color: #f4f4f4; -fx-padding: 20; -fx-background-radius: 10;" visible="false" AnchorPane.leftAnchor="491.0" AnchorPane.rightAnchor="509.0" AnchorPane.topAnchor="88.0">
 
                                 <!-- Título -->
                     <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Administrar Vacina" />
@@ -196,15 +196,15 @@
                     </HBox>
                <HBox alignment="CENTER_LEFT" spacing="10">
                   <children>
-                     <Label minWidth="80" text="x" />
+                     <Label minWidth="80" text="Funcionário" />
                      <TextField fx:id="campo_funcionario" editable="false" prefWidth="180" />
                   </children>
                </HBox>
 
                                 <!-- Botões -->
                     <HBox alignment="CENTER" prefHeight="79.0" prefWidth="320.0" spacing="20">
-                        <Button fx:id="botaoAdministrar" text="Administrar" onAction="#administrarVacinaPaciente"/>
-                        <Button fx:id="botaoCancelar" text="Cancelar" onAction="#mostrarFormularioAdministrarVacina" />
+                        <Button fx:id="botaoAdministrar" onAction="#administrarVacinaPaciente" text="Administrar" />
+                        <Button fx:id="botaoCancelar" onAction="#mostrarFormularioAdministrarVacina" text="Cancelar" />
                     </HBox>
                 </VBox>
             </children>
