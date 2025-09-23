@@ -5,6 +5,9 @@ module com.imunegestao.imunegestao {
     requires org.kordamp.bootstrapfx.core;
     requires com.google.gson;
     requires java.desktop;
+    requires spark.core;
+    requires java.base;
+
 
 
     opens com.imunegestao to javafx.fxml;
@@ -21,5 +24,8 @@ module com.imunegestao.imunegestao {
 
     opens com.imunegestao.models.enums to com.google.gson;
 
+
     exports com.imunegestao;
+    exports com.imunegestao.webhook;
+    opens com.imunegestao.webhook to com.google.gson, javafx.fxml;
 }

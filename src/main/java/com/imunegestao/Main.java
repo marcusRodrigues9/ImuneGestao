@@ -1,20 +1,19 @@
 package com.imunegestao;
 
-import com.imunegestao.models.vacinas.Vacina;
-import com.imunegestao.repository.RepositorioVacina;
+import com.imunegestao.webhook.WhatsAppWebhook;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.time.LocalDate;
-
 public class Main extends Application {
     private static Scene cenaLogin;
     Stage janela;
     @Override
     public void start(Stage stage) throws Exception {
+        // Inicia o Webhook HTTP em paralelo
+        new Thread(WhatsAppWebhook::startWebhook).start();
 
         janela = stage;
         Parent telaLogin = FXMLLoader.load(getClass().getResource("/com/imunegestao/views/scene-login.fxml"));
