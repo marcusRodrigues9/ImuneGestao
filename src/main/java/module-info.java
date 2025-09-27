@@ -1,4 +1,5 @@
 module com.imunegestao.imunegestao {
+
     requires javafx.controls;
     requires javafx.fxml;
     requires org.controlsfx.controls;
@@ -7,25 +8,24 @@ module com.imunegestao.imunegestao {
     requires java.desktop;
     requires spark.core;
     requires java.base;
-
-
+    requires java.net.http;
+    requires com.fasterxml.jackson.databind;
 
     opens com.imunegestao to javafx.fxml;
     opens com.imunegestao.controllers to javafx.fxml;
-
-
 
     opens com.imunegestao.models.pessoas to com.google.gson, javafx.base;
     opens com.imunegestao.models.vacinas to com.google.gson, javafx.base;
     opens com.imunegestao.models.agendamento to com.google.gson, javafx.base;
 
-
     opens com.imunegestao.models to com.google.gson;
 
     opens com.imunegestao.models.enums to com.google.gson;
 
+    opens com.imunegestao.messaging to com.fasterxml.jackson.databind;
 
     exports com.imunegestao;
     exports com.imunegestao.webhook;
     opens com.imunegestao.webhook to com.google.gson, javafx.fxml;
+
 }

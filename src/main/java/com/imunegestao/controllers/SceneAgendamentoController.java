@@ -1,6 +1,8 @@
 package com.imunegestao.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.imunegestao.Main;
+import com.imunegestao.messaging.MailSender;
 import com.imunegestao.models.agendamento.Agendamento;
 import com.imunegestao.models.enums.StatusAgendamento;
 import com.imunegestao.models.pessoas.Paciente;
@@ -8,7 +10,6 @@ import com.imunegestao.models.vacinas.Vacina;
 import com.imunegestao.repository.RepositorioAgendamento;
 import com.imunegestao.repository.RepositorioPaciente;
 import com.imunegestao.repository.RepositorioVacina;
-
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,15 +18,14 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.control.TableRow;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -33,6 +33,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 public class SceneAgendamentoController extends BaseController {
@@ -47,21 +48,36 @@ public class SceneAgendamentoController extends BaseController {
     private final SortedList<Agendamento> listaAgendamentos = new SortedList<>(listaAgendamentosFiltrada);
 
     // =================== COMPONENTES FXML ===================
-    @FXML private TextField campo_nome, campo_cpf, campo_hora;
-    @FXML private TextField campo_id_vacina, campo_nome_vacina, campo_doses;
-    @FXML private DatePicker campo_data;
-    @FXML private TableView<Agendamento> tabela_agendamento;
-    @FXML private TableColumn<Agendamento, Integer> coluna_id, coluna_doses;
-    @FXML private TableColumn<Agendamento, String> coluna_nome, coluna_cpf, coluna_hora, coluna_vacina;
-    @FXML private TableColumn<Agendamento, LocalDate> coluna_data;
-    @FXML private TableColumn<Agendamento, StatusAgendamento> coluna_status;
-    @FXML private TableColumn<Agendamento, Void> coluna_acao;
-    @FXML private MenuItem botao_menu_cadastrar_agendamento, botao_menu_visualizar_agendamento;
-    @FXML private Button botao_sair, realizar_cadastro_agendamento;
-    @FXML private TextField buscar_agendamento;
-    @FXML private AnchorPane formulario_agendamento, tela_agendamento;
-    @FXML private ToggleButton toggle_ocultar_cancelados;
-    @FXML private Hyperlink link_wpp;
+    @FXML
+    private TextField campo_nome, campo_cpf, campo_hora;
+    @FXML
+    private TextField campo_id_vacina, campo_nome_vacina, campo_doses;
+    @FXML
+    private DatePicker campo_data;
+    @FXML
+    private TableView<Agendamento> tabela_agendamento;
+    @FXML
+    private TableColumn<Agendamento, Integer> coluna_id, coluna_doses;
+    @FXML
+    private TableColumn<Agendamento, String> coluna_nome, coluna_cpf, coluna_hora, coluna_vacina;
+    @FXML
+    private TableColumn<Agendamento, LocalDate> coluna_data;
+    @FXML
+    private TableColumn<Agendamento, StatusAgendamento> coluna_status;
+    @FXML
+    private TableColumn<Agendamento, Void> coluna_acao;
+    @FXML
+    private MenuItem botao_menu_cadastrar_agendamento, botao_menu_visualizar_agendamento;
+    @FXML
+    private Button botao_sair, realizar_cadastro_agendamento;
+    @FXML
+    private TextField buscar_agendamento;
+    @FXML
+    private AnchorPane formulario_agendamento, tela_agendamento;
+    @FXML
+    private ToggleButton toggle_ocultar_cancelados;
+    @FXML
+    private Hyperlink link_wpp;
 
     // =================== INICIALIZAÇÃO ===================
     @FXML
@@ -139,6 +155,7 @@ public class SceneAgendamentoController extends BaseController {
             }
         });
     }
+
     @FXML
     private void abrirWhatsApp() {
         try {
@@ -213,6 +230,7 @@ public class SceneAgendamentoController extends BaseController {
             mostrarAlertaErro("Erro ao abrir WhatsApp: " + e.getMessage());
         }
     }
+
     private void configurarCoresLinhas() {
         tabela_agendamento.setRowFactory(tv -> new TableRow<>() {
             @Override
@@ -292,7 +310,9 @@ public class SceneAgendamentoController extends BaseController {
     }
 
     // =================== AÇÕES DOS BOTÕES ===================
-    @FXML private void salvarAgendamento() {
+
+    @FXML
+    private void salvarAgendamento() {
         String nome = campo_nome.getText();
         String cpf = campo_cpf.getText();
         String hora = campo_hora.getText();
@@ -337,6 +357,8 @@ public class SceneAgendamentoController extends BaseController {
         atualizarListaCompleta();
         limparCampos();
         mostrarAlertaInformacao("Agendamento cadastrado com sucesso!");
+        new MailSender(new ObjectMapper()).send(paciente.getEmail(), nome, data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), (hora + "h"));
+
     }
 
     private void limparCampos() {
@@ -349,29 +371,35 @@ public class SceneAgendamentoController extends BaseController {
         campo_doses.clear();
     }
 
-    @FXML private void mostrar_formulario_agendamento(ActionEvent event) {
+    @FXML
+    private void mostrar_formulario_agendamento(ActionEvent event) {
         mostrarTela(formulario_agendamento, tela_agendamento);
     }
 
-    @FXML private void mostrar_tabela_agendamento(ActionEvent event) {
+    @FXML
+    private void mostrar_tabela_agendamento(ActionEvent event) {
         atualizarListaCompleta();
         mostrarTela(tela_agendamento, formulario_agendamento);
     }
 
-    @FXML private void alterar_tela_paciente(ActionEvent event) throws IOException {
+    @FXML
+    private void alterar_tela_paciente(ActionEvent event) throws IOException {
         trocarCena(event, "/com/imunegestao/views/scene-visualizar-paciente.fxml", "Pacienteãos");
     }
 
-    @FXML private void alterar_tela_vacina(ActionEvent event) throws IOException {
+    @FXML
+    private void alterar_tela_vacina(ActionEvent event) throws IOException {
         trocarCena(event, "/com/imunegestao/views/scene-visualizar-vacinas.fxml", "Vacinas");
     }
 
-    @FXML public void sair(ActionEvent event) {
+    @FXML
+    public void sair(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(Main.getCenaLogin());
     }
 
-    @FXML private void buscarVacinaPorId() {
+    @FXML
+    private void buscarVacinaPorId() {
         String idDigitado = campo_id_vacina.getText().trim();
 
         if (idDigitado.isEmpty()) {
@@ -395,7 +423,8 @@ public class SceneAgendamentoController extends BaseController {
         }
     }
 
-    @FXML private void alternarFiltroCancelados() {
+    @FXML
+    private void alternarFiltroCancelados() {
         Platform.runLater(() -> {
             aplicarFiltros();
             atualizarCoresTabela();
