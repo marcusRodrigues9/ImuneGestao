@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -21,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imunegestao.controllers.SceneVacinaController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imunegestao.controllers.SceneVacinaController">
    <top>
       <AnchorPane prefHeight="107.0" prefWidth="1360.0" BorderPane.alignment="CENTER">
          <children>
@@ -98,6 +92,7 @@
                         <TextField fx:id="campo_doses_disponiveis" prefHeight="33.0" promptText="Quantidade de doses disponiveis" />
                         <TextField fx:id="campo_doses_recomendadas" prefHeight="33.0" promptText="Doses recomendadas" />
                         <DatePicker fx:id="campo_data_validade" prefHeight="27.0" prefWidth="424.0" promptText="Data de validade" />
+                        <TextField fx:id="campo_lote" prefHeight="33.0" promptText="Lote" />
                      </children>
                      <padding>
                         <Insets left="33.0" right="33.0" />
@@ -108,7 +103,7 @@
                         <Font name="Arial Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Button layoutX="555.0" layoutY="401.0" mnemonicParsing="false" onAction="#salvarVacina" prefHeight="34.0" prefWidth="250.0" text="Cadastrar" AnchorPane.leftAnchor="555.0" AnchorPane.rightAnchor="555.0" />
+                  <Button layoutX="555.0" layoutY="439.0" mnemonicParsing="false" onAction="#salvarVacina" prefHeight="34.0" prefWidth="250.0" text="Cadastrar" AnchorPane.leftAnchor="555.0" AnchorPane.rightAnchor="555.0" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="tela_vacina" layoutY="-3.0" prefHeight="665.0" prefWidth="1359.0">
@@ -120,13 +115,14 @@
                   </Label>
                   <TableView fx:id="tabela_vacinas" layoutX="25.0" layoutY="230.0" prefHeight="365.0" prefWidth="1232.0" style="-fx-background-color: white; -fx-border-color: gray;" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="165.0">
                      <columns>
-                        <TableColumn fx:id="coluna_id" prefWidth="75.0" text="Id" />
-                        <TableColumn fx:id="coluna_nome" prefWidth="75.0" text="Nome" />
-                        <TableColumn fx:id="coluna_fabricante" prefWidth="75.0" text="Fabricante" />
-                        <TableColumn fx:id="coluna_doses_disponiveis" prefWidth="117.0" text="Doses disponiveis" />
-                        <TableColumn fx:id="coluna_doses_recomendadas" prefWidth="127.0" text="Doses recomendadas" />
-                        <TableColumn fx:id="coluna_data_validade" prefWidth="107.0" text="Data de validade" />
-                        <TableColumn fx:id="coluna_acao_vacina" text="Ações" />
+                        <TableColumn fx:id="coluna_id" prefWidth="55.0" text="Id" />
+                        <TableColumn fx:id="coluna_nome" prefWidth="162.0" text="Nome" />
+                        <TableColumn fx:id="coluna_fabricante" prefWidth="231.0" text="Fabricante" />
+                        <TableColumn fx:id="coluna_doses_disponiveis" prefWidth="127.0" text="Doses disponiveis" />
+                        <TableColumn fx:id="coluna_doses_recomendadas" prefWidth="144.0" text="Doses recomendadas" />
+                        <TableColumn fx:id="coluna_data_validade" prefWidth="144.0" text="Data de validade" />
+                        <TableColumn fx:id="coluna_lote" prefWidth="110.0" text="Lote" />
+                        <TableColumn fx:id="coluna_acao_vacina" prefWidth="79.0" text="Ações" />
                      </columns>
                   </TableView>
                   <TextField fx:id="buscar_vacina" layoutX="336.0" layoutY="140.0" prefHeight="33.0" prefWidth="265.0" promptText="Digite o id ou nome da vacina" />

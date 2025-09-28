@@ -156,7 +156,7 @@
                         <TableColumn fx:id="coluna_vacina" prefWidth="143.0" text="Vacina" />
                         <TableColumn fx:id="coluna_fabricante" minWidth="0.0" prefWidth="170.0" text="Fabricante" />
                         <TableColumn fx:id="coluna_data" prefWidth="143.0" text="Data de aplicação" />
-                        <TableColumn fx:id="coluna_funcionario" minWidth="3.0" prefWidth="181.0" text="Funcionario" />
+                        <TableColumn fx:id="coluna_lote" minWidth="3.0" prefWidth="181.0" text="Lote" />
                         <TableColumn fx:id="coluna_acao_vacina" text="Ação" />
                     </columns>
                 </TableView>
@@ -192,8 +192,8 @@
                     </HBox>
                <HBox alignment="CENTER_LEFT" spacing="10">
                   <children>
-                     <Label minWidth="80" text="Funcionário" />
-                     <TextField fx:id="campo_funcionario" editable="false" prefWidth="180" />
+                     <Label minWidth="80" text="Lote" />
+                     <TextField fx:id="campo_lote" editable="false" prefWidth="180" />
                   </children>
                </HBox>
 

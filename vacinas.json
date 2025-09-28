@@ -3,80 +3,234 @@
     "id": 1,
     "nome": "Febre Amarela",
     "fabricante": "Bio-Manguinhos/Fiocruz",
-    "dosesDisponiveis": 148,
+    "dosesDisponiveis": 119,
     "dosesRecomendadas": 1,
-    "dataValidade": "2027-08-15"
+    "dataValidade": "2027-08-15",
+    "lote": "FA-2025-01"
   },
   "2": {
     "id": 2,
-    "nome": "Tríplice Viral (SRC)",
-    "fabricante": "Serum Institute of India",
-    "dosesDisponiveis": 198,
-    "dosesRecomendadas": 2,
-    "dataValidade": "2028-01-20"
+    "nome": "Febre Amarela",
+    "fabricante": "Bio-Manguinhos/Fiocruz",
+    "dosesDisponiveis": 80,
+    "dosesRecomendadas": 1,
+    "dataValidade": "2026-12-10",
+    "lote": "FA-2024-07"
   },
   "3": {
     "id": 3,
-    "nome": "HPV Quadrivalente",
-    "fabricante": "Merck Sharp \u0026 Dohme (MSD)",
-    "dosesDisponiveis": 83,
+    "nome": "Tríplice Viral (Sarampo, Caxumba e Rubéola)",
+    "fabricante": "Serum Institute",
+    "dosesDisponiveis": 200,
     "dosesRecomendadas": 2,
-    "dataValidade": "2027-11-10"
+    "dataValidade": "2028-01-20",
+    "lote": "TV-2025-03"
   },
   "4": {
     "id": 4,
-    "nome": "COVID-19 (Bivalente)",
-    "fabricante": "Pfizer/BioNTech",
-    "dosesDisponiveis": 350,
-    "dosesRecomendadas": 1,
-    "dataValidade": "2026-10-05"
+    "nome": "Tríplice Viral (Sarampo, Caxumba e Rubéola)",
+    "fabricante": "Serum Institute",
+    "dosesDisponiveis": 95,
+    "dosesRecomendadas": 2,
+    "dataValidade": "2026-09-05",
+    "lote": "TV-2023-12"
   },
   "5": {
     "id": 5,
-    "nome": "Influenza Quadrivalente",
+    "nome": "BCG",
     "fabricante": "Instituto Butantan",
-    "dosesDisponiveis": 520,
+    "dosesDisponiveis": 49,
     "dosesRecomendadas": 1,
-    "dataValidade": "2026-05-30"
+    "dataValidade": "2027-03-12",
+    "lote": "BCG-2024-10"
   },
   "6": {
     "id": 6,
     "nome": "BCG",
-    "fabricante": "Fundação Ataulpho de Paiva (FAP)",
-    "dosesDisponiveis": 120,
+    "fabricante": "Instituto Butantan",
+    "dosesDisponiveis": 30,
     "dosesRecomendadas": 1,
-    "dataValidade": "2027-06-22"
+    "dataValidade": "2025-11-30",
+    "lote": "BCG-2023-05"
   },
   "7": {
     "id": 7,
-    "nome": "Pentavalente (DTP/Hib/HepB)",
-    "fabricante": "GlaxoSmithKline (GSK)",
-    "dosesDisponiveis": 180,
+    "nome": "Hepatite B",
+    "fabricante": "GSK",
+    "dosesDisponiveis": 300,
     "dosesRecomendadas": 3,
-    "dataValidade": "2028-03-12"
+    "dataValidade": "2029-06-22",
+    "lote": "HB-2025-09"
   },
   "8": {
     "id": 8,
-    "nome": "Poliomielite Oral (VOP)",
-    "fabricante": "Bio-Manguinhos/Fiocruz",
-    "dosesDisponiveis": 250,
-    "dosesRecomendadas": 2,
-    "dataValidade": "2027-09-01"
+    "nome": "Hepatite B",
+    "fabricante": "GSK",
+    "dosesDisponiveis": 140,
+    "dosesRecomendadas": 3,
+    "dataValidade": "2026-04-18",
+    "lote": "HB-2023-02"
   },
   "9": {
     "id": 9,
-    "nome": "Meningocócica C (Conjugada)",
-    "fabricante": "GSK",
-    "dosesDisponiveis": 95,
+    "nome": "COVID-19 (Pfizer/BioNTech)",
+    "fabricante": "Pfizer",
+    "dosesDisponiveis": 400,
     "dosesRecomendadas": 2,
-    "dataValidade": "2026-12-18"
+    "dataValidade": "2026-07-11",
+    "lote": "CV-2025-01"
   },
   "10": {
     "id": 10,
-    "nome": "Hepatite B (Recombinante)",
-    "fabricante": "Instituto Butantan",
-    "dosesDisponiveis": 210,
+    "nome": "COVID-19 (Pfizer/BioNTech)",
+    "fabricante": "Pfizer",
+    "dosesDisponiveis": 220,
+    "dosesRecomendadas": 2,
+    "dataValidade": "2025-12-31",
+    "lote": "CV-2023-09"
+  },
+  "11": {
+    "id": 11,
+    "nome": "Influenza",
+    "fabricante": "Sanofi Pasteur",
+    "dosesDisponiveis": 180,
+    "dosesRecomendadas": 1,
+    "dataValidade": "2026-05-25",
+    "lote": "INF-2024-11"
+  },
+  "12": {
+    "id": 12,
+    "nome": "Influenza",
+    "fabricante": "Sanofi Pasteur",
+    "dosesDisponiveis": 75,
+    "dosesRecomendadas": 1,
+    "dataValidade": "2025-03-30",
+    "lote": "INF-2023-06"
+  },
+  "13": {
+    "id": 13,
+    "nome": "Poliomielite (VIP)",
+    "fabricante": "Sanofi Pasteur",
+    "dosesDisponiveis": 180,
     "dosesRecomendadas": 3,
-    "dataValidade": "2028-04-30"
+    "dataValidade": "2028-04-15",
+    "lote": "POLIO-2025-01"
+  },
+  "14": {
+    "id": 14,
+    "nome": "Poliomielite (VOP)",
+    "fabricante": "Instituto Butantan",
+    "dosesDisponiveis": 250,
+    "dosesRecomendadas": 3,
+    "dataValidade": "2027-09-10",
+    "lote": "POLIO-2024-07"
+  },
+  "15": {
+    "id": 15,
+    "nome": "DTP (Tríplice Bacteriana)",
+    "fabricante": "Bio-Manguinhos/Fiocruz",
+    "dosesDisponiveis": 140,
+    "dosesRecomendadas": 3,
+    "dataValidade": "2029-01-25",
+    "lote": "DTP-2025-02"
+  },
+  "16": {
+    "id": 16,
+    "nome": "Rotavírus",
+    "fabricante": "GSK",
+    "dosesDisponiveis": 90,
+    "dosesRecomendadas": 2,
+    "dataValidade": "2026-07-12",
+    "lote": "ROTA-2023-11"
+  },
+  "17": {
+    "id": 17,
+    "nome": "Varicela (Catapora)",
+    "fabricante": "MSD",
+    "dosesDisponiveis": 100,
+    "dosesRecomendadas": 2,
+    "dataValidade": "2028-12-05",
+    "lote": "VAR-2025-06"
+  },
+  "18": {
+    "id": 18,
+    "nome": "HPV Quadrivalente",
+    "fabricante": "Merck",
+    "dosesDisponiveis": 160,
+    "dosesRecomendadas": 2,
+    "dataValidade": "2029-05-18",
+    "lote": "HPV4-2025-09"
+  },
+  "19": {
+    "id": 19,
+    "nome": "HPV Nonavalente",
+    "fabricante": "Merck",
+    "dosesDisponiveis": 110,
+    "dosesRecomendadas": 2,
+    "dataValidade": "2028-03-30",
+    "lote": "HPV9-2024-08"
+  },
+  "20": {
+    "id": 20,
+    "nome": "COVID-19 (Pfizer-BioNTech)",
+    "fabricante": "Pfizer",
+    "dosesDisponiveis": 400,
+    "dosesRecomendadas": 2,
+    "dataValidade": "2026-10-22",
+    "lote": "COV-PF-2024-12"
+  },
+  "21": {
+    "id": 21,
+    "nome": "COVID-19 (AstraZeneca)",
+    "fabricante": "AstraZeneca",
+    "dosesDisponiveis": 300,
+    "dosesRecomendadas": 2,
+    "dataValidade": "2026-08-14",
+    "lote": "COV-AZ-2025-03"
+  },
+  "22": {
+    "id": 22,
+    "nome": "Influenza (Gripe)",
+    "fabricante": "Sanofi Pasteur",
+    "dosesDisponiveis": 500,
+    "dosesRecomendadas": 1,
+    "dataValidade": "2025-05-01",
+    "lote": "FLU-2024-02"
+  },
+  "23": {
+    "id": 23,
+    "nome": "Meningocócica ACWY",
+    "fabricante": "Pfizer",
+    "dosesDisponiveis": 220,
+    "dosesRecomendadas": 1,
+    "dataValidade": "2027-11-09",
+    "lote": "MENACWY-2025-01"
+  },
+  "24": {
+    "id": 24,
+    "nome": "Pneumocócica 10V",
+    "fabricante": "GSK",
+    "dosesDisponiveis": 170,
+    "dosesRecomendadas": 2,
+    "dataValidade": "2028-06-17",
+    "lote": "PN10-2024-05"
+  },
+  "25": {
+    "id": 25,
+    "nome": "Pneumocócica 13V",
+    "fabricante": "Pfizer",
+    "dosesDisponiveis": 210,
+    "dosesRecomendadas": 2,
+    "dataValidade": "2028-09-21",
+    "lote": "PN13-2025-07"
+  },
+  "26": {
+    "id": 26,
+    "nome": "Pfizer Teste",
+    "fabricante": "Teste do teste",
+    "dosesDisponiveis": 24,
+    "dosesRecomendadas": 1,
+    "dataValidade": "2026-09-03",
+    "lote": "PF-2025-2"
   }
 }

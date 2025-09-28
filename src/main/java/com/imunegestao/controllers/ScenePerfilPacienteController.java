@@ -39,7 +39,7 @@ public class ScenePerfilPacienteController extends BaseController {
     @FXML private TableColumn<RegistroVacina, LocalDate> coluna_data;
     @FXML private TableColumn<RegistroVacina, String> coluna_vacina;
     @FXML private TableColumn<RegistroVacina, String> coluna_fabricante;
-    //@FXML private TableColumn<RegistroVacina, String> coluna_funcionario;
+    @FXML private TableColumn<RegistroVacina, String> coluna_lote;
     @FXML private TableColumn<RegistroVacina, Void> coluna_acao_vacina;
     @FXML
     private TextField campo_id;
@@ -48,7 +48,7 @@ public class ScenePerfilPacienteController extends BaseController {
     @FXML
     private TextField campo_fabricante;
     @FXML
-    private TextField campo_funcionario;
+    private TextField campo_lote;
 
     @FXML private VBox formulario_administrar_vacina;
 
@@ -64,7 +64,7 @@ public class ScenePerfilPacienteController extends BaseController {
         coluna_data.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getDataAplicacao()));
         coluna_vacina.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getVacina().getNome()));
         coluna_fabricante.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getVacina().getFabricante()));
-        //coluna_funcionario.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNomeFuncionario()));
+        coluna_lote.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getVacina().getLote()));
         adicionarColunaAcoes();
 
         campo_id.textProperty().addListener((obs, oldText, newText) -> preencherPorId());
@@ -187,7 +187,7 @@ public class ScenePerfilPacienteController extends BaseController {
         if (campo_id != null) campo_id.clear();
         if (campo_nome != null) campo_nome.clear();
         if (campo_fabricante != null) campo_fabricante.clear();
-        if (campo_funcionario != null) campo_funcionario.clear();
+        if (campo_lote != null) campo_lote.clear();
     }
     public void preencherPorId(){ //Preenche Automaticamente os outros campos ao digitar o ID da Vacina
         String idDigitado = campo_id.getText().trim();
@@ -203,6 +203,7 @@ public class ScenePerfilPacienteController extends BaseController {
             if (vacina != null) {
                 campo_nome.setText(vacina.getNome());
                 campo_fabricante.setText(vacina.getFabricante());
+                campo_lote.setText(vacina.getLote());
             } else {
                 campo_nome.clear();
                 mostrarAlertaErro("Vacina com ID " + idVacina + " não encontrada.");
@@ -210,6 +211,7 @@ public class ScenePerfilPacienteController extends BaseController {
         } catch (NumberFormatException e) {
             campo_nome.clear();
             campo_fabricante.clear();
+            campo_lote.clear();
             mostrarAlertaErro("ID da vacina deve ser um número válido.");
         }
     }

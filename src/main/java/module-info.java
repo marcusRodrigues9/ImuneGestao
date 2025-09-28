@@ -10,6 +10,7 @@ module com.imunegestao.imunegestao {
     requires java.base;
     requires java.net.http;
     requires com.fasterxml.jackson.databind;
+    requires jdk.compiler;
 
     opens com.imunegestao to javafx.fxml;
     opens com.imunegestao.controllers to javafx.fxml;

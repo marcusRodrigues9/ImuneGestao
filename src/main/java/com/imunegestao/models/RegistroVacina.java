@@ -18,9 +18,6 @@ public class RegistroVacina {
         return dataAplicacao;
     }
 
-    public void setDataAplicacao(LocalDate dataAplicacao) {
-        this.dataAplicacao = dataAplicacao;
-    }
 
     public Vacina getVacina() {
         return vacina;

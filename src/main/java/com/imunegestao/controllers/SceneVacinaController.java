@@ -35,10 +35,11 @@ public class SceneVacinaController extends BaseController {
     @FXML private TableColumn<Vacina, LocalDate> coluna_data_validade;
     @FXML private TableColumn<Vacina, Integer> coluna_doses_disponiveis;
     @FXML private TableColumn<Vacina, Integer> coluna_doses_recomendadas;
+    @FXML private TableColumn<Vacina, String> coluna_lote;
     @FXML private TableColumn<Vacina, Void> coluna_acao_vacina;
 
     // --- Campos Formulário ---
-    @FXML private TextField campo_nome, campo_fabricante, campo_doses_disponiveis, campo_doses_recomendadas;
+    @FXML private TextField campo_nome, campo_fabricante, campo_doses_disponiveis, campo_doses_recomendadas, campo_lote ;
     @FXML private DatePicker campo_data_validade;
 
     // --- Navegação ---
@@ -67,6 +68,7 @@ public class SceneVacinaController extends BaseController {
         coluna_data_validade.setCellValueFactory(new PropertyValueFactory<>("dataValidade"));
         coluna_doses_disponiveis.setCellValueFactory(new PropertyValueFactory<>("dosesDisponiveis"));
         coluna_doses_recomendadas.setCellValueFactory(new PropertyValueFactory<>("dosesRecomendadas"));
+        coluna_lote.setCellValueFactory(new PropertyValueFactory<>("lote"));
         adicionarColunaAcoes(); // adiciona a coluna de exclusão
         tabela_vacinas.setItems(listaVacinas);
     }
@@ -80,14 +82,15 @@ public class SceneVacinaController extends BaseController {
         String dosesRecomendadasStr = campo_doses_recomendadas.getText();
         String dosesDisponiveisStr = campo_doses_disponiveis.getText();
         LocalDate dataValidade = campo_data_validade.getValue();
+        String lote = campo_lote.getText();
 
         try {
-            ValidacoesVacina.validar(nome, fabricante, dosesRecomendadasStr, dosesDisponiveisStr, dataValidade);
+            ValidacoesVacina.validar(nome, fabricante, dosesRecomendadasStr, dosesDisponiveisStr, dataValidade,lote);
 
             int dosesRecomendadas = Integer.parseInt(dosesRecomendadasStr);
             int dosesDisponiveis = Integer.parseInt(dosesDisponiveisStr);
 
-            Vacina nova = new Vacina(nome, fabricante, dosesDisponiveis, dosesRecomendadas, dataValidade);
+            Vacina nova = new Vacina(nome, fabricante, dosesDisponiveis, dosesRecomendadas, dataValidade,lote);
             repositorioVacina.adicionarVacina(nova);
             listaVacinas.add(nova);
             mostrarAlertaInformacao("Vacina cadastrada com sucesso!\n\n" + formatarDados(nova));
@@ -108,7 +111,8 @@ public class SceneVacinaController extends BaseController {
                 "\nFabricante: " + v.getFabricante() +
                 "\nDoses Recomendadas: " + v.getDosesRecomendadas() +
                 "\nDoses Disponíveis: " + v.getDosesDisponiveis() +
-                "\nData de Validade: " + dataFormatada;
+                "\nData de Validade: " + dataFormatada +
+                "\nLote: "+v.getLote();
     }
     private void excluirVacina(Vacina vacina) {
         repositorioVacina.listarVacinas().remove(vacina.getId());
@@ -176,6 +180,7 @@ public class SceneVacinaController extends BaseController {
         campo_doses_disponiveis.clear();
         campo_doses_recomendadas.clear();
         campo_data_validade.setValue(null);
+        campo_lote.clear();
     }
 
     private void iniciarTabela() {

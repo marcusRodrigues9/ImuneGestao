@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class ValidacoesVacina {
 
-    public static void validar(String nome, String fabricante, String dosesDisponiveisStr, String dosesRecomendadasStr, LocalDate dataValidade) throws ValidacaoException {
+    public static void validar(String nome, String fabricante, String dosesDisponiveisStr, String dosesRecomendadasStr, LocalDate dataValidade, String lote) throws ValidacaoException {
 
         if (nome == null || nome.trim().isEmpty())
             throw new ValidacaoException("Nome da vacina é obrigatório.");

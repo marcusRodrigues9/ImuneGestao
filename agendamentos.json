@@ -2,77 +2,109 @@
   "1": {
     "id": 1,
     "paciente": {
-      "id": 4,
-      "nome": "Alvim",
-      "cpf": "12345678900",
+      "id": 6,
+      "nome": "Ryan Henrique Aguiar",
+      "cpf": "12345678910",
+      "numeroSus": "12345678912",
+      "dataNascimento": "2003-09-08",
       "sexo": "Masculino",
-      "endereco": "Rua da Alegria",
-      "numeroTelefone": "35999999999",
-      "email": "Alvimosesquilos@gmail.com",
-      "vacinasTomadas": []
+      "endereco": "Rua do Queima",
+      "numeroTelefone": "35998245689",
+      "email": "ryan.aguiarh@gmail.com",
+      "vacinasTomadas": [
+        {
+          "dataAplicacao": "2025-09-28",
+          "vacina": {
+            "id": 5,
+            "nome": "BCG",
+            "fabricante": "Instituto Butantan",
+            "dosesDisponiveis": 49,
+            "dosesRecomendadas": 1,
+            "dataValidade": "2027-03-12",
+            "lote": "BCG-2024-10"
+          }
+        }
+      ]
     },
-    "data": "2025-09-17",
+    "data": "2025-10-10",
     "vacina": {
-      "id": 1,
-      "nome": "Gripe",
-      "fabricante": "Cimed",
-      "dosesDisponiveis": 4,
-      "dosesRecomendadas": 2,
-      "dataValidade": "2026-03-07"
+      "id": 2,
+      "nome": "Febre Amarela",
+      "fabricante": "Bio-Manguinhos/Fiocruz",
+      "dosesDisponiveis": 79,
+      "dosesRecomendadas": 1,
+      "dataValidade": "2026-12-10",
+      "lote": "FA-2024-07"
     },
     "doses": 1,
     "hora": "14:00",
-    "status": "CANCELADO"
+    "status": "AGENDADO"
   },
   "2": {
     "id": 2,
     "paciente": {
-      "id": 3,
-      "nome": "Mariana Silva",
-      "cpf": "98765432100",
-      "sexo": "Feminino",
-      "endereco": "Av. Central, 456",
-      "numeroTelefone": "31988887777",
-      "email": "mariana.silva@example.com",
+      "id": 9,
+      "nome": "Ryan",
+      "cpf": "12345678910",
+      "numeroSus": "12345679",
+      "dataNascimento": "2003-04-08",
+      "sexo": "Masculino",
+      "endereco": "sdad",
+      "numeroTelefone": "56165156165",
+      "email": "ryan.aguiarh@gmail.com",
       "vacinasTomadas": []
     },
-    "data": "2025-09-20",
+    "data": "2025-10-10",
     "vacina": {
-      "id": 2,
-      "nome": "Hepatite B (Recombinante)",
-      "fabricante": "Instituto Butantan",
-      "dosesDisponiveis": 50,
-      "dosesRecomendadas": 3,
-      "dataValidade": "2027-01-01"
+      "id": 1,
+      "nome": "Febre Amarela",
+      "fabricante": "Bio-Manguinhos/Fiocruz",
+      "dosesDisponiveis": 145,
+      "dosesRecomendadas": 1,
+      "dataValidade": "2027-08-15"
     },
-    "doses": 1,
-    "hora": "09:30",
-    "status": "CONFIRMADO"
+    "doses": 2,
+    "hora": "14:00",
+    "status": "AGENDADO"
   },
   "3": {
     "id": 3,
     "paciente": {
-      "id": 5,
-      "nome": "João Pedro",
-      "cpf": "45612378900",
-      "sexo": "Masculino",
-      "endereco": "Rua Nova Esperança, 789",
-      "numeroTelefone": "31991112222",
-      "email": "joaopedro@example.com",
-      "vacinasTomadas": []
+      "id": 3,
+      "nome": "Ana Silva",
+      "cpf": "15975348620",
+      "numeroSus": "456789123654",
+      "dataNascimento": "2015-05-12",
+      "sexo": "Feminino",
+      "endereco": "Rua das Flores, 120",
+      "numeroTelefone": "34987654321",
+      "email": "ana.silva@example.com",
+      "vacinasTomadas": [
+        {
+          "dataAplicacao": "2025-03-10",
+          "vacina": {
+            "id": 4,
+            "nome": "COVID-19 (Bivalente)",
+            "fabricante": "Pfizer/BioNTech",
+            "dosesDisponiveis": 350,
+            "dosesRecomendadas": 1,
+            "dataValidade": "2026-10-05"
+          }
+        }
+      ]
     },
-    "data": "2025-09-21",
+    "data": "2025-10-09",
     "vacina": {
-      "id": 4,
-      "nome": "Tríplice Viral (Sarampo, Caxumba e Rubéola)",
+      "id": 2,
+      "nome": "Tríplice Viral (SRC)",
       "fabricante": "Serum Institute of India",
-      "dosesDisponiveis": 120,
+      "dosesDisponiveis": 197,
       "dosesRecomendadas": 2,
-      "dataValidade": "2026-11-05"
+      "dataValidade": "2028-01-20"
     },
     "doses": 1,
-    "hora": "11:00",
-    "status": "REALIZADO"
+    "hora": "15:00",
+    "status": "AGENDADO"
   },
   "4": {
     "id": 4,

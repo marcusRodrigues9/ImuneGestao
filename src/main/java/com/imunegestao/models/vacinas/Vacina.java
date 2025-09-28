@@ -1,5 +1,7 @@
 package com.imunegestao.models.vacinas;
 
+import com.sun.source.doctree.BlockTagTree;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -10,13 +12,24 @@ public class Vacina {
     private int dosesDisponiveis;
     private int dosesRecomendadas;
     private LocalDate dataValidade;
+    private String lote;
 
-    public Vacina(String nome, String fabricante, int dosesDisponiveis, int dosesRecomendadas, LocalDate dataValidade) {
+
+    public Vacina(String nome, String fabricante, int dosesDisponiveis, int dosesRecomendadas, LocalDate dataValidade, String lote) {
         this.nome = nome;
         this.fabricante = fabricante;
         this.dosesDisponiveis = dosesDisponiveis;
         this.dosesRecomendadas = dosesRecomendadas;
         this.dataValidade = dataValidade;
+        this.lote = lote;
+    }
+
+    public String getLote() {
+        return lote;
+    }
+
+    public void setLote(String lote) {
+        this.lote = lote;
     }
 
     public int getId() {return id;}
