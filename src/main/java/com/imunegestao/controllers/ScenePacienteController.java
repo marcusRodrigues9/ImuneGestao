@@ -249,13 +249,6 @@ public class ScenePacienteController extends BaseController {
     }
 
 
-    @FXML
-    private void abrirCartaoVacinaMenu(ActionEvent event) {
-        Paciente pacienteSelecionado = tabela_pacientes.getSelectionModel().getSelectedItem(); // Pega o pacientr da tabela
-
-        visualizarPerfilPaciente(pacienteSelecionado, event);
-    }
-
     private void visualizarPerfilPaciente(Paciente paciente, ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/imunegestao/views/scene-visualizar-perfil-paciente.fxml"));
@@ -301,6 +294,8 @@ public class ScenePacienteController extends BaseController {
         campo_telefone.clear();
         campo_email.clear();
         sexo_paciente.selectToggle(null);
+        campo_sus.clear();
+        campo_data_nascimento.setValue(null);
     }
 
     private void iniciarTabela() {
