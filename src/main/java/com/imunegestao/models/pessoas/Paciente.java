@@ -53,6 +53,8 @@ public class Paciente {
     public void adicionarVacina(RegistroVacina registro) {
         this.vacinasTomadas.add(registro);
     }
+    public void removerVacina(RegistroVacina registro){this.vacinasTomadas.remove(registro);}
+
 
     public int getId() {return id;}
 

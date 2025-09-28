@@ -74,6 +74,11 @@ public class RepositorioVacina {
         vacina.setDosesDisponiveis(quantidadeRestante);
         salvarDados();
     }
+    public void adicionarDoseVacina(int quatidadeDose, Vacina vacina){
+        int quantidadeRestante = vacina.getDosesDisponiveis() + quatidadeDose;
+        vacina.setDosesDisponiveis(quantidadeRestante);
+        salvarDados();
+    }
 
     // --- NOVOS MÉTODOS PARA SALVAR E CARREGAR ---
 

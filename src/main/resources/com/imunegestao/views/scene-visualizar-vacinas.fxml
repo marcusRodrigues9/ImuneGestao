@@ -126,7 +126,7 @@
                         <TableColumn fx:id="coluna_doses_disponiveis" prefWidth="117.0" text="Doses disponiveis" />
                         <TableColumn fx:id="coluna_doses_recomendadas" prefWidth="127.0" text="Doses recomendadas" />
                         <TableColumn fx:id="coluna_data_validade" prefWidth="107.0" text="Data de validade" />
-                        <TableColumn fx:id="coluna_acao_vacina" text="Ações" /> <!-- ESTA É A QUE FALTAVA -->
+                        <TableColumn fx:id="coluna_acao_vacina" text="Ações" />
                      </columns>
                   </TableView>
                   <TextField fx:id="buscar_vacina" layoutX="336.0" layoutY="140.0" prefHeight="33.0" prefWidth="265.0" promptText="Digite o id ou nome da vacina" />

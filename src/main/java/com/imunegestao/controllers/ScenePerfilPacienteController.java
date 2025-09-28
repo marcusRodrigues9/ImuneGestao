@@ -15,11 +15,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class ScenePerfilPacienteController extends BaseController {
@@ -42,6 +40,7 @@ public class ScenePerfilPacienteController extends BaseController {
     @FXML private TableColumn<RegistroVacina, String> coluna_vacina;
     @FXML private TableColumn<RegistroVacina, String> coluna_fabricante;
     //@FXML private TableColumn<RegistroVacina, String> coluna_funcionario;
+    @FXML private TableColumn<RegistroVacina, Void> coluna_acao_vacina;
     @FXML
     private TextField campo_id;
     @FXML
@@ -66,6 +65,7 @@ public class ScenePerfilPacienteController extends BaseController {
         coluna_vacina.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getVacina().getNome()));
         coluna_fabricante.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getVacina().getFabricante()));
         //coluna_funcionario.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNomeFuncionario()));
+        adicionarColunaAcoes();
 
         campo_id.textProperty().addListener((obs, oldText, newText) -> preencherPorId());
 
@@ -105,6 +105,51 @@ public class ScenePerfilPacienteController extends BaseController {
             labelIdade.setText("N/A");
         }
     }
+
+    private void adicionarColunaAcoes() {
+        coluna_acao_vacina.setCellFactory(param -> new TableCell<>() {
+            private final Button excluir = new Button("Excluir");
+
+            {
+                String estiloPadrao = "-fx-background-color: #E4E1E2; -fx-text-fill: black; -fx-cursor: hand;";
+                excluir.setStyle(estiloPadrao);
+
+                excluir.setOnMouseEntered(e -> excluir.setStyle("-fx-background-color: #ff4d4d; -fx-text-fill: white; -fx-cursor: hand;"));
+                excluir.setOnMouseExited(e -> excluir.setStyle(estiloPadrao));
+
+                excluir.setOnAction(e -> {
+                    RegistroVacina registro = getTableView().getItems().get(getIndex());
+
+                    if (registro != null && pacienteAtual != null) {
+
+                        Alert confirmacao = new Alert(Alert.AlertType.CONFIRMATION);
+                        confirmacao.setTitle("Alerta de Exclusão");
+                        confirmacao.setHeaderText("Deseja Remover a Vacina Administrada ?");
+                        confirmacao.setContentText("Pressione OK para Sim ou Cancelar para Não");
+                        confirmacao.showAndWait().ifPresent(resposta -> {
+                            if (resposta == ButtonType.OK) {
+                                // Remove do repositório e da lista da tabela
+                                RepositorioPaciente.getInstancia().exlcuirVacinaRegistrada(pacienteAtual, registro);
+                                listaDeVacinasTomadas.remove(registro);
+
+                                Vacina vacina  = RepositorioVacina.getInstancia().buscarVacinaPorId(registro.getVacina().getId());
+                                RepositorioVacina.getInstancia().adicionarDoseVacina(1,vacina);
+
+                                mostrarAlertaInformacao("Vacina removida com sucesso!");
+                            }
+                        });
+                    }
+                });
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                setGraphic(empty ? null : new HBox(10, excluir));
+            }
+        });
+    }
+
     public  void administrarVacinaPaciente(ActionEvent event){
         TextField campo_id = (TextField) formulario_administrar_vacina.lookup("#campo_id");
         String idStr = campo_id.getText();

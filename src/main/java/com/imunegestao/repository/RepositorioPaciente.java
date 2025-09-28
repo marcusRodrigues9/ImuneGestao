@@ -93,6 +93,10 @@ public class RepositorioPaciente {
         paciente.adicionarVacina(registro);
         atualizarPaciente(paciente);// <--- Salva também após adicionar uma vacina
     }
+    public void exlcuirVacinaRegistrada(Paciente paciente, RegistroVacina registro){
+        paciente.removerVacina(registro);
+        atualizarPaciente(paciente);
+    }
 
 
     // --- NOVOS MÉTODOS PARA SALVAR E CARREGAR ---
