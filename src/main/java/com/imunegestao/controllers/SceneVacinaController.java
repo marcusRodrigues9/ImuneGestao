@@ -1,6 +1,7 @@
 package com.imunegestao.controllers;
 
 import com.imunegestao.Main;
+import com.imunegestao.models.enums.StatusAgendamento;
 import com.imunegestao.models.vacinas.Vacina;
 import com.imunegestao.repository.RepositorioVacina;
 import com.imunegestao.utils.ValidacaoException;
@@ -54,6 +55,7 @@ public class SceneVacinaController extends BaseController {
     public void initialize() {
         configurarTabela();
         carregarVacinas();
+        configurarBuscaVacina();
 
     }
     private void carregarVacinas() {
@@ -100,6 +102,29 @@ public class SceneVacinaController extends BaseController {
             mostrarAlertaErro(e.getMessage());
         }
 
+    }
+    // =================== CONFIGURAÇÃO DA BUSCA ===================
+    @FXML
+    private void configurarBuscaVacina() {
+        buscar_vacina.textProperty().addListener((obs, oldText, newText) -> aplicarFiltrosVacina());
+    }
+
+    private void aplicarFiltrosVacina() {
+        String textoBusca = buscar_vacina.getText().toLowerCase().trim();
+
+        if (textoBusca.isEmpty()) {
+            tabela_vacinas.setItems(listaVacinas);
+            return;
+        }
+
+        ObservableList<Vacina> listaFiltrada = FXCollections.observableArrayList();
+        for (Vacina v : listaVacinas) {
+            if (v.getNome().toLowerCase().contains(textoBusca) ||
+                    v.getLote().toLowerCase().contains(textoBusca)) {
+                listaFiltrada.add(v);
+            }
+        }
+        tabela_vacinas.setItems(listaFiltrada);
     }
 
     private String formatarDados(Vacina v) {

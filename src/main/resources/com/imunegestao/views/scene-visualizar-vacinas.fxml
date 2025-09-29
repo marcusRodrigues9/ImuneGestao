@@ -125,7 +125,7 @@
                         <TableColumn fx:id="coluna_acao_vacina" prefWidth="79.0" text="Ações" />
                      </columns>
                   </TableView>
-                  <TextField fx:id="buscar_vacina" layoutX="336.0" layoutY="140.0" prefHeight="33.0" prefWidth="265.0" promptText="Digite o id ou nome da vacina" />
+                  <TextField fx:id="buscar_vacina" layoutX="336.0" layoutY="140.0" prefHeight="33.0" prefWidth="265.0" promptText="Digite o nome da vacina" />
                </children>
             </AnchorPane>
          </children>
