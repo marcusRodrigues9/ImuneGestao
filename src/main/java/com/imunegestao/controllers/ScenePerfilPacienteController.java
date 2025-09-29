@@ -32,6 +32,7 @@ public class ScenePerfilPacienteController extends BaseController {
     @FXML private Label labelTelefone;
     @FXML private Label labelSexo;
     @FXML private Label labelIdade;
+    @FXML private Label labelnsus;
 
 
     @FXML private TableView<RegistroVacina> tabela_historico;
@@ -94,6 +95,7 @@ public class ScenePerfilPacienteController extends BaseController {
             labelTelefone.setText(pacienteAtual.getNumeroTelefone());
             labelSexo.setText(pacienteAtual.getSexo());
             labelIdade.setText(String.valueOf(pacienteAtual.getIdade())); // Converte int para String
+            labelnsus.setText(pacienteAtual.getNumeroSus());
         } else {
             // Se por algum motivo o paciente for nulo.
             labelNome.setText("N/A");

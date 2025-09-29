@@ -146,6 +146,13 @@
                         <Font size="24.0" />
                     </font>
                 </Label>
+
+                <Label fx:id="labelnsus" layoutX="175.0" layoutY="462.0" prefHeight="35.0" prefWidth="196.0" text="null">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+
                 <Label layoutX="535.0" layoutY="62.0" text="Vacinas Administradas:">
                     <font>
                         <Font name="Arial Bold" size="24.0" />
@@ -160,7 +167,7 @@
                         <TableColumn fx:id="coluna_acao_vacina" text="Ação" />
                     </columns>
                 </TableView>
-                <Button layoutX="40.0" layoutY="480.0" mnemonicParsing="false" onAction="#mostrarFormularioAdministrarVacina" prefHeight="36.0" prefWidth="180.0" text="Administrar Nova Vacina">
+                <Button layoutX="50.0" layoutY="568.0" mnemonicParsing="false" onAction="#mostrarFormularioAdministrarVacina" prefHeight="36.0" prefWidth="180.0" text="Administrar Nova Vacina">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
@@ -203,6 +210,15 @@
                         <Button fx:id="botaoCancelar" onAction="#mostrarFormularioAdministrarVacina" text="Cancelar" />
                     </HBox>
                 </VBox>
+            <Label layoutX="40.0" layoutY="462.0" prefHeight="35.0" prefWidth="187.0" text="Nº do SUS: ">
+               <font>
+                  <Font size="24.0" />
+               </font>
+
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
 

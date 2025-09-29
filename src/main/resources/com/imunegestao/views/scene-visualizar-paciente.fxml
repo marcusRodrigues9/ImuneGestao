@@ -146,7 +146,7 @@
                         <TableColumn fx:id="coluna_acao_paciente" prefWidth="270.0" />
                     </columns>
                   </TableView>
-                  <TextField fx:id="buscar_paciente" layoutX="362.0" layoutY="142.0" prefHeight="33.0" prefWidth="265.0" promptText="Digite o CPF" />
+                  <TextField fx:id="buscar_paciente" layoutX="362.0" layoutY="142.0" prefHeight="33.0" prefWidth="265.0" promptText="Digite o Nome" />
                </children>
             </AnchorPane>
          </children>

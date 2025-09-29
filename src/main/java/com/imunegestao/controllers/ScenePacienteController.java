@@ -88,9 +88,6 @@ public class ScenePacienteController extends BaseController {
         tabela_pacientes.setItems(listaPacientes);
     }
 
-    private void configurarBuscaPaciente() {
-        buscar_paciente.textProperty().addListener((obs, oldText, newText) -> buscarPaciente());
-    }
 
     // =================== AÇÕES DOS BOTÕES ===================
 
@@ -271,20 +268,27 @@ public class ScenePacienteController extends BaseController {
 
     // =================== FUNCIONALIDADES AUXILIARES ===================
 
-    private void buscarPaciente() {
-        String textoBusca = buscar_paciente.getText().trim().toLowerCase();
+    @FXML
+    private void configurarBuscaPaciente() {
+        buscar_paciente.textProperty().addListener((obs, oldText, newText) -> aplicarFiltrosPaciente());
+    }
+
+    private void aplicarFiltrosPaciente() {
+        String textoBusca = buscar_paciente.getText().toLowerCase().trim();
 
         if (textoBusca.isEmpty()) {
-            listaPacientes.setAll(repositorioPaciente.listarPacientes().values());
-        } else {
-            listaPacientes.setAll(
-                    repositorioPaciente.listarPacientes().values().stream()
-                            .filter(c -> c.getCpf().toLowerCase().contains(textoBusca))
-                            .toList()
-            );
+            tabela_pacientes.setItems(listaPacientes);
+            return;
         }
 
-        tabela_pacientes.refresh();
+        ObservableList<Paciente> listaFiltrada = FXCollections.observableArrayList();
+        for (Paciente p : listaPacientes) {
+            if (p.getNome().toLowerCase().contains(textoBusca) ||
+                    p.getCpf().toLowerCase().contains(textoBusca)) {
+                listaFiltrada.add(p);
+            }
+        }
+        tabela_pacientes.setItems(listaFiltrada);
     }
 
     private void limparCampos() {
