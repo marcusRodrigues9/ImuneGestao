@@ -232,14 +232,16 @@ public class SceneAgendamentoController extends BaseController {
     }
 
     private void configurarCoresLinhas() {
-        tabela_agendamento.setRowFactory(tv -> new TableRow<>() {
+        tabela_agendamento.setRowFactory(tv -> new TableRow<Agendamento>() {
             @Override
             protected void updateItem(Agendamento ag, boolean empty) {
                 super.updateItem(ag, empty);
+
+                // Limpar todas as classes CSS de status anteriores
                 getStyleClass().removeAll("row-realizado", "row-agendado", "row-confirmado", "row-cancelado");
-                setStyle("");
 
                 if (!empty && ag != null) {
+                    // Aplicar a classe CSS baseada no status
                     switch (ag.getStatus()) {
                         case REALIZADO -> getStyleClass().add("row-realizado");
                         case AGENDADO -> getStyleClass().add("row-agendado");
@@ -250,7 +252,6 @@ public class SceneAgendamentoController extends BaseController {
             }
         });
     }
-
     private void configurarOrdenacaoPorPrioridade() {
         listaAgendamentos.setComparator((a1, a2) -> {
             int p1 = obterPrioridadeStatus(a1.getStatus());
@@ -289,14 +290,13 @@ public class SceneAgendamentoController extends BaseController {
                     || ag.getStatus().toString().toLowerCase().contains(textoBusca)
                     || ag.getData().toString().contains(textoBusca);
         });
-    }
 
+        // Atualizar a tabela para refletir as mudanças
+        tabela_agendamento.refresh();
+    }
     private void atualizarListaCompleta() {
         listaAgendamentosBase.setAll(repositorioAgendamento.listarAgendamentos().values());
-        Platform.runLater(() -> {
-            aplicarFiltros();
-            atualizarCoresTabela();
-        });
+        aplicarFiltros(); // Este método já chama o refresh da tabela
     }
 
     private void atualizarCoresTabela() {
@@ -308,6 +308,7 @@ public class SceneAgendamentoController extends BaseController {
             tabela_agendamento.setItems(currentItems);
         });
     }
+
 
     // =================== AÇÕES DOS BOTÕES ===================
 
@@ -425,12 +426,8 @@ public class SceneAgendamentoController extends BaseController {
 
     @FXML
     private void alternarFiltroCancelados() {
-        Platform.runLater(() -> {
-            aplicarFiltros();
-            atualizarCoresTabela();
-        });
+        aplicarFiltros(); // Aplicar filtros já atualiza a tabela
     }
-
     public void debugListaAgendamentos() {
         System.out.println("=== DEBUG LISTA AGENDAMENTOS ===");
         System.out.println("Total no repositório: " + repositorioAgendamento.listarAgendamentos().size());

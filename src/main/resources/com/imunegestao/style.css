@@ -56,6 +56,8 @@
 }
 
 /* --- ESTILO DAS LINHAS DA TABELA (ROW) --- */
+
+/*
 .table-view .table-row-cell {
     -fx-background-color: white;
 }
@@ -63,7 +65,7 @@
 .table-view .table-row-cell:odd {
     -fx-background-color: #f9f9f9;
 }
-
+*/
 /* Estilo PADRÃO para linha selecionada */
 .table-view .table-row-cell:selected {
     -fx-background-color: #a3d9ff; /* Cor de seleção genérica e neutra */
@@ -73,36 +75,35 @@
 
 /* Status: REALIZADO */
 .table-row-cell.row-realizado {
-    -fx-background-color: #d4edda;
+    -fx-background-color: #d4edda !important;
 }
 .table-row-cell.row-realizado:selected {
-    -fx-background-color: #a3d9a7; /* Versão mais escura do verde */
+    -fx-background-color: #a3d9a7 !important;
 }
 
 /* Status: AGENDADO */
 .table-row-cell.row-agendado {
-    -fx-background-color: #fff3cd;
+    -fx-background-color: #fff3cd !important;
 }
 .table-row-cell.row-agendado:selected {
-    -fx-background-color: #f0d984; /* Versão mais escura do amarelo */
+    -fx-background-color: #f0d984 !important;
 }
 
 /* Status: CONFIRMADO */
 .table-row-cell.row-confirmado {
-    -fx-background-color: #cce5ff;
+    -fx-background-color: #cce5ff !important;
 }
 .table-row-cell.row-confirmado:selected {
-    -fx-background-color: #8dbdff; /* Versão mais escura do azul */
+    -fx-background-color: #8dbdff !important;
 }
 
 /* Status: CANCELADO */
 .table-row-cell.row-cancelado {
-    -fx-background-color: #f8d7da;
+    -fx-background-color: #f8d7da !important;
 }
 .table-row-cell.row-cancelado:selected {
-    -fx-background-color: #f0959b; /* Versão mais escura do vermelho */
+    -fx-background-color: #f0959b !important;
 }
-
 /* --- ESTILO DA BARRA DE ROLAGEM --- */
 .table-view .scroll-bar:vertical .thumb,
 .table-view .scroll-bar:horizontal .thumb {

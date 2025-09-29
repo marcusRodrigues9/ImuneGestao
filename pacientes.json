@@ -9,20 +9,7 @@
     "endereco": "Rua das Flores, 120",
     "numeroTelefone": "34987654321",
     "email": "ana.silva@example.com",
-    "vacinasTomadas": [
-      {
-        "dataAplicacao": "2025-03-10",
-        "vacina": {
-          "id": 9,
-          "nome": "COVID-19 (Pfizer/BioNTech)",
-          "fabricante": "Pfizer",
-          "dosesDisponiveis": 400,
-          "dosesRecomendadas": 2,
-          "dataValidade": "2026-07-11",
-          "lote": "CV-2025-01"
-        }
-      }
-    ]
+    "vacinasTomadas": []
   },
   "2": {
     "id": 2,
@@ -174,27 +161,14 @@
   },
   "6": {
     "id": 6,
-    "nome": "Ryan Henrique Aguiar",
-    "cpf": "145357489589",
-    "numeroSus": "123456789",
-    "dataNascimento": "2003-09-08",
+    "nome": "marcus vinicius teodoro rodrigues",
+    "cpf": "15255528641",
+    "numeroSus": "52525252",
+    "dataNascimento": "2021-09-16",
     "sexo": "Masculino",
-    "endereco": "Rua do Queima",
-    "numeroTelefone": "35998245689",
-    "email": "ryan.aguiarh@gmail.com",
-    "vacinasTomadas": [
-      {
-        "dataAplicacao": "2025-09-28",
-        "vacina": {
-          "id": 5,
-          "nome": "BCG",
-          "fabricante": "Instituto Butantan",
-          "dosesDisponiveis": 50,
-          "dosesRecomendadas": 1,
-          "dataValidade": "2027-03-12",
-          "lote": "BCG-2024-10"
-        }
-      }
-    ]
+    "endereco": "rua das tulipas",
+    "numeroTelefone": "35997337238",
+    "email": "marcus0vv@gmail.com",
+    "vacinasTomadas": []
   }
 }

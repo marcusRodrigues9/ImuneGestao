@@ -75,7 +75,7 @@
     "id": 9,
     "nome": "COVID-19 (Pfizer/BioNTech)",
     "fabricante": "Pfizer",
-    "dosesDisponiveis": 400,
+    "dosesDisponiveis": 401,
     "dosesRecomendadas": 2,
     "dataValidade": "2026-07-11",
     "lote": "CV-2025-01"
